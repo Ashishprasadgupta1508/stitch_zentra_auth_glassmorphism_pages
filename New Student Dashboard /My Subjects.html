@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>Zentra - My Subjects</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <script id="tailwind-config">
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            'on-surface-variant': '#474555',
+            'surface-container-low': '#f2f3f7',
+            'surface-variant': '#e1e2e6',
+            'surface-bright': '#f8f9fd',
+            'surface-tint': '#d97706',
+            'background': 'transparent',
+            'on-secondary-container': '#60626a',
+            'on-primary-fixed-variant': '#b45309',
+            'on-tertiary-fixed': '#331200',
+            'primary-fixed': '#fde68a',
+            'surface-container-lowest': '#ffffff',
+            'secondary': '#5c5e65',
+            'tertiary-fixed': '#ffdbca',
+            'surface-container-highest': '#e1e2e6',
+            'on-secondary': '#ffffff',
+            'surface-container': '#edeef2',
+            'on-primary': '#ffffff',
+            'on-secondary-fixed-variant': '#44474d',
+            'secondary-fixed': '#e1e2ea',
+            'outline-variant': '#c8c4d7',
+            'on-tertiary': '#ffffff',
+            'outline': '#787586',
+            'surface': '#f8f9fd',
+            'tertiary': '#7d3500',
+            'error': '#ba1a1a',
+            'on-error': '#ffffff',
+            'primary-fixed-dim': '#fcd34d',
+            'primary': '#b45309',
+            'inverse-surface': '#2e3134',
+            'on-primary-fixed': '#78350f',
+            'secondary-container': '#dedfe8',
+            'secondary-fixed-dim': '#c4c6ce',
+            'on-primary-container': '#fffbeb',
+            'surface-container-high': '#e7e8ec',
+            'on-background': '#191c1f',
+            'error-container': '#ffdad6',
+            'on-surface': '#191c1f',
+            'on-tertiary-container': '#ffd6c2',
+            'tertiary-fixed-dim': '#ffb68f',
+            'on-tertiary-fixed-variant': '#773200',
+            'primary-container': '#d97706',
+            'on-secondary-fixed': '#191c22',
+            'inverse-on-surface': '#eff1f5'
+          },
+          borderRadius: { DEFAULT: '0.25rem', lg: '0.5rem', xl: '0.75rem', full: '9999px' },
+          spacing: { 'max-content-width': '1200px', base: '4px', md: '16px', sm: '12px', lg: '24px', xs: '8px', xl: '32px', 'sidebar-width': '280px' },
+          fontFamily: { 'headline-xl-mobile': ['Inter'], 'body-sm': ['Inter'], 'headline-xl': ['Inter'], 'label-md': ['Inter'], 'body-lg': ['Inter'], 'label-sm': ['Inter'], 'body-md': ['Inter'], 'headline-md': ['Inter'], 'headline-lg': ['Inter'] },
+          fontSize: {
+            'headline-xl-mobile': ['30px', { lineHeight: '38px', fontWeight: '600' }],
+            'body-sm': ['14px', { lineHeight: '20px', fontWeight: '400' }],
+            'headline-xl': ['36px', { lineHeight: '44px', letterSpacing: '-0.02em', fontWeight: '600' }],
+            'label-md': ['14px', { lineHeight: '20px', fontWeight: '500' }],
+            'body-lg': ['18px', { lineHeight: '28px', fontWeight: '400' }],
+            'label-sm': ['12px', { lineHeight: '16px', letterSpacing: '0.02em', fontWeight: '500' }],
+            'body-md': ['16px', { lineHeight: '24px', fontWeight: '400' }],
+            'headline-md': ['20px', { lineHeight: '28px', fontWeight: '600' }],
+            'headline-lg': ['28px', { lineHeight: '36px', letterSpacing: '-0.01em', fontWeight: '600' }]
+          }
+        }
+      }
+    };
+  </script>
+  <style>
+    .glass-tier-1 { background-color: rgba(255, 255, 255, 0.15); backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px); border: 1px solid rgba(255, 255, 255, 0.3); }
+    .glass-card { background-color: rgba(255, 255, 255, 0.15); backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px); border: 1px solid rgba(255, 255, 255, 0.3); }
+    .hover-elevate { transition: all 0.15s ease-in-out; }
+    .hover-elevate:hover { box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12); transform: translateY(-2px); }
+    html.dark body { background-color: rgba(15, 23, 42, 0.96) !important; color: #e2e8f0 !important; }
+    html.dark .glass-tier-1, html.dark .glass-card, html.dark .bg-white, html.dark .bg-surface-container-low, html.dark .bg-surface-container, html.dark .bg-surface-container-high, html.dark .bg-surface-container-highest, html.dark .bg-surface-container-lowest { background-color: rgba(15, 23, 42, 0.88) !important; border-color: rgba(148, 163, 184, 0.24) !important; color: #e2e8f0 !important; }
+    html.dark .text-on-surface, html.dark .text-on-surface-variant, html.dark .text-primary, html.dark .text-white, html.dark .text-inverse-primary { color: #e2e8f0 !important; }
+    html.dark .border-outline-variant, html.dark .border-white\/20, html.dark .border-white\/30, html.dark .border-outline-variant\/70, html.dark .border-primary { border-color: rgba(148, 163, 184, 0.28) !important; }
+  </style>
+</head>
+<body class="bg-[url('https://images.unsplash.com/photo-1498243691581-b145c3f54a5a?auto=format&fit=crop&w=1400&q=80')] bg-cover bg-fixed bg-center text-on-surface font-body-md h-screen overflow-hidden flex selection:bg-primary-container selection:text-white" style="background-image: url('https://images.unsplash.com/photo-1498243691581-b145c3f54a5a?auto=format&fit=crop&w=1400&q=80'); background-size: cover; background-attachment: fixed; background-position: center;">
+  <nav class="bg-white border-r border-outline-variant fixed md:relative z-50 left-0 top-0 h-screen w-[72px] md:w-sidebar-width flex flex-col py-xl transition-all duration-300 overflow-y-auto overflow-x-hidden group">
+    <div class="px-4 md:px-lg mb-8 flex items-center gap-3">
+      <div class="w-10 h-10 rounded-lg bg-primary-container flex items-center justify-center shrink-0 shadow-lg shadow-primary-container/20">
+        <span class="material-symbols-outlined text-white" style="font-variation-settings: 'FILL' 1;">school</span>
+      </div>
+      <div class="hidden md:block opacity-0 md:opacity-100 transition-opacity"><h1 class="font-headline-md text-headline-md font-bold text-on-surface tracking-tight">Zentra</h1><p class="font-label-sm text-label-sm text-on-surface-variant">Premium Learning</p></div>
+    </div>
+    <div class="px-3 md:px-6 mb-8">
+      <a class="w-full flex items-center justify-center md:justify-start gap-2 bg-primary-container text-white py-3 px-3 md:px-4 rounded-lg hover:bg-primary hover:shadow-[0_4px_12px_rgba(217,119,6,0.3)] transition-all duration-150 active:scale-[0.98]" href="./Home%20page.html">
+        <span class="material-symbols-outlined shrink-0 text-[20px]">home</span>
+        <span class="hidden md:inline font-label-md text-label-md whitespace-nowrap">Go Home</span>
+      </a>
+    </div>
+    <div class="flex flex-col gap-1 px-2 md:px-4 flex-1">
+      <div class="font-label-sm text-label-sm text-on-surface-variant/70 px-2 md:px-4 mb-2 hidden md:block">MAIN MENU</div>
+      <a class="flex items-center gap-3 px-2 md:px-4 py-3 hover:bg-black/5 hover:text-on-surface rounded-r-lg border-l-4 border-transparent transition-colors duration-150 text-on-surface" href="./Home%20page.html">
+        <span class="material-symbols-outlined shrink-0" data-icon="home">home</span>
+        <span class="hidden md:inline font-label-md text-label-md whitespace-nowrap">Home</span>
+      </a>
+      <a class="flex items-center gap-3 px-2 md:px-4 py-3 text-primary border-l-4 border-primary bg-primary/10 rounded-r-lg group-hover:bg-primary/20 transition-colors duration-150 active:scale-[0.98]" href="./My%20Subjects.html">
+        <span class="material-symbols-outlined shrink-0" data-icon="library_books">library_books</span>
+        <span class="hidden md:inline font-label-md text-label-md whitespace-nowrap">My Subjects</span>
+      </a>
+      <a class="flex items-center gap-3 px-2 md:px-4 py-3 hover:bg-black/5 hover:text-on-surface rounded-r-lg border-l-4 border-transparent transition-colors duration-150 text-on-surface" href="#" onclick="/* placeholder */">
+        <span class="material-symbols-outlined shrink-0" data-icon="group_add">group_add</span>
+        <span class="hidden md:inline font-label-md text-label-md whitespace-nowrap">Join Classroom</span>
+      </a>
+      <a class="flex items-center gap-3 px-2 md:px-4 py-3 hover:bg-black/5 hover:text-on-surface rounded-r-lg border-l-4 border-transparent transition-colors duration-150 text-on-surface" href="#">
+        <span class="material-symbols-outlined shrink-0" data-icon="quiz">quiz</span>
+        <span class="hidden md:inline font-label-md text-label-md whitespace-nowrap">Tests</span>
+      </a>
+      <a class="flex items-center gap-3 px-2 md:px-4 py-3 hover:bg-black/5 hover:text-on-surface rounded-r-lg border-l-4 border-transparent transition-colors duration-150 text-on-surface" href="#">
+        <span class="material-symbols-outlined shrink-0" data-icon="task_alt">task_alt</span>
+        <span class="hidden md:inline font-label-md text-label-md whitespace-nowrap">Daily Tasks</span>
+      </a>
+      <a class="flex items-center gap-3 px-2 md:px-4 py-3 hover:bg-black/5 hover:text-on-surface rounded-r-lg border-l-4 border-transparent transition-colors duration-150 text-on-surface" href="#ai-insights">
+        <span class="material-symbols-outlined shrink-0 text-inverse-primary" data-icon="psychology">psychology</span>
+        <span class="hidden md:inline font-label-md text-label-md whitespace-nowrap">AI Insights</span>
+      </a>
+    </div>
+    <div class="flex flex-col gap-1 px-2 md:px-4 mt-auto">
+      <a class="flex items-center gap-3 px-2 md:px-4 py-3 text-red-400/80 hover:bg-red-400/10 hover:text-red-400 rounded-lg transition-colors duration-150" href="#">
+        <span class="material-symbols-outlined shrink-0" data-icon="logout">logout</span>
+        <span class="hidden md:inline font-label-md text-label-md whitespace-nowrap">Logout</span>
+      </a>
+    </div>
+  </nav>
+
+  <main class="flex-1 flex flex-col h-screen overflow-hidden relative pl-[72px] md:pl-0">
+    <header class="glass-tier-1 border-b border-white/20 h-16 px-lg flex justify-between items-center shrink-0 sticky top-0 z-40 transition-colors">
+      <div class="flex flex-col">
+        <span class="text-[11px] font-medium text-on-surface-variant uppercase tracking-wider">DASHBOARD</span>
+        <span class="font-label-md text-label-md text-on-surface">My Subjects</span>
+      </div>
+      <div class="flex items-center gap-4">
+        <button id="theme-toggle" class="w-10 h-10 rounded-full flex items-center justify-center text-on-surface-variant hover:bg-white/20 transition-colors hover-elevate" aria-label="Toggle theme">
+          <span id="theme-icon" class="material-symbols-outlined">dark_mode</span>
+        </button>
+      </div>
+    </header>
+
+    <div class="flex-1 overflow-y-auto p-4 md:p-lg lg:p-xl scroll-smooth">
+      <div class="max-w-[1200px] mx-auto">
+        <div class="mb-8 text-center">
+          <h2 class="text-4xl md:text-5xl font-bold mb-3 tracking-tight text-white drop-shadow-md">My Subjects</h2>
+          <p class="font-body-lg text-body-lg text-white drop-shadow-sm">Your uploaded PDFs are grouped by subject for quick access.</p>
+        </div>
+
+        <section class="bg-white rounded-[16px] p-6 md:p-8 relative overflow-hidden shadow-lg">
+          <div class="flex items-center gap-2 mb-8 relative z-10">
+            <span class="material-symbols-outlined text-primary text-3xl">library_books</span>
+            <h3 class="font-headline-md text-headline-md font-semibold text-on-surface">Subject Groups</h3>
+          </div>
+          <div id="subjects-container" class="grid grid-cols-1 md:grid-cols-2 gap-6 relative z-10"></div>
+        </section>
+      </div>
+    </div>
+  </main>
+
+  <script src="./notes-shared.js"></script>
+  <script>
+    const htmlElement = document.documentElement;
+    const DARK_MODE_KEY = 'zentra-theme-preference';
+    const themeToggleButton = document.getElementById('theme-toggle');
+    const themeIcon = document.getElementById('theme-icon');
+    const subjectsContainer = document.getElementById('subjects-container');
+
+    function loadThemePreference() {
+      const savedTheme = localStorage.getItem(DARK_MODE_KEY);
+      if (savedTheme === 'dark' || (!savedTheme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+        htmlElement.classList.add('dark');
+      } else {
+        htmlElement.classList.remove('dark');
+      }
+      setTimeout(() => htmlElement.classList.add('transition-colors', 'duration-300'), 0);
+    }
+
+    function toggleTheme() {
+      htmlElement.classList.toggle('dark');
+      const currentTheme = htmlElement.classList.contains('dark') ? 'dark' : 'light';
+      localStorage.setItem(DARK_MODE_KEY, currentTheme);
+      updateThemeIcon();
+    }
+
+    function updateThemeIcon() {
+      if (themeIcon) {
+        themeIcon.textContent = htmlElement.classList.contains('dark') ? 'light_mode' : 'dark_mode';
+      }
+    }
+
+    function renderSubjects() {
+      const notes = window.ZentraNotes.loadNotes();
+      const grouped = window.ZentraNotes.getGroupedNotes(notes);
+      const entries = Object.entries(grouped);
+
+      if (!entries.length) {
+        subjectsContainer.innerHTML = '<div class="rounded-[12px] border border-dashed border-outline-variant bg-surface-container-low p-6 text-center text-sm text-on-surface-variant">No uploaded notes yet.</div>';
+        return;
+      }
+
+      subjectsContainer.innerHTML = entries.map(([subject, items]) => `
+        <div class="rounded-[12px] border border-outline-variant bg-white/80 p-5 shadow-md hover-elevate">
+          <div class="flex items-center justify-between mb-4">
+            <h4 class="font-label-md text-label-md font-semibold text-on-surface">${subject}</h4>
+            <span class="text-xs uppercase tracking-wider text-on-surface-variant">${items.length} file${items.length > 1 ? 's' : ''}</span>
+          </div>
+          <div class="flex flex-col gap-3">
+            ${items.map((note) => `
+              <div class="rounded-lg border border-outline-variant/70 bg-surface-container-low p-3 flex items-center justify-between gap-3">
+                <a class="flex-1 min-w-0 text-sm font-medium text-on-surface hover:text-primary" href="${note.dataUrl}" target="_blank" rel="noreferrer">
+                  <div class="truncate">${note.fileName}</div>
+                  <div class="text-xs text-on-surface-variant">${window.ZentraNotes.formatFileSize(note.fileSize)}</div>
+                </a>
+                <button class="text-xs text-red-500 hover:text-red-600" data-delete-id="${note.id}">Delete</button>
+              </div>
+            `).join('')}
+          </div>
+        </div>
+      `).join('');
+    }
+
+    subjectsContainer.addEventListener('click', (event) => {
+      const deleteButton = event.target.closest('[data-delete-id]');
+      if (!deleteButton?.dataset?.deleteId) return;
+      window.ZentraNotes.deleteNote(deleteButton.dataset.deleteId);
+      renderSubjects();
+    });
+
+    loadThemePreference();
+    updateThemeIcon();
+    if (themeToggleButton) {
+      themeToggleButton.addEventListener('click', toggleTheme);
+    }
+
+    renderSubjects();
+  </script>
+</body>
+</html>

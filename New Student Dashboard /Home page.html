@@ -1,0 +1,2135 @@
+<!DOCTYPE html>
+<html class="light" lang="en" style="">
+
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>Zentra - Student Dashboard</title>
+    <!-- Fonts & Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet">
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <!-- Tailwind Configuration (Provided) -->
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-surface-variant": "#474555",
+                        "surface-container-low": "#f2f3f7",
+                        "surface-variant": "#e1e2e6",
+                        "surface-bright": "#f8f9fd",
+                        "surface-tint": "#d97706",
+                        "on-error-container": "#93000a",
+                        "inverse-primary": "#fcd34d",
+                        "background": "transparent",
+                        "on-secondary-container": "#60626a",
+                        "on-primary-fixed-variant": "#b45309",
+                        "on-tertiary-fixed": "#331200",
+                        "primary-fixed": "#fde68a",
+                        "surface-container-lowest": "#ffffff",
+                        "secondary": "#5c5e65",
+                        "tertiary-fixed": "#ffdbca",
+                        "surface-dim": "#d9dade",
+                        "tertiary-container": "#a24700",
+                        "surface-container-highest": "#e1e2e6",
+                        "on-secondary": "#ffffff",
+                        "surface-container": "#edeef2",
+                        "on-primary": "#ffffff",
+                        "on-secondary-fixed-variant": "#44474d",
+                        "secondary-fixed": "#e1e2ea",
+                        "outline-variant": "#c8c4d7",
+                        "on-tertiary": "#ffffff",
+                        "outline": "#787586",
+                        "surface": "#f8f9fd",
+                        "tertiary": "#7d3500",
+                        "error": "#ba1a1a",
+                        "on-error": "#ffffff",
+                        "primary-fixed-dim": "#fcd34d",
+                        "primary": "#b45309",
+                        "inverse-surface": "#2e3134",
+                        "on-primary-fixed": "#78350f",
+                        "secondary-container": "#dedfe8",
+                        "secondary-fixed-dim": "#c4c6ce",
+                        "on-primary-container": "#fffbeb",
+                        "surface-container-high": "#e7e8ec",
+                        "on-background": "#191c1f",
+                        "error-container": "#ffdad6",
+                        "on-surface": "#191c1f",
+                        "on-tertiary-container": "#ffd6c2",
+                        "tertiary-fixed-dim": "#ffb68f",
+                        "on-tertiary-fixed-variant": "#773200",
+                        "primary-container": "#d97706",
+                        "on-secondary-fixed": "#191c22",
+                        "inverse-on-surface": "#eff1f5"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "max-content-width": "1200px",
+                        "base": "4px",
+                        "md": "16px",
+                        "sm": "12px",
+                        "lg": "24px",
+                        "xs": "8px",
+                        "xl": "32px",
+                        "sidebar-width": "280px"
+                    },
+                    "fontFamily": {
+                        "headline-xl-mobile": ["Inter"],
+                        "body-sm": ["Inter"],
+                        "headline-xl": ["Inter"],
+                        "label-md": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "label-sm": ["Inter"],
+                        "body-md": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "headline-lg": ["Inter"]
+                    },
+                    "fontSize": {
+                        "headline-xl-mobile": ["30px", { "lineHeight": "38px", "fontWeight": "600" }],
+                        "body-sm": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "headline-xl": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "600" }],
+                        "label-md": ["14px", { "lineHeight": "20px", "fontWeight": "500" }],
+                        "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
+                        "label-sm": ["12px", { "lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "500" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "headline-md": ["20px", { "lineHeight": "28px", "fontWeight": "600" }],
+                        "headline-lg": ["28px", { "lineHeight": "36px", "letterSpacing": "-0.01em", "fontWeight": "600" }]
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Glassmorphism Classes based on style guidance */
+        .glass-tier-1 {
+            background-color: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .glass-tier-2 {
+            background-color: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .glass-tier-3 {
+            background-color: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .glass-card {
+            background-color: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        /* Subtle Hover Shadow */
+        .hover-elevate {
+            transition: all 0.15s ease-in-out;
+        }
+
+        .hover-elevate:hover {
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+            transform: translateY(-2px);
+        }
+
+        /* Checkbox Styling */
+        .custom-checkbox {
+            appearance: none;
+            width: 1.25rem;
+            height: 1.25rem;
+            border: 1px solid #c8c4d7;
+            /* outline-variant */
+            border-radius: 4px;
+            background-color: rgba(255, 255, 255, 0.5);
+            cursor: pointer;
+            position: relative;
+            transition: all 0.15s;
+        }
+
+        .custom-checkbox:checked {
+            background-color: #d97706;
+            /* primary-container */
+            border-color: #d97706;
+        }
+
+        .custom-checkbox:checked::after {
+            content: "";
+            position: absolute;
+            left: 5px;
+            top: 2px;
+            width: 5px;
+            height: 10px;
+            border: solid white;
+            border-width: 0 2px 2px 0;
+            transform: rotate(45deg);
+        }
+
+        /* Modal Backdrop */
+        #modal-backdrop {
+            display: none;
+            background-color: rgba(25, 28, 31, 0.6);
+            backdrop-filter: blur(8px);
+        }
+
+        #modal-backdrop.active {
+            display: flex;
+        }
+
+        html.dark body {
+            background-color: rgba(15, 23, 42, 0.95) !important;
+            color: #e2e8f0 !important;
+            background-blend-mode: multiply !important;
+        }
+
+        html.dark .glass-tier-1,
+        html.dark .glass-card,
+        html.dark .bg-white,
+        html.dark .bg-surface-container-low,
+        html.dark .bg-surface-container,
+        html.dark .bg-surface-container-high,
+        html.dark .bg-surface-container-highest,
+        html.dark .bg-surface-container-lowest {
+            background-color: rgba(15, 23, 42, 0.88) !important;
+            border-color: rgba(148, 163, 184, 0.24) !important;
+            color: #e2e8f0 !important;
+        }
+
+        html.dark .bg-primary/10 {
+            background-color: rgba(245, 158, 11, 0.15) !important;
+        }
+
+        html.dark .text-on-surface,
+        html.dark .text-on-surface-variant,
+        html.dark .text-primary,
+        html.dark .text-white,
+        html.dark .text-inverse-primary {
+            color: #e2e8f0 !important;
+        }
+
+        html.dark .border-outline-variant,
+        html.dark .border-white\/20,
+        html.dark .border-white\/30,
+        html.dark .border-outline-variant\/70,
+        html.dark .border-primary {
+            border-color: rgba(148, 163, 184, 0.28) !important;
+        }
+    </style>
+</head>
+
+<body
+    class="bg-[url('https://lh3.googleusercontent.com/aida-public/AB6AXuCBwqtlcD20VVQwy40-r2MYsXDRTvIn7ZTp9O0YpxIL-xQEQR__gtPrmva3Hlh2EA_Rk_VXUurtwbBzQPq7Q1HjtC6ny9wXT-g8X6-MkIube3cmkqFV0qx6a_LMhClbUGg_xoAfd1bk5NQqjTqiqWYbHXHgXjHaQ1x9ubGPPK9ieFkaclKee0-GRQRlyfZpn25Cjo0jMKd_BMZPryLmxjzBSVk7FUzWmk6ZUE7CfXkD-AKWFjrgD3N921hu6x0iWViyYhZ_UfShNHhX')] bg-cover bg-fixed bg-center text-on-surface font-body-md h-screen overflow-hidden flex selection:bg-primary-container selection:text-white"
+    style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCDzP49nimI_lI6Bg2ACmK-cDNgafvCBK2Lp8w3xLdWHqxvMW-viPU64xVwlaMw3mo1hGym7sil_SvA3JZGz8JSPYx0hY-SuDWGMhHk_nIE81kUCxuawrL50lGKSu42T9PIVcvTh9MwopW4Td_XNQHUNr6yRLNNglYh5rewCDPqzs5DOBY3jFS_ckFthh226oY9W6lqauYnS302g9-NmutznwOnVRWLmh3Tye6l_hd1l2o5hIr-k5M3rgWtmO71y2qcgy-JIlt6yxPK'); background-size: cover; background-attachment: fixed; background-position: center;">
+    <!-- JSON Navigation SideNavBar -->
+    <nav
+        class="bg-white border-r border-outline-variant fixed md:relative z-50 left-0 top-0 h-screen w-[72px] md:w-sidebar-width flex flex-col py-xl transition-all duration-300 overflow-y-auto overflow-x-hidden group">
+        <!-- Brand / Header -->
+        <div class="px-4 md:px-lg mb-8 flex items-center gap-3">
+            <div
+                class="w-10 h-10 rounded-lg bg-primary-container flex items-center justify-center shrink-0 shadow-lg shadow-primary-container/20">
+                <span class="material-symbols-outlined text-white"
+                    style="font-variation-settings: 'FILL' 1;">school</span>
+            </div>
+            <div class="hidden md:block opacity-0 md:opacity-100 transition-opacity">
+                <h1 class="font-headline-md text-headline-md font-bold text-on-surface tracking-tight">Zentra</h1>
+                <p class="font-label-sm text-label-sm text-on-surface-variant">Premium Learning</p>
+            </div>
+        </div>
+        <!-- CTA Button -->
+        <div class="px-3 md:px-6 mb-8">
+            <button
+                class="w-full flex items-center justify-center md:justify-start gap-2 bg-primary-container text-white py-3 px-3 md:px-4 rounded-lg hover:bg-primary hover:shadow-[0_4px_12px_rgba(217,119,6,0.3)] transition-all duration-150 active:scale-[0.98]"
+                onclick="openModal('upload-notes-modal')">
+                <span class="material-symbols-outlined shrink-0 text-[20px]">upload_file</span>
+                <span class="hidden md:inline font-label-md text-label-md whitespace-nowrap">+ Upload Notes</span>
+            </button>
+        </div>
+        <!-- Main Navigation -->
+        <div class="flex flex-col gap-1 px-2 md:px-4 flex-1">
+            <div class="font-label-sm text-label-sm text-on-surface-variant/70 px-2 md:px-4 mb-2 hidden md:block">MAIN
+                MENU</div>
+            <a class="flex items-center gap-3 px-2 md:px-4 py-3 text-primary border-l-4 border-primary bg-primary/10 rounded-r-lg group-hover:bg-primary/20 transition-colors duration-150 active:scale-[0.98]"
+                href="#home" id="home-nav-link" data-section-nav="home"
+                onclick="event.preventDefault(); showDashboardSection('home'); return false;">
+                <span class="material-symbols-outlined shrink-0" data-icon="home"
+                    style="font-variation-settings: 'FILL' 1;">home</span>
+                <span class="hidden md:inline font-label-md text-label-md whitespace-nowrap">Home</span>
+            </a>
+            <a class="flex items-center gap-3 px-2 md:px-4 py-3 hover:bg-black/5 hover:text-on-surface rounded-r-lg border-l-4 border-transparent transition-colors duration-150 text-on-surface"
+                href="./My%20Subjects.html" id="my-subjects-nav-link">
+                <span class="material-symbols-outlined shrink-0" data-icon="library_books">library_books</span>
+                <span class="hidden md:inline font-label-md text-label-md whitespace-nowrap">My Subjects</span>
+            </a>
+            <a class="flex items-center gap-3 px-2 md:px-4 py-3 hover:bg-black/5 hover:text-on-surface rounded-r-lg border-l-4 border-transparent transition-colors duration-150 text-on-surface"
+                href="#" onclick="event.preventDefault(); openModal('join-class-modal'); return false;">
+                <span class="material-symbols-outlined shrink-0" data-icon="group_add">group_add</span>
+                <span class="hidden md:inline font-label-md text-label-md whitespace-nowrap">Join Classroom</span>
+            </a>
+            <a class="flex items-center gap-3 px-2 md:px-4 py-3 hover:bg-black/5 hover:text-on-surface rounded-r-lg border-l-4 border-transparent transition-colors duration-150 text-on-surface"
+                href="#" data-section-nav="tests"
+                onclick="event.preventDefault(); showDashboardSection('tests'); return false;">
+                <span class="material-symbols-outlined shrink-0" data-icon="quiz">quiz</span>
+                <span class="hidden md:inline font-label-md text-label-md whitespace-nowrap">Tests</span>
+            </a>
+            <a class="flex items-center gap-3 px-2 md:px-4 py-3 hover:bg-black/5 hover:text-on-surface rounded-r-lg border-l-4 border-transparent transition-colors duration-150 text-on-surface"
+                href="#" data-section-nav="tasks"
+                onclick="event.preventDefault(); showDashboardSection('tasks'); return false;">
+                <span class="material-symbols-outlined shrink-0" data-icon="task_alt">task_alt</span>
+                <span class="hidden md:inline font-label-md text-label-md whitespace-nowrap">Daily Tasks</span>
+            </a>
+
+            <a class="flex items-center gap-3 px-2 md:px-4 py-3 hover:bg-black/5 hover:text-on-surface rounded-r-lg border-l-4 border-transparent transition-colors duration-150 text-on-surface"
+                href="#" data-section-nav="insights"
+                onclick="event.preventDefault(); showDashboardSection('insights'); return false;">
+                <span class="material-symbols-outlined shrink-0 text-inverse-primary"
+                    data-icon="psychology">psychology</span>
+                <span class="hidden md:inline font-label-md text-label-md whitespace-nowrap">AI Insights</span>
+            </a>
+        </div>
+        <!-- Footer Navigation -->
+        <div class="flex flex-col gap-1 px-2 md:px-4 mt-auto">
+            <a class="flex items-center gap-3 px-2 md:px-4 py-3 text-red-400/80 hover:bg-red-400/10 hover:text-red-400 rounded-lg transition-colors duration-150"
+                href="#" onclick="event.preventDefault(); window.ZentraAuth?.logout?.(); return false;">
+                <span class="material-symbols-outlined shrink-0" data-icon="logout">logout</span>
+                <span class="hidden md:inline font-label-md text-label-md whitespace-nowrap">Logout</span>
+            </a>
+        </div>
+    </nav>
+    <!-- Main Content Canvas -->
+    <main class="flex-1 flex flex-col h-screen overflow-hidden relative pl-[72px] md:pl-0">
+        <!-- JSON Navigation TopAppBar -->
+        <header
+            class="glass-tier-1 border-b border-white/20 h-16 px-lg flex justify-between items-center shrink-0 relative z-40 transition-colors">
+            <div class="flex flex-col">
+                <span class="text-[11px] font-medium text-on-surface-variant uppercase tracking-wider">DASHBOARD</span>
+            </div>
+            <!-- Trailing Actions -->
+            <div class="flex items-center gap-4">
+                <div class="relative">
+                    <button
+                        class="w-10 h-10 rounded-full flex items-center justify-center text-on-surface-variant hover:bg-white/20 transition-colors hover-elevate"
+                        onclick="toggleDropdown('notifications-dropdown')">
+                        <span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+                    </button>
+                    <!-- Dropdown -->
+                    <div class="hidden absolute right-0 top-12 w-64 glass-card rounded-xl shadow-xl p-4 z-50"
+                        id="notifications-dropdown">
+                        <div class="text-center py-4">
+                            <span class="material-symbols-outlined text-3xl mb-2 text-white">notifications_off</span>
+                            <p class="font-body-sm text-body-sm text-white" style="opacity: 0;">No new notifications</p>
+                        </div>
+                    </div>
+                </div>
+                <button id="theme-toggle"
+                    class="w-10 h-10 rounded-full flex items-center justify-center text-on-surface-variant hover:bg-white/20 transition-colors hover-elevate"
+                    aria-label="Toggle theme">
+                    <span id="theme-icon" class="material-symbols-outlined" data-icon="dark_mode">dark_mode</span>
+                </button>
+                <button id="profile-trigger"
+                    class="w-10 h-10 rounded-full flex items-center justify-center bg-white/20 border border-white/30 text-on-surface-variant hover:bg-white/30 transition-colors hover-elevate"
+                    type="button" aria-label="Open profile">
+                    <span id="profile-initials" class="font-semibold text-sm text-white">S</span>
+                </button>
+            </div>
+        </header>
+        <!-- Scrollable Workspace -->
+        <div id="dashboard-workspace" class="flex-1 overflow-y-auto p-4 md:p-lg lg:p-xl scroll-smooth">
+            <div class="max-w-[1200px] mx-auto">
+                <div id="dashboard-home">
+                    <!-- Page Header -->
+                    <div class="mb-12 text-center">
+                        <h2 id="welcome-heading"
+                            class="text-4xl md:text-5xl font-bold mb-4 tracking-tight text-white drop-shadow-md">Welcome
+                            back, Scholar.</h2>
+                        <p id="welcome-subtext" class="font-body-lg text-body-lg text-white drop-shadow-sm">Your study
+                            space is ready. Pick up where you left off.</p>
+                    </div>
+                    <!-- Bento Grid -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+                        <!-- 1. Learning Streak (Tier 1 Glassmorphism) -->
+                        <div
+                            class="bg-white rounded-[12px] p-6 flex flex-col justify-between shadow-md hover-elevate relative overflow-hidden group">
+                            <div
+                                class="absolute -right-10 -top-10 w-32 h-32 bg-primary/10 rounded-full blur-2xl group-hover:bg-primary/20 transition-all">
+                            </div>
+                            <div class="flex items-center gap-3 mb-4 relative z-10">
+                                <div
+                                    class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary">
+                                    <span class="material-symbols-outlined"
+                                        style="font-variation-settings: 'FILL' 1;">local_fire_department</span>
+                                </div>
+                                <h3 class="font-label-md text-label-md font-semibold text-on-surface">Learning Streak
+                                </h3>
+                            </div>
+                            <div class="relative z-10">
+                                <div class="flex items-baseline gap-2 mb-2">
+                                    <span class="text-4xl font-bold text-on-surface">—</span>
+                                    <span class="font-body-sm text-body-sm text-on-surface-variant">days</span>
+                                </div>
+                                <p class="font-body-sm text-body-sm text-on-surface-variant">Log a study session to
+                                    start your streak.</p>
+                            </div>
+                        </div>
+                        <!-- 2. Today's Study Plan (Tier 2 Glassmorphism) -->
+                        <div class="bg-white rounded-[12px] p-6 flex flex-col justify-between shadow-md hover-elevate">
+                            <div class="flex items-center gap-3 mb-4">
+                                <div
+                                    class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center text-on-surface-variant">
+                                    <span class="material-symbols-outlined">event_available</span>
+                                </div>
+                                <h3 class="font-label-md text-label-md font-semibold text-on-surface">Today's Study Plan
+                                </h3>
+                            </div>
+                            <div class="flex flex-col gap-4">
+                                <p
+                                    class="font-body-sm text-body-sm italic text-center py-4 bg-surface-container-low rounded-lg border border-dashed border-outline-variant text-on-surface-variant">
+                                    No study plan for today yet.</p>
+                                <button
+                                    class="w-full bg-surface-container-high border border-outline-variant text-on-surface font-label-md py-2 rounded-lg hover:bg-surface-variant transition-colors duration-150"
+                                    id="btn-generate-plan">
+                                    Generate Plan
+                                </button>
+                            </div>
+                        </div>
+                        <!-- 3. Weak Topics (Tier 3 Alert Glassmorphism) -->
+                        <div class="bg-white rounded-[12px] p-6 flex flex-col justify-between shadow-md hover-elevate">
+                            <div class="flex justify-between items-start mb-4">
+                                <div class="flex items-center gap-3">
+                                    <div
+                                        class="w-10 h-10 rounded-full bg-[#FFF3E0] flex items-center justify-center text-[#EF6C00]">
+                                        <span class="material-symbols-outlined">warning</span>
+                                    </div>
+                                    <h3 class="font-label-md text-label-md font-semibold text-on-surface">Weak Topics
+                                    </h3>
+                                </div>
+                                <span
+                                    class="px-2 py-1 bg-primary-container/10 text-primary font-bold rounded-full text-[10px] tracking-wider uppercase flex items-center gap-1">
+                                    <span class="material-symbols-outlined text-[12px]">auto_awesome</span> AI Powered
+                                </span>
+                            </div>
+                            <div class="mt-auto">
+                                <p class="font-body-sm text-body-sm leading-relaxed text-on-surface-variant">Your AI
+                                    companion will identify weak areas once you complete your first set of tests.</p>
+                            </div>
+                        </div>
+                        <!-- 4. My Classrooms (Standard White Card) -->
+                        <div class="bg-white rounded-[12px] p-6 flex flex-col justify-between shadow-md hover-elevate">
+                            <div class="flex items-center gap-3 mb-6">
+                                <div
+                                    class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center text-on-surface-variant">
+                                    <span class="material-symbols-outlined">school</span>
+                                </div>
+                                <h3 class="font-label-md text-label-md font-semibold text-on-surface">My Classrooms</h3>
+                            </div>
+                            <div class="flex flex-col items-center text-center gap-4">
+                                <p class="font-body-sm text-body-sm text-on-surface-variant">You haven't joined any
+                                    classrooms yet.</p>
+                                <button
+                                    class="text-primary font-label-md text-label-md hover:underline transition-all font-semibold"
+                                    onclick="openModal('join-class-modal')">
+                                    Join a Classroom →
+                                </button>
+                            </div>
+                        </div>
+                        <!-- 5. Upcoming Tests (Standard White Card) -->
+                        <div class="bg-white rounded-[12px] p-6 flex flex-col justify-between shadow-md hover-elevate">
+                            <div class="flex items-center justify-between mb-6">
+                                <div class="flex items-center gap-3">
+                                    <div
+                                        class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center text-on-surface-variant">
+                                        <span class="material-symbols-outlined">content_paste</span>
+                                    </div>
+                                    <h3 class="font-label-md text-label-md font-semibold text-on-surface">Upcoming Tests
+                                    </h3>
+                                </div>
+                                <a class="text-xs font-semibold text-primary hover:underline" href="#">View All</a>
+                            </div>
+                            <div
+                                class="flex-1 flex items-center justify-center p-4 bg-surface-container-low rounded-lg border border-dashed border-outline-variant">
+                                <p class="font-body-sm text-body-sm text-on-surface-variant">No tests scheduled.</p>
+                            </div>
+                        </div>
+                        <!-- 6. Daily Tasks (Standard White Card with interaction) -->
+                        <div class="bg-white rounded-[12px] p-6 flex flex-col shadow-md hover-elevate">
+                            <div class="flex items-center gap-3 mb-6">
+                                <div
+                                    class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center text-on-surface-variant">
+                                    <span class="material-symbols-outlined">fact_check</span>
+                                </div>
+                                <h3 class="font-label-md text-label-md font-semibold text-on-surface">Daily Tasks</h3>
+                            </div>
+                            <div class="flex flex-col gap-3">
+                                <label
+                                    class="flex items-center gap-3 p-2 hover:bg-surface-container-low rounded-lg cursor-pointer group transition-colors">
+                                    <input class="custom-checkbox" type="checkbox">
+                                    <div
+                                        class="h-3 w-3/4 bg-surface-variant rounded-full group-hover:bg-outline-variant transition-colors">
+                                    </div>
+                                </label>
+                                <label
+                                    class="flex items-center gap-3 p-2 hover:bg-surface-container-low rounded-lg cursor-pointer group transition-colors">
+                                    <input class="custom-checkbox" type="checkbox">
+                                    <div
+                                        class="h-3 w-1/2 bg-surface-variant rounded-full group-hover:bg-outline-variant transition-colors">
+                                    </div>
+                                </label>
+                                <label
+                                    class="flex items-center gap-3 p-2 hover:bg-surface-container-low rounded-lg cursor-pointer group transition-colors">
+                                    <input class="custom-checkbox" type="checkbox">
+                                    <div
+                                        class="h-3 w-2/3 bg-surface-variant rounded-full group-hover:bg-outline-variant transition-colors">
+                                    </div>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Home Content Section -->
+                    <section id="home-section" class="main-content-section">
+                        <div class="bg-white rounded-[16px] p-6 md:p-8 relative overflow-hidden shadow-lg mb-12">
+                            <div class="flex items-center gap-2 mb-8 relative z-10">
+                                <span class="material-symbols-outlined text-primary text-3xl">description</span>
+                                <h2 class="font-headline-md text-headline-md font-semibold text-on-surface">Recently
+                                    Uploaded Notes</h2>
+                            </div>
+                            <div id="home-notes-list" class="grid grid-cols-1 lg:grid-cols-2 gap-6 relative z-10">
+                                <!-- Uploaded PDFs will be rendered here -->
+                            </div>
+                        </div>
+                    </section>
+                    <!-- AI Insights Section -->
+                    <section class="bg-white rounded-[16px] p-6 md:p-8 relative overflow-hidden shadow-lg"
+                        id="ai-insights">
+                        <div class="absolute right-0 top-0 w-64 h-64 bg-primary/5 rounded-full blur-3xl"></div>
+                        <div class="flex items-center gap-2 mb-8 relative z-10">
+                            <span class="material-symbols-outlined text-primary text-3xl">psychology</span>
+                            <h2 class="font-headline-md text-headline-md font-semibold text-on-surface">AI Insights</h2>
+                        </div>
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 relative z-10">
+                            <div
+                                class="h-40 border-2 border-dashed border-outline-variant rounded-xl bg-surface-container-low flex flex-col items-center justify-center gap-3 p-6 text-center hover:bg-surface-container transition-colors">
+                                <span
+                                    class="material-symbols-outlined text-on-surface-variant/70 text-3xl">lightbulb</span>
+                                <p class="font-body-sm text-body-sm text-on-surface-variant">Insight will appear here
+                                </p>
+                            </div>
+                            <div
+                                class="h-40 border-2 border-dashed border-outline-variant rounded-xl bg-surface-container-low flex flex-col items-center justify-center gap-3 p-6 text-center hover:bg-surface-container transition-colors">
+                                <span
+                                    class="material-symbols-outlined text-on-surface-variant/70 text-3xl">bar_chart</span>
+                                <p class="font-body-sm text-body-sm text-on-surface-variant">Insight will appear here
+                                </p>
+                            </div>
+                            <div
+                                class="h-40 border-2 border-dashed border-outline-variant rounded-xl bg-surface-container-low flex flex-col items-center justify-center gap-3 p-6 text-center hover:bg-surface-container transition-colors">
+                                <span
+                                    class="material-symbols-outlined text-on-surface-variant/70 text-3xl">bookmarks</span>
+                                <p class="font-body-sm text-body-sm text-on-surface-variant">Insight will appear here
+                                </p>
+                            </div>
+                        </div>
+                    </section>
+                    <!-- Footer spacing -->
+                    <div class="h-20"></div>
+                </div>
+                <div class="hidden pt-2" id="dashboard-section-shell">
+                    <div class="rounded-[16px] bg-white p-6 md:p-8 shadow-lg mb-12">
+                        <div class="flex items-center gap-2 mb-8">
+                            <span id="section-icon" class="material-symbols-outlined text-primary text-3xl">quiz</span>
+                            <div>
+                                <h2 id="section-title"
+                                    class="font-headline-md text-headline-md font-semibold text-on-surface">Tests</h2>
+                                <p id="section-subtitle" class="font-body-sm text-body-sm text-on-surface-variant">Your
+                                    study content appears here.</p>
+                            </div>
+                        </div>
+                        <div id="dashboard-section-content" class="space-y-6"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <!-- Modals & Overlays -->
+    <div class="fixed inset-0 z-[100] items-center justify-center p-4" id="modal-backdrop">
+        <!-- Upload Notes Modal -->
+        <div class="hidden glass-card rounded-xl shadow-2xl w-full max-w-md overflow-hidden transform scale-95 opacity-0 transition-all duration-200"
+            id="upload-notes-modal">
+            <div class="p-6 border-b border-white/20 flex justify-between items-center bg-white/10">
+                <h3 class="font-headline-md text-headline-md font-semibold text-white">Upload Notes</h3>
+                <button class="hover:text-on-surface transition-colors text-white" onclick="closeModals()">
+                    <span class="material-symbols-outlined">close</span>
+                </button>
+            </div>
+            <div class="p-6 flex flex-col gap-4">
+                <div>
+                    <label class="block font-label-sm text-label-sm mb-1 text-white">Subject Name</label>
+                    <input id="notes-subject-input"
+                        class="w-full border border-white/30 bg-white/50 backdrop-blur-md rounded-lg p-2.5 focus:border-primary-container focus:ring-1 focus:ring-primary-container/50 outline-none transition-all font-body-sm"
+                        placeholder="e.g. Mathematics" type="text">
+                </div>
+                <div>
+                    <label class="block font-label-sm text-label-sm mb-1 text-white">Upload Notes in PDF</label>
+                    <input id="notes-file-input"
+                        class="w-full border border-white/30 bg-white/50 backdrop-blur-md rounded-lg p-2.5 focus:border-primary-container focus:ring-1 focus:ring-primary-container/50 outline-none transition-all font-body-sm file:mr-4 file:py-2 file:px-3 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-primary-container file:text-white hover:file:bg-primary"
+                        accept="application/pdf" type="file">
+                    <p class="text-[12px] text-white/70 mt-2">Only PDF files are supported.</p>
+                </div>
+                <div id="notes-form-message" class="text-sm text-white/80"></div>
+            </div>
+            <div class="p-4 bg-white/10 border-t border-white/20 flex justify-end gap-3">
+                <button class="px-4 py-2 rounded-lg font-label-md hover:bg-white/20 transition-colors text-white"
+                    onclick="closeModals()">Cancel</button>
+                <button id="save-notes-btn"
+                    class="px-4 py-2 rounded-lg bg-primary-container text-white font-label-md hover:bg-primary transition-colors">Save</button>
+            </div>
+        </div>
+        <!-- Join Classroom Modal -->
+        <div class="glass-card rounded-xl shadow-2xl w-full max-w-sm overflow-hidden transform transition-all duration-200 scale-95 opacity-0 hidden"
+            id="join-class-modal">
+            <div class="p-6 border-b border-white/20 flex justify-between items-center bg-white/10">
+                <h3 class="font-headline-md text-headline-md font-semibold text-white">Join Classroom</h3>
+                <button class="hover:text-on-surface transition-colors text-white" onclick="closeModals()">
+                    <span class="material-symbols-outlined">close</span>
+                </button>
+            </div>
+            <div class="p-6">
+                <p class="font-body-sm text-body-sm mb-4 text-white">Ask your teacher for the class code, then enter it
+                    here.</p>
+                <div>
+                    <label class="block font-label-sm text-label-sm mb-1 text-white">Class Code</label>
+                    <input
+                        class="w-full border border-white/30 bg-white/50 backdrop-blur-md rounded-lg p-2.5 focus:border-primary-container focus:ring-1 focus:ring-primary-container/50 outline-none transition-all font-body-sm uppercase tracking-widest text-center"
+                        placeholder="e.g. abc-defg-hij" type="text">
+                </div>
+            </div>
+            <div class="p-4 bg-white/10 border-t border-white/20 flex justify-end gap-3">
+                <button class="px-4 py-2 rounded-lg font-label-md hover:bg-white/20 transition-colors text-white"
+                    onclick="closeModals()">Cancel</button>
+                <button
+                    class="px-4 py-2 rounded-lg bg-primary-container text-white font-label-md hover:bg-primary transition-colors"
+                    onclick="closeModals()">Join</button>
+            </div>
+        </div>
+        <!-- Profile Modal -->
+        <div class="hidden glass-card rounded-xl shadow-2xl w-full max-w-md overflow-hidden transform scale-95 opacity-0 transition-all duration-200"
+            id="profile-modal">
+            <div class="p-6 border-b border-white/20 flex justify-between items-center bg-white/10">
+                <div>
+                    <h3 class="font-headline-md text-headline-md font-semibold text-white">Profile</h3>
+                    <p id="profile-modal-subtitle" class="font-body-sm text-body-sm text-white/80">Manage your account
+                        details</p>
+                </div>
+                <button class="hover:text-on-surface transition-colors text-white" onclick="closeModals()" type="button"
+                    aria-label="Close profile">
+                    <span class="material-symbols-outlined">close</span>
+                </button>
+            </div>
+            <div class="p-6">
+                <div id="profile-view" class="space-y-4">
+                    <div class="flex items-center gap-3 rounded-xl border border-white/20 bg-white/10 p-4">
+                        <div class="flex h-12 w-12 items-center justify-center rounded-full bg-primary-container text-lg font-semibold text-white"
+                            id="profile-avatar">S</div>
+                        <div>
+                            <p id="profile-display-name" class="font-label-md text-label-md text-white">Student</p>
+                            <p id="profile-display-email" class="font-body-sm text-body-sm text-white/80">No email
+                                available</p>
+                        </div>
+                    </div>
+                    <div class="grid gap-3 rounded-xl border border-white/20 bg-white/10 p-4 text-sm text-white/90">
+                        <div class="flex justify-between gap-3"><span class="text-white/70">Full Name</span><span
+                                id="profile-full-name" class="text-right font-medium">Student</span></div>
+                        <div class="flex justify-between gap-3"><span class="text-white/70">Email</span><span
+                                id="profile-email" class="text-right font-medium">No email available</span></div>
+                        <div class="flex justify-between gap-3"><span class="text-white/70">Gender</span><span
+                                id="profile-gender" class="text-right font-medium">Not set</span></div>
+                        <div class="flex justify-between gap-3"><span class="text-white/70">Phone</span><span
+                                id="profile-phone" class="text-right font-medium">Not set</span></div>
+                        <div class="flex justify-between gap-3"><span class="text-white/70">Age</span><span
+                                id="profile-age" class="text-right font-medium">Not set</span></div>
+                        <div class="flex justify-between gap-3"><span class="text-white/70">Interested
+                                Subjects</span><span id="profile-subjects" class="text-right font-medium">Not set</span>
+                        </div>
+                    </div>
+                    <button id="edit-profile-btn"
+                        class="w-full rounded-lg bg-primary-container px-4 py-2 font-label-md text-white transition-colors hover:bg-primary"
+                        type="button">Edit Profile</button>
+                </div>
+                <form id="profile-form" class="hidden space-y-4">
+                    <div>
+                        <label class="mb-1 block font-label-sm text-label-sm text-white"
+                            for="profile-gender-input">Gender</label>
+                        <select id="profile-gender-input"
+                            class="w-full rounded-lg border border-white/30 bg-white/50 p-2.5 text-sm outline-none transition-all focus:border-primary-container focus:ring-1 focus:ring-primary-container/50">
+                            <option value="">Select gender</option>
+                            <option value="Female">Female</option>
+                            <option value="Male">Male</option>
+                            <option value="Non-binary">Non-binary</option>
+                            <option value="Prefer not to say">Prefer not to say</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="mb-1 block font-label-sm text-label-sm text-white" for="profile-phone-input">Phone
+                            Number</label>
+                        <input id="profile-phone-input"
+                            class="w-full rounded-lg border border-white/30 bg-white/50 p-2.5 text-sm outline-none transition-all focus:border-primary-container focus:ring-1 focus:ring-primary-container/50"
+                            placeholder="e.g. +1 234 567 8900" type="tel">
+                    </div>
+                    <div>
+                        <label class="mb-1 block font-label-sm text-label-sm text-white"
+                            for="profile-age-input">Age</label>
+                        <input id="profile-age-input"
+                            class="w-full rounded-lg border border-white/30 bg-white/50 p-2.5 text-sm outline-none transition-all focus:border-primary-container focus:ring-1 focus:ring-primary-container/50"
+                            min="1" max="120" placeholder="e.g. 20" type="number">
+                    </div>
+                    <div>
+                        <label class="mb-1 block font-label-sm text-label-sm text-white"
+                            for="profile-subjects-input">Interested Subjects</label>
+                        <input id="profile-subjects-input"
+                            class="w-full rounded-lg border border-white/30 bg-white/50 p-2.5 text-sm outline-none transition-all focus:border-primary-container focus:ring-1 focus:ring-primary-container/50"
+                            placeholder="e.g. Mathematics, Physics" type="text">
+                    </div>
+                    <p id="profile-status" class="text-sm text-white/80"></p>
+                    <div class="flex justify-end gap-3">
+                        <button
+                            class="rounded-lg px-4 py-2 font-label-md text-white transition-colors hover:bg-white/20"
+                            id="cancel-edit-btn" type="button">Cancel</button>
+                        <button
+                            class="rounded-lg bg-primary-container px-4 py-2 font-label-md text-white transition-colors hover:bg-primary"
+                            type="submit">Save Profile</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script src="../auth-router.js"></script>
+    <!-- Interactive Scripts -->
+    <script>
+        const NOTES_STORAGE_KEY = 'zentra-uploaded-notes';
+        const DARK_MODE_KEY = 'zentra-theme-preference';
+        const htmlElement = document.documentElement;
+
+        function loadThemePreference() {
+            const savedTheme = localStorage.getItem(DARK_MODE_KEY);
+            if (savedTheme === 'dark' || (!savedTheme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+                htmlElement.classList.add('dark');
+            } else {
+                htmlElement.classList.remove('dark');
+            }
+            // Add transition class after initial load to avoid flash of unstyled content
+            setTimeout(() => htmlElement.classList.add('transition-colors', 'duration-300'), 0);
+        }
+
+        function toggleTheme() {
+            htmlElement.classList.toggle('dark');
+            const currentTheme = htmlElement.classList.contains('dark') ? 'dark' : 'light';
+            localStorage.setItem(DARK_MODE_KEY, currentTheme);
+        }
+
+        // Load theme on script execution
+        loadThemePreference();
+
+        const homeNotesList = document.getElementById('home-notes-list');
+        const notesSubjectInput = document.getElementById('notes-subject-input');
+        const notesFileInput = document.getElementById('notes-file-input');
+        const notesFormMessage = document.getElementById('notes-form-message');
+        const saveNotesBtn = document.getElementById('save-notes-btn');
+        let notesState = [];
+        let backendNotesState = [];
+
+        function getStoredAuthState() {
+            if (window.ZentraAuth && typeof window.ZentraAuth.getStoredAuth === 'function') {
+                return window.ZentraAuth.getStoredAuth() || {};
+            }
+            try {
+                return JSON.parse(localStorage.getItem('zentra_google_auth') || '{}');
+            } catch (error) {
+                return {};
+            }
+        }
+
+        function getCurrentUserUid() {
+            return window.ZentraCurrentUser?.uid || getStoredAuthState().uid || '';
+        }
+
+        async function getCurrentUserToken() {
+            if (window.ZentraFirebaseAuth?.currentUser) {
+                try {
+                    return await window.ZentraFirebaseAuth.currentUser.getIdToken();
+                } catch (error) {
+                    console.warn('Unable to read Firebase ID token:', error);
+                }
+            }
+            return window.ZentraCurrentUser?.idToken || getStoredAuthState().idToken || '';
+        }
+
+        function loadNotes() {
+            try {
+                const stored = localStorage.getItem(NOTES_STORAGE_KEY);
+                if (!stored) return [];
+                const parsed = JSON.parse(stored);
+                return Array.isArray(parsed) ? parsed : [];
+            } catch (error) {
+                console.warn('Unable to load notes:', error);
+                return [];
+            }
+        }
+
+        function saveNotes() {
+            localStorage.setItem(NOTES_STORAGE_KEY, JSON.stringify(notesState));
+            renderNotes();
+        }
+
+        function resetNotesForm() {
+            if (notesSubjectInput) notesSubjectInput.value = '';
+            if (notesFileInput) notesFileInput.value = '';
+            if (notesFormMessage) notesFormMessage.textContent = '';
+        }
+
+        const PRODUCTION_AI_API_BASE = 'https://zentra-backend-production-c42c.up.railway.app/api';
+        const LOCAL_AI_API_BASE = 'http://127.0.0.1:8000/api';
+        const DEFAULT_AI_API_BASE = ['127.0.0.1', 'localhost'].includes(window.location.hostname)
+            ? LOCAL_AI_API_BASE
+            : PRODUCTION_AI_API_BASE;
+        const AI_API_BASE = (() => {
+            if (window.__AI_API_BASE__) {
+                return window.__AI_API_BASE__.replace(/\/$/, '');
+            }
+            return DEFAULT_AI_API_BASE;
+        })();
+        const AI_LEARNING_STATE = {
+            activeView: 'tasks',
+            currentNoteId: null,
+            currentTopicId: null,
+            currentLectureId: null,
+            currentTestId: null,
+            activeStudyStep: 'lecture',
+            latestTestResult: null,
+            chatMessages: []
+        };
+        const dashboardHome = document.getElementById('dashboard-home');
+
+        function formatFileSize(bytes) {
+            if (!bytes) return '0 KB';
+            const kb = bytes / 1024;
+            if (kb < 1024) return `${kb.toFixed(1)} KB`;
+            return `${(kb / 1024).toFixed(1)} MB`;
+        }
+
+        function escapeHtml(value = '') {
+            return String(value).replace(/[&<>"']/g, (char) => ({
+                '&': '&amp;',
+                '<': '&lt;',
+                '>': '&gt;',
+                '"': '&quot;',
+                "'": '&#39;'
+            }[char]));
+        }
+
+        function setButtonLoading(button, label = 'Loading') {
+            if (!button) return () => { };
+            const originalHtml = button.innerHTML;
+            const originalDisabled = button.disabled;
+            button.disabled = true;
+            button.setAttribute('aria-busy', 'true');
+            button.classList.add('cursor-wait', 'opacity-70');
+            button.innerHTML = `<span class="material-symbols-outlined animate-spin text-[18px] align-middle">progress_activity</span><span class="ml-2 align-middle">${escapeHtml(label)}</span>`;
+            return () => {
+                if (!button.isConnected) return;
+                button.innerHTML = originalHtml;
+                button.disabled = originalDisabled;
+                button.removeAttribute('aria-busy');
+                button.classList.remove('cursor-wait', 'opacity-70');
+            };
+        }
+
+        function getActionLoadingLabel(action) {
+            return ({
+                'start-task': 'Opening',
+                'open-note-analysis': 'Loading',
+                'open-topic': 'Opening',
+                'back-to-lectures': 'Loading',
+                'finish-lecture': 'Preparing test',
+                'submit-topic-test': 'Submitting',
+                'continue-next-task': 'Loading',
+                'send-insight': 'Sending'
+            })[action] || 'Loading';
+        }
+
+        async function requestJson(url, options = {}) {
+            try {
+                const token = await getCurrentUserToken();
+                console.log('TOKEN:', token);
+                const headers = new Headers(options.headers || {});
+                if (token) {
+                    headers.set('Authorization', `Bearer ${token}`);
+                }
+                if (!(options.body instanceof FormData) && !headers.has('Content-Type')) {
+                    headers.set('Content-Type', 'application/json');
+                }
+                console.log('AUTH HEADER:', headers.get('Authorization'));
+                // Determine cross-origin to avoid sending credentials to a different origin
+                let credentialsMode = 'include';
+                try {
+                    const targetOrigin = new URL(url, window.location.href).origin;
+                    if (targetOrigin !== window.location.origin) credentialsMode = 'omit';
+                } catch (err) {
+                    credentialsMode = 'omit';
+                }
+
+                console.log('FETCH REQUEST:', {
+                    url,
+                    method: options.method || 'GET',
+                    credentials: credentialsMode,
+                    hasFormData: options.body instanceof FormData
+                });
+
+                const response = await fetch(url, {
+                    credentials: credentialsMode,
+                    mode: 'cors',
+                    ...options,
+                    headers
+                });
+
+                const text = await response.text();
+                let data = {};
+                try { data = text ? JSON.parse(text) : {}; } catch (err) { data = {}; }
+
+                if (!response.ok) {
+                    const errorMessage = data.error || data.message || `Request failed (${response.status} ${response.statusText}).`;
+                    throw new Error(`${errorMessage} [URL: ${url}]`);
+                }
+                return data;
+            } catch (err) {
+                const message = err?.message || String(err) || 'Network request failed.';
+                if (message.includes('[URL:')) {
+                    throw new Error(message);
+                }
+                const hint = message.includes('Failed to fetch') ? `Unable to reach backend at ${AI_API_BASE}.` : message;
+                throw new Error(`${hint} [URL: ${url}]`);
+            }
+        }
+
+        async function loadBackendNotes() {
+            try {
+                const data = await requestJson(`${AI_API_BASE}/notes/`);
+                const backendNotes = Array.isArray(data.notes) ? data.notes : [];
+                backendNotesState = backendNotes;
+                mergeBackendNotes(backendNotes);
+                if (backendNotes.length) {
+                    AI_LEARNING_STATE.currentNoteId = backendNotes[0].id;
+                }
+                renderNotes();
+                return backendNotes;
+            } catch (error) {
+                console.warn('Unable to load AI notes:', error);
+                return [];
+            }
+        }
+
+        async function loadActiveNoteDetail(noteId = AI_LEARNING_STATE.currentNoteId) {
+            if (!noteId) {
+                return null;
+            }
+            try {
+                const detail = await requestJson(`${AI_API_BASE}/notes/${noteId}/`);
+                AI_LEARNING_STATE.currentNoteId = noteId;
+                return detail;
+            } catch (error) {
+                console.warn('Unable to load note detail:', error);
+                return null;
+            }
+        }
+
+        async function loadTasksForNote(noteId = AI_LEARNING_STATE.currentNoteId) {
+            if (!noteId) return [];
+            const data = await requestJson(`${AI_API_BASE}/tasks/${noteId}/`);
+            return Array.isArray(data.tasks) ? data.tasks : [];
+        }
+
+        async function loadProgressSummary() {
+            return requestJson(`${AI_API_BASE}/progress/`);
+        }
+
+        async function loadLectureForTopic(topicId) {
+            return requestJson(`${AI_API_BASE}/lecture/${topicId}/`);
+        }
+
+        async function loadTestForTopic(topicId) {
+            return requestJson(`${AI_API_BASE}/test/${topicId}/`);
+        }
+
+        async function startTaskOnBackend(taskId) {
+            return requestJson(`${AI_API_BASE}/tasks/${taskId}/start/`, { method: 'POST' });
+        }
+
+        async function finishLectureOnBackend(lectureId) {
+            return requestJson(`${AI_API_BASE}/lectures/${lectureId}/complete/`, { method: 'POST' });
+        }
+
+        async function submitTestOnBackend(topicId, answers) {
+            return requestJson(`${AI_API_BASE}/test/${topicId}/submit`, {
+                method: 'POST',
+                body: JSON.stringify({ answers })
+            });
+        }
+
+        function mergeBackendNotes(backendNotes = []) {
+            let changed = false;
+            backendNotes.forEach((backendNote) => {
+                const backendNoteId = String(backendNote.id);
+                const existing = notesState.find((note) => String(note.backendNoteId || '') === backendNoteId);
+                if (existing) {
+                    Object.assign(existing, {
+                        subject: existing.subject || backendNote.title || 'Uploaded Notes',
+                        aiTitle: backendNote.title || existing.aiTitle || existing.subject,
+                        aiSummary: backendNote.summary || existing.aiSummary || '',
+                        aiDifficulty: backendNote.difficulty_level || existing.aiDifficulty || '',
+                        aiStudyTime: backendNote.estimated_study_time_hours || existing.aiStudyTime || '',
+                        aiStatus: backendNote.processing_status || existing.aiStatus || 'processing',
+                        uploadedAt: existing.uploadedAt || backendNote.created_at || new Date().toISOString()
+                    });
+                    changed = true;
+                    return;
+                }
+
+                notesState.push({
+                    id: `backend-${backendNoteId}`,
+                    backendNoteId,
+                    subject: backendNote.title || 'Uploaded Notes',
+                    fileName: backendNote.title || 'Uploaded Notes',
+                    fileSize: 0,
+                    mimeType: 'application/pdf',
+                    dataUrl: '#',
+                    uploadedAt: backendNote.created_at || new Date().toISOString(),
+                    aiTitle: backendNote.title || '',
+                    aiSummary: backendNote.summary || '',
+                    aiDifficulty: backendNote.difficulty_level || '',
+                    aiStudyTime: backendNote.estimated_study_time_hours || '',
+                    aiStatus: backendNote.processing_status || 'processing'
+                });
+                changed = true;
+            });
+            if (changed) {
+                localStorage.setItem(NOTES_STORAGE_KEY, JSON.stringify(notesState));
+            }
+        }
+
+        function getNoteAnalysisMarkup(note) {
+            const status = note.aiStatus || (note.backendNoteId ? 'processing' : '');
+            if (!status && !note.aiSummary && !note.aiDifficulty && !note.aiStudyTime) {
+                return '';
+            }
+            const statusLabel = status ? status.replace(/_/g, ' ') : 'processing';
+            const summary = note.aiSummary || (status === 'completed' ? 'AI analysis is ready.' : 'AI analysis is being generated.');
+            return `
+                <div class="mt-3 rounded-lg border border-outline-variant/70 bg-surface-container-low p-3">
+                    <div class="mb-2 flex flex-wrap items-center gap-2">
+                        <span class="rounded-full bg-primary/10 px-2 py-1 text-[11px] font-semibold uppercase tracking-wider text-primary">AI ${escapeHtml(statusLabel)}</span>
+                        ${note.aiDifficulty ? `<span class="rounded-full bg-white px-2 py-1 text-[11px] font-medium text-on-surface-variant">${escapeHtml(note.aiDifficulty)}</span>` : ''}
+                        ${note.aiStudyTime ? `<span class="rounded-full bg-white px-2 py-1 text-[11px] font-medium text-on-surface-variant">${escapeHtml(note.aiStudyTime)}h</span>` : ''}
+                    </div>
+                    <p class="text-xs leading-5 text-on-surface-variant">${escapeHtml(summary)}</p>
+                    ${note.backendNoteId ? `<button class="mt-3 text-xs font-semibold text-primary hover:underline" data-action="open-note-analysis" data-note-id="${escapeHtml(note.backendNoteId)}" type="button">View AI Analysis</button>` : ''}
+                </div>
+            `;
+        }
+
+        function renderListItems(items = [], emptyText = 'None yet.') {
+            if (!Array.isArray(items) || !items.length) {
+                return `<div class="text-sm text-on-surface-variant">${escapeHtml(emptyText)}</div>`;
+            }
+            return `<div class="space-y-2">${items.map((item) => {
+                const label = typeof item === 'string'
+                    ? item
+                    : item.title || item.name || item.topic || item.task || item.summary || JSON.stringify(item);
+                const detail = typeof item === 'object' && item !== null
+                    ? [item.status, item.difficulty || item.difficulty_level, item.estimated_time || item.study_time_hours ? `${item.estimated_time || item.study_time_hours}h` : ''].filter(Boolean).join(' • ')
+                    : '';
+                return `
+                    <div class="rounded-lg border border-outline-variant bg-white/70 p-3">
+                        <div class="text-sm font-medium text-on-surface">${escapeHtml(label)}</div>
+                        ${detail ? `<div class="mt-1 text-xs text-on-surface-variant">${escapeHtml(detail)}</div>` : ''}
+                    </div>
+                `;
+            }).join('')}</div>`;
+        }
+
+        function normalizeStatus(value = '') {
+            return String(value || '').replace(/_/g, ' ').trim();
+        }
+
+        function getTaskStatus(task = {}) {
+            if (task.completed || task.status === 'completed') return 'Completed';
+            if (task.locked || task.status === 'locked') return 'Locked';
+            if (task.status === 'in_progress' || task.status === 'in-progress') return 'In Progress';
+            return 'Unlocked';
+        }
+
+        function getTaskButtonLabel(task = {}) {
+            const status = getTaskStatus(task);
+            if (status === 'Completed') return 'Completed';
+            if (status === 'Locked') return 'Locked';
+            if (status === 'In Progress') return 'Continue Task';
+            return 'Start Task';
+        }
+
+        function getTaskTopicId(task = {}) {
+            return task.topic_id || task.topicId || task.topic?.id || task.topic?.topic_id || '';
+        }
+
+        function getArrayValue(source = {}, keys = []) {
+            for (const key of keys) {
+                if (Array.isArray(source[key])) return source[key];
+            }
+            return [];
+        }
+
+        function firstDefined(...values) {
+            return values.find((value) => value !== undefined && value !== null && value !== '');
+        }
+
+        function normalizeProgressCard(progress = {}) {
+            const source = progress.progress_card || progress.progress_cards || progress;
+            const tasks = source.tasks || {};
+            const lectures = source.lectures || {};
+            const tests = source.tests || {};
+            const marks = source.marks || {};
+            return {
+                overallProgress: firstDefined(source.overall_progress, source.completion_percentage, source.completion_percent, source.overallProgress),
+                tasksCompleted: firstDefined(tasks.completed, source.completed_tasks),
+                tasksTotal: firstDefined(tasks.total, source.total_tasks),
+                lecturesCompleted: firstDefined(lectures.completed, source.completed_lectures),
+                lecturesTotal: firstDefined(lectures.total, source.total_lectures),
+                testsPassed: firstDefined(tests.passed, source.passed_tests, source.completed_tests),
+                testsTotal: firstDefined(tests.total, source.total_tests),
+                marksLabel: firstDefined(marks.label, source.marks_label, source.average_score),
+                accuracy: firstDefined(source.accuracy, source.average_accuracy),
+                level: firstDefined(source.level, source.level_badge),
+                weakTopics: getArrayValue(source, ['weak_topics', 'weakTopics']),
+                strongTopics: getArrayValue(source, ['strong_topics', 'strongTopics'])
+            };
+        }
+
+        function toDisplayList(value, fallback = []) {
+            if (Array.isArray(value)) return value.filter(Boolean);
+            if (typeof value === 'string' && value.trim()) {
+                return value
+                    .split(/\n+|(?:^|\s)(?:[-*]|\d+\.)\s+/)
+                    .map((item) => item.trim())
+                    .filter(Boolean);
+            }
+            return fallback;
+        }
+
+        function normalizeLectureForDisplay(lecture = {}) {
+            return {
+                ...lecture,
+                title: lecture.title || 'Lecture',
+                explanation: lecture.explanation || lecture.content || '',
+                examples: toDisplayList(lecture.examples),
+                key_points: toDisplayList(lecture.key_points || lecture.keyPoints),
+                revision_notes: toDisplayList(lecture.revision_notes || lecture.revisionNotes || lecture.revision_note || lecture.revision)
+            };
+        }
+
+        function renderCompletionScreen(report = {}) {
+            return `
+                <div class="rounded-[16px] border border-outline-variant bg-surface-container-low p-4 md:p-6 space-y-4">
+                    <div>
+                        <div class="text-xs uppercase tracking-wider text-on-surface-variant">Congratulations</div>
+                        <div class="text-xl font-semibold text-on-surface">Course Completed</div>
+                    </div>
+                    <div class="rounded-lg border border-outline-variant bg-white/70 p-3">
+                        <div class="mb-2 text-sm font-semibold text-on-surface">Final Report</div>
+                        <div class="grid gap-2 md:grid-cols-4">
+                            <div class="text-sm text-on-surface-variant">Overall Score: <span class="font-semibold text-on-surface">${escapeHtml(report.overall_score ?? '—')}</span></div>
+                            <div class="text-sm text-on-surface-variant">Completion %: <span class="font-semibold text-on-surface">${escapeHtml(report.completion_percent ?? '—')}</span></div>
+                            <div class="text-sm text-on-surface-variant">Average Accuracy: <span class="font-semibold text-on-surface">${escapeHtml(report.average_accuracy ?? '—')}</span></div>
+                            <div class="text-sm text-on-surface-variant">Study Time: <span class="font-semibold text-on-surface">${escapeHtml(report.study_time ?? '—')}</span></div>
+                        </div>
+                        <div class="mt-3 text-sm text-on-surface-variant">Recommendation: <span class="font-semibold text-on-surface">${escapeHtml(report.recommendation ?? '—')}</span></div>
+                    </div>
+                </div>
+            `;
+        }
+
+        function renderTestResult(result = {}) {
+            if (result.course_completed) {
+                return renderCompletionScreen(result.final_report || {});
+            }
+            const weakTopics = getArrayValue(result, ['weak_topics', 'weakTopics']);
+            const strongTopics = getArrayValue(result, ['strong_topics', 'strongTopics']);
+            return `
+                <div class="rounded-lg border border-outline-variant bg-white/70 p-3">
+                    <div class="mb-2 text-sm font-semibold text-on-surface">Result</div>
+                    <div class="grid gap-2 md:grid-cols-4">
+                        <div class="text-sm text-on-surface-variant">Score: <span class="font-semibold text-on-surface">${escapeHtml(result.score ?? '—')}</span></div>
+                        <div class="text-sm text-on-surface-variant">Accuracy: <span class="font-semibold text-on-surface">${escapeHtml(result.accuracy ?? '—')}</span></div>
+                        <div class="text-sm text-on-surface-variant">Correct: <span class="font-semibold text-on-surface">${escapeHtml(result.correct ?? '—')}</span></div>
+                        <div class="text-sm text-on-surface-variant">Wrong: <span class="font-semibold text-on-surface">${escapeHtml(result.wrong ?? '—')}</span></div>
+                    </div>
+                    ${result.passed === false ? '<div class="mt-3 text-sm font-semibold text-on-surface-variant">Review weak areas, then continue to the next task.</div>' : ''}
+                    <div class="mt-2 text-sm text-on-surface-variant">Weak Topics: <span class="font-semibold text-on-surface">${escapeHtml(weakTopics.length ? weakTopics.join(', ') : 'None')}</span></div>
+                    <div class="mt-2 text-sm text-on-surface-variant">Strong Topics: <span class="font-semibold text-on-surface">${escapeHtml(strongTopics.length ? strongTopics.join(', ') : 'None')}</span></div>
+                    ${result.success === true || result.passed === true || result.next_task_unlocked === true ? `
+                        <div class="mt-4 flex justify-end">
+                            <button class="rounded-lg bg-primary-container px-4 py-2 text-sm font-semibold text-white" data-action="continue-next-task" type="button">Back to Tasks</button>
+                        </div>
+                    ` : ''}
+                </div>
+            `;
+        }
+
+        function renderQuestionInput(question = {}, qIndex = 0) {
+            const type = String(question.type || question.question_type || '').toLowerCase();
+            const prompt = question.question || question.prompt || question.text || '';
+            const options = Array.isArray(question.options) ? question.options : [];
+            if (type === 'mcq' || type === 'multiple_choice' || type === 'multiple-choice') {
+                return `
+                    <div class="space-y-2">
+                        ${options.map((option) => {
+                            const value = typeof option === 'string' ? option : option.value || option.label || option.text || '';
+                            const label = typeof option === 'string' ? option : option.label || option.text || option.value || '';
+                            return `
+                                <label class="flex items-center gap-2 text-sm text-on-surface-variant">
+                                    <input type="radio" name="quiz-${AI_LEARNING_STATE.currentTopicId}-${qIndex}" value="${escapeHtml(value)}" data-answer-index="${qIndex}" />
+                                    <span>${escapeHtml(label)}</span>
+                                </label>
+                            `;
+                        }).join('')}
+                    </div>
+                `;
+            }
+            if (type === 'true_false' || type === 'true-false' || type === 'boolean') {
+                return `
+                    <div class="space-y-2">
+                        ${['True', 'False'].map((option) => `
+                            <label class="flex items-center gap-2 text-sm text-on-surface-variant">
+                                <input type="radio" name="quiz-${AI_LEARNING_STATE.currentTopicId}-${qIndex}" value="${option}" data-answer-index="${qIndex}" />
+                                <span>${option}</span>
+                            </label>
+                        `).join('')}
+                    </div>
+                `;
+            }
+            return `<textarea class="w-full rounded-lg border border-outline-variant bg-white p-2 text-sm text-on-surface" data-short-answer="${qIndex}" rows="2" placeholder="Write your answer..."></textarea>`;
+        }
+
+        function renderLectureView(lecture = {}, topic = {}) {
+            lecture = normalizeLectureForDisplay(lecture, topic);
+            AI_LEARNING_STATE.currentLectureId = lecture.id || lecture.lecture_id || AI_LEARNING_STATE.currentLectureId;
+            return `
+                <div class="rounded-[16px] border border-outline-variant bg-surface-container-low p-4 md:p-6 space-y-4">
+                    <div class="flex items-center justify-between gap-3">
+                        <div>
+                            <div class="text-xs uppercase tracking-wider text-on-surface-variant">Lecture</div>
+                            <div class="text-lg font-semibold text-on-surface">${escapeHtml(lecture.title || 'Lecture')}</div>
+                        </div>
+                        <button class="rounded-lg border border-outline-variant px-3 py-2 text-sm text-on-surface-variant" data-action="back-to-lectures" type="button">Back</button>
+                    </div>
+                    <div class="rounded-lg border border-outline-variant bg-white/70 p-3 text-sm text-on-surface-variant">
+                        <div class="mb-2 text-sm font-semibold text-on-surface">Explanation</div>
+                        <div class="whitespace-pre-line">${escapeHtml(lecture.explanation || lecture.content || 'No lecture content available yet.')}</div>
+                    </div>
+                    <div class="grid gap-3 md:grid-cols-2">
+                        <div class="rounded-lg border border-outline-variant bg-white/70 p-3">
+                            <div class="mb-2 text-sm font-semibold text-on-surface">Examples</div>
+                            ${renderListItems(lecture.examples || [], 'No examples returned.')}
+                        </div>
+                        <div class="rounded-lg border border-outline-variant bg-white/70 p-3">
+                            <div class="mb-2 text-sm font-semibold text-on-surface">Key Points</div>
+                            ${renderListItems(lecture.key_points || lecture.keyPoints || [], 'No key points returned.')}
+                        </div>
+                    </div>
+                    <div class="rounded-lg border border-outline-variant bg-white/70 p-3">
+                        <div class="mb-2 text-sm font-semibold text-on-surface">Revision Notes</div>
+                        ${renderListItems(lecture.revision_notes || lecture.revisionNotes || [], lecture.revision_note || lecture.revision || 'No revision notes returned.')}
+                    </div>
+                    <div class="flex justify-end">
+                        <button class="rounded-lg bg-primary-container px-4 py-2 text-sm font-semibold text-white disabled:opacity-60" data-action="finish-lecture" data-lecture-id="${escapeHtml(AI_LEARNING_STATE.currentLectureId || '')}" type="button" ${AI_LEARNING_STATE.currentLectureId ? '' : 'disabled'}>Finish Lecture</button>
+                    </div>
+                </div>
+            `;
+        }
+
+        function renderTestView(test = {}, result = null) {
+            const questions = Array.isArray(test.questions) ? test.questions : [];
+            AI_LEARNING_STATE.currentTestId = test.id || test.test_id || AI_LEARNING_STATE.currentTestId;
+            return `
+                <div class="rounded-[16px] border border-outline-variant bg-surface-container-low p-4 md:p-6 space-y-4">
+                    <div class="flex items-center justify-between gap-3">
+                        <div>
+                            <div class="text-xs uppercase tracking-wider text-on-surface-variant">Practice Test</div>
+                            <div class="text-lg font-semibold text-on-surface">${escapeHtml(test.title || 'Test')}</div>
+                        </div>
+                        <button class="rounded-lg border border-outline-variant px-3 py-2 text-sm text-on-surface-variant" data-action="back-to-lectures" type="button">Back</button>
+                    </div>
+                    ${questions.length ? `
+                        <div class="space-y-3">
+                            ${questions.map((question, qIndex) => `
+                                <div class="rounded-lg border border-outline-variant bg-white/70 p-3">
+                                    <div class="mb-2 text-sm font-medium text-on-surface">${qIndex + 1}. ${escapeHtml(question.question || question.prompt || question.text || '')}</div>
+                                    ${renderQuestionInput(question, qIndex)}
+                                </div>
+                            `).join('')}
+                            <div class="flex justify-end">
+                                <button class="rounded-lg bg-primary-container px-4 py-2 text-sm font-semibold text-white disabled:opacity-60" data-action="submit-topic-test" data-topic-id="${AI_LEARNING_STATE.currentTopicId}" type="button" ${AI_LEARNING_STATE.currentTestId ? '' : 'disabled'}>Submit Test</button>
+                            </div>
+                        </div>
+                    ` : '<div class="rounded-lg border border-outline-variant bg-white/70 p-3 text-sm text-on-surface-variant">No test questions are available yet.</div>'}
+                    <div id="test-result-panel">${result ? renderTestResult(result) : ''}</div>
+                </div>
+            `;
+        }
+
+        function renderDashboardSummary(detail) {
+            const learningPlan = Array.isArray(detail.learning_plan) ? detail.learning_plan : [];
+            const modules = Array.isArray(detail.modules) ? detail.modules : Array.isArray(detail.lectures) ? detail.lectures : [];
+            const topics = Array.isArray(detail.topics) ? detail.topics : [];
+            const studyTime = detail.estimated_study_time || detail.estimated_study_time_hours || '';
+            return `
+                <div class="rounded-[16px] border border-outline-variant bg-surface-container-low p-4 md:p-6 space-y-4">
+                    <div>
+                        <div class="text-xs uppercase tracking-wider text-on-surface-variant">Subject</div>
+                        <div class="text-xl font-semibold text-on-surface">${escapeHtml(detail.subject || detail.title || 'Uploaded Notes')}</div>
+                    </div>
+                    <div class="grid gap-3 md:grid-cols-3">
+                        <div class="rounded-lg border border-outline-variant bg-white/70 p-3">
+                            <div class="text-xs uppercase tracking-wider text-on-surface-variant">Difficulty</div>
+                            <div class="mt-1 text-sm font-semibold text-on-surface">${escapeHtml(detail.difficulty || detail.difficulty_level || 'Pending')}</div>
+                        </div>
+                        <div class="rounded-lg border border-outline-variant bg-white/70 p-3">
+                            <div class="text-xs uppercase tracking-wider text-on-surface-variant">Estimated Study Time</div>
+                            <div class="mt-1 text-sm font-semibold text-on-surface">${studyTime ? `${escapeHtml(studyTime)}h` : 'Pending'}</div>
+                        </div>
+                        <div class="rounded-lg border border-outline-variant bg-white/70 p-3">
+                            <div class="text-xs uppercase tracking-wider text-on-surface-variant">Status</div>
+                            <div class="mt-1 text-sm font-semibold text-on-surface">${escapeHtml(detail.processing_status || 'Processing')}</div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="mb-2 text-sm font-semibold text-on-surface">Summary</div>
+                        <p class="whitespace-pre-line text-sm leading-6 text-on-surface-variant">${escapeHtml(detail.summary || 'Summary is still being prepared.')}</p>
+                    </div>
+                    <div>
+                        <div class="mb-2 text-sm font-semibold text-on-surface">Learning Plan</div>
+                        ${renderListItems(learningPlan, 'Learning plan is still being prepared.')}
+                    </div>
+                    <div class="grid gap-4 md:grid-cols-2">
+                        <div>
+                            <div class="mb-2 text-sm font-semibold text-on-surface">Modules</div>
+                            ${renderListItems(modules, 'Modules are still being prepared.')}
+                        </div>
+                        <div>
+                            <div class="mb-2 text-sm font-semibold text-on-surface">Topics</div>
+                            ${renderListItems(topics, 'Topics are still being prepared.')}
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        function renderProgressSummary(progress = {}) {
+            const card = normalizeProgressCard(progress);
+            const overallProgress = card.overallProgress;
+            const accuracy = card.accuracy;
+            const taskValue = card.tasksCompleted !== undefined || card.tasksTotal !== undefined ? `${card.tasksCompleted ?? '—'}/${card.tasksTotal ?? '—'}` : '—';
+            const lectureValue = card.lecturesCompleted !== undefined || card.lecturesTotal !== undefined ? `${card.lecturesCompleted ?? '—'}/${card.lecturesTotal ?? '—'}` : '—';
+            const testValue = card.testsPassed !== undefined || card.testsTotal !== undefined ? `${card.testsPassed ?? '—'}/${card.testsTotal ?? '—'}` : '—';
+            return `
+                <div class="rounded-[16px] border border-outline-variant bg-surface-container-low p-4 md:p-6">
+                    <div class="mb-3 text-sm font-semibold text-on-surface">Progress</div>
+                    <div class="grid gap-3 md:grid-cols-3">
+                        ${[
+                            ['Overall Progress', overallProgress !== undefined ? `${overallProgress}%` : '—'],
+                            ['Completed Tasks', taskValue],
+                            ['Completed Lectures', lectureValue],
+                            ['Tests', testValue],
+                            ['Marks', card.marksLabel ?? '—'],
+                            ['Accuracy', accuracy !== undefined ? `${accuracy}%` : '—'],
+                            ['Level', card.level ?? '—']
+                        ].map(([label, value]) => `
+                            <div class="rounded-lg border border-outline-variant bg-white/70 p-3">
+                                <div class="text-xs uppercase tracking-wider text-on-surface-variant">${escapeHtml(label)}</div>
+                                <div class="mt-1 text-sm font-semibold text-on-surface">${escapeHtml(value ?? '—')}</div>
+                            </div>
+                        `).join('')}
+                    </div>
+                    <div class="mt-3 rounded-lg border border-outline-variant bg-white/70 p-3">
+                        <div class="text-xs uppercase tracking-wider text-on-surface-variant">Weak Topics</div>
+                        <div class="mt-1 text-sm text-on-surface">${escapeHtml(card.weakTopics.length ? card.weakTopics.join(', ') : 'None')}</div>
+                    </div>
+                    <div class="mt-3 rounded-lg border border-outline-variant bg-white/70 p-3">
+                        <div class="text-xs uppercase tracking-wider text-on-surface-variant">Strong Topics</div>
+                        <div class="mt-1 text-sm text-on-surface">${escapeHtml(card.strongTopics.length ? card.strongTopics.join(', ') : 'None')}</div>
+                    </div>
+                </div>
+            `;
+        }
+
+        function renderNotes() {
+            if (!homeNotesList) return;
+
+            const homeNotes = [...notesState].sort((a, b) => new Date(b.uploadedAt) - new Date(a.uploadedAt));
+
+            if (!homeNotes.length) {
+                homeNotesList.innerHTML = '<div class="rounded-lg border border-dashed border-outline-variant bg-white/70 p-4 text-sm text-on-surface-variant">No uploaded notes yet.</div>';
+            } else {
+                homeNotesList.innerHTML = homeNotes.map((note) => `
+                    <div class="rounded-lg border border-outline-variant bg-white/70 p-4">
+                        <div class="flex items-start justify-between gap-3">
+                            <a class="flex-1 min-w-0 text-sm font-medium text-on-surface hover:text-primary" href="${note.dataUrl || '#'}" target="_blank" rel="noreferrer">
+                                <div class="truncate">${escapeHtml(note.fileName || note.subject || 'Uploaded Notes')}</div>
+                                <div class="text-xs text-on-surface-variant">${note.fileSize ? formatFileSize(note.fileSize) : 'Uploaded to AI engine'}</div>
+                            </a>
+                            <button class="text-xs text-red-500 hover:text-red-600" data-delete-id="${note.id}">Delete</button>
+                        </div>
+                        ${getNoteAnalysisMarkup(note)}
+                    </div>
+                `).join('');
+            }
+        }
+
+        function deleteNote(noteId) {
+            notesState = notesState.filter((note) => note.id !== noteId);
+            saveNotes();
+        }
+
+        async function showDashboardSection(view = 'home') {
+            AI_LEARNING_STATE.activeView = view;
+            const sectionShell = document.getElementById('dashboard-section-shell');
+            const sectionContent = document.getElementById('dashboard-section-content');
+            const sectionTitle = document.getElementById('section-title');
+            const sectionSubtitle = document.getElementById('section-subtitle');
+            const sectionIcon = document.getElementById('section-icon');
+            const homeShell = document.getElementById('dashboard-home');
+            const workspace = document.getElementById('dashboard-workspace');
+            if (workspace) workspace.scrollTop = 0;
+
+            document.querySelectorAll('[data-section-nav]').forEach((link) => {
+                const isActive = link.dataset.sectionNav === view;
+                link.classList.toggle('text-primary', isActive);
+                link.classList.toggle('border-primary', isActive);
+                link.classList.toggle('bg-primary/10', isActive);
+                link.classList.toggle('rounded-r-lg', isActive);
+                link.classList.toggle('hover:bg-black/5', !isActive);
+                link.classList.toggle('hover:text-on-surface', !isActive);
+                link.classList.toggle('text-on-surface', !isActive);
+                link.classList.toggle('border-transparent', !isActive);
+            });
+
+            if (view === 'home') {
+                if (homeShell) homeShell.classList.remove('hidden');
+                if (sectionShell) sectionShell.classList.add('hidden');
+                return;
+            }
+
+            if (homeShell) homeShell.classList.add('hidden');
+            if (sectionShell) sectionShell.classList.remove('hidden');
+            if (sectionTitle) sectionTitle.textContent = view === 'tests' ? 'Tests' : view === 'insights' ? 'AI Insights' : 'Daily Tasks';
+            if (sectionSubtitle) sectionSubtitle.textContent = view === 'tests' ? 'Lecture content and guided tests from your uploaded notes.' : view === 'insights' ? 'Ask questions and get explanations tailored to your uploaded notes.' : 'Your sequential study plan generated from uploaded notes.';
+            if (sectionIcon) sectionIcon.textContent = view === 'tests' ? 'quiz' : view === 'insights' ? 'psychology' : 'task_alt';
+            await renderLearningModal(view);
+        }
+
+        async function openLearningModal(view = 'tasks') {
+            await showDashboardSection(view);
+        }
+
+        async function renderLearningModal(view = AI_LEARNING_STATE.activeView) {
+            const titleEl = document.getElementById('section-title');
+            const subtitleEl = document.getElementById('section-subtitle');
+            const contentEl = document.getElementById('dashboard-section-content');
+            if (!titleEl || !subtitleEl || !contentEl) return;
+
+            titleEl.textContent = view === 'tests' ? 'Tests' : view === 'insights' ? 'AI Insights' : 'Daily Tasks';
+            subtitleEl.textContent = view === 'tests'
+                ? 'Lecture content and guided tests from your uploaded notes.'
+                : view === 'insights'
+                    ? 'Ask questions and get explanations tailored to your uploaded notes.'
+                    : 'Your sequential study plan generated from uploaded notes.';
+
+            if (view === 'insights') {
+                if (!AI_LEARNING_STATE.currentNoteId) {
+                    const backendNotes = await loadBackendNotes();
+                    if (backendNotes.length) {
+                        AI_LEARNING_STATE.currentNoteId = backendNotes[0].id;
+                    }
+                }
+                const hasPendingInsight = AI_LEARNING_STATE.chatMessages.some((entry) => entry.pending);
+                const chatMarkup = AI_LEARNING_STATE.chatMessages.length ? AI_LEARNING_STATE.chatMessages.map((entry) => `
+                    <div class="flex ${entry.role === 'assistant' ? 'justify-start' : 'justify-end'}">
+                        <div class="max-w-[85%] rounded-3xl px-4 py-3 shadow-sm ${entry.role === 'assistant' ? 'bg-surface-container text-on-surface' : 'bg-primary-container text-white'}">
+                            <div class="text-[11px] uppercase tracking-[.18em] mb-2 ${entry.role === 'assistant' ? 'text-on-surface-variant' : 'text-white/80'}">${entry.role === 'assistant' ? 'AI Tutor' : 'You'}</div>
+                            <div class="whitespace-pre-line text-sm leading-6">${entry.pending ? '<span class="material-symbols-outlined animate-spin text-[18px] align-middle">progress_activity</span><span class="ml-2 align-middle">Thinking...</span>' : escapeHtml(entry.message)}</div>
+                        </div>
+                    </div>
+                `).join('') : '<div class="rounded-xl border border-dashed border-outline-variant bg-surface-container-low p-4 text-sm text-on-surface-variant">Ask a question about your uploaded notes to begin.</div>';
+
+                contentEl.innerHTML = `
+                    <div class="rounded-[16px] border border-outline-variant bg-surface-container-low p-4 md:p-6">
+                        <div id="learning-chat-area" class="max-h-[480px] space-y-3 overflow-y-auto pr-2">
+                            ${chatMarkup}
+                        </div>
+                        <div class="mt-4 border-t border-outline-variant pt-4">
+                            <div class="flex flex-col gap-3 md:flex-row md:items-end">
+                                <textarea id="insight-question" class="min-h-[72px] flex-1 rounded-2xl border border-outline-variant bg-white p-4 text-sm text-on-surface outline-none focus:border-primary-container focus:ring-1 focus:ring-primary-container/20" placeholder="Ask the AI about your notes..."></textarea>
+                                <button class="rounded-2xl bg-primary-container px-5 py-3 text-sm font-semibold text-white hover:bg-primary transition-colors disabled:opacity-60 disabled:cursor-wait" data-action="send-insight" type="button" ${hasPendingInsight ? 'disabled' : ''}>${hasPendingInsight ? 'Sending' : 'Send'}</button>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                const chatArea = document.getElementById('learning-chat-area');
+                if (chatArea) {
+                    chatArea.scrollTop = chatArea.scrollHeight;
+                }
+                return;
+            }
+
+            const backendNotes = await loadBackendNotes();
+            if (!backendNotes.length) {
+                contentEl.innerHTML = '<div class="rounded-xl border border-dashed border-outline-variant bg-surface-container-low p-4 text-sm text-on-surface-variant">Upload a PDF note to begin the AI learning pipeline.</div>';
+                return;
+            }
+
+            const selectedNoteId = AI_LEARNING_STATE.currentNoteId || backendNotes[0].id;
+            AI_LEARNING_STATE.currentNoteId = selectedNoteId;
+            const detail = await loadActiveNoteDetail(selectedNoteId);
+            if (!detail) {
+                contentEl.innerHTML = '<div class="rounded-xl border border-dashed border-outline-variant bg-surface-container-low p-4 text-sm text-on-surface-variant">Unable to load the note details right now.</div>';
+                return;
+            }
+
+            if (view === 'tests') {
+                if (AI_LEARNING_STATE.currentTopicId) {
+                    try {
+                        const selectedTopic = (detail.topics || []).find((topic) => Number(topic.id) === Number(AI_LEARNING_STATE.currentTopicId)) || {};
+                        if (AI_LEARNING_STATE.activeStudyStep === 'test') {
+                            const selectedTest = await loadTestForTopic(AI_LEARNING_STATE.currentTopicId);
+                            contentEl.innerHTML = renderTestView(selectedTest, AI_LEARNING_STATE.latestTestResult);
+                        } else {
+                            const selectedLecture = await loadLectureForTopic(AI_LEARNING_STATE.currentTopicId);
+                            contentEl.innerHTML = renderLectureView(selectedLecture, selectedTopic);
+                        }
+                    } catch (error) {
+                        contentEl.innerHTML = `<div class="rounded-xl border border-dashed border-outline-variant bg-surface-container-low p-4 text-sm text-on-surface-variant">${escapeHtml(error.message || 'Unable to load this lecture right now.')}</div>`;
+                    }
+                } else {
+                    const lectureMarkup = (detail.topics || []).map((topic) => {
+                        const lecture = (detail.lectures || []).find((item) => Number(item.topic_id) === Number(topic.id)) || {};
+                        const locked = lecture.locked || lecture.status === 'locked';
+                        return `
+                        <div class="rounded-[16px] border border-outline-variant bg-surface-container-low p-4">
+                            <div class="flex items-center justify-between gap-3">
+                                <div>
+                                    <div class="text-xs uppercase tracking-wider text-on-surface-variant">Topic</div>
+                                    <div class="text-base font-semibold text-on-surface">${escapeHtml(topic.title || topic.name || lecture.title || 'Topic')}</div>
+                                </div>
+                                <div class="text-xs rounded-full px-3 py-1 ${lecture.status === 'completed' ? 'bg-green-500/20 text-green-700' : locked ? 'bg-surface-container text-on-surface-variant' : 'bg-primary/10 text-primary'}">${escapeHtml(locked ? 'locked' : (lecture.status || 'unlocked'))}</div>
+                            </div>
+                            <div class="mt-3 text-sm text-on-surface-variant">${escapeHtml(topic.summary || 'Lecture content will load from the backend when opened.')}</div>
+                            <div class="mt-3 flex justify-end">
+                                <button class="rounded-lg bg-primary-container px-3 py-2 text-sm font-semibold text-white disabled:opacity-60" data-action="open-topic" data-topic-id="${topic.id}" data-lecture-id="${lecture.id || ''}" type="button" ${locked ? 'disabled' : ''}>${locked ? 'Locked' : 'Open Lecture'}</button>
+                            </div>
+                        </div>
+                    `;
+                    }).join('');
+                    contentEl.innerHTML = `<div class="space-y-3">${lectureMarkup || '<div class="rounded-xl border border-dashed border-outline-variant bg-surface-container-low p-4 text-sm text-on-surface-variant">Lectures are still being generated. Try again in a moment.</div>'}</div>`;
+                }
+                return;
+            }
+
+            let tasks = [];
+            let progress = null;
+            try {
+                tasks = await loadTasksForNote(selectedNoteId);
+                progress = await loadProgressSummary();
+            } catch (error) {
+                console.warn('Unable to load tasks or progress:', error);
+            }
+            const tasksMarkup = tasks.map((task) => {
+                const status = getTaskStatus(task);
+                const locked = status === 'Locked';
+                const completed = status === 'Completed';
+                const topicId = getTaskTopicId(task);
+                return `
+                    <div class="rounded-[16px] border border-outline-variant bg-surface-container-low p-4">
+                        <div class="flex items-center justify-between gap-3">
+                            <div>
+                                <div class="text-sm font-semibold text-on-surface">${escapeHtml(task.title)}</div>
+                                <div class="text-xs uppercase tracking-wider text-on-surface-variant">${escapeHtml(task.topic || task.task_type || 'Task')} • ${escapeHtml(task.estimated_time || task.study_time_hours || 0)}h</div>
+                            </div>
+                            <div class="text-xs rounded-full px-3 py-1 ${completed ? 'bg-green-500/20 text-green-700' : locked ? 'bg-surface-container text-on-surface-variant' : 'bg-primary/10 text-primary'}">${escapeHtml(status)}</div>
+                        </div>
+                        <div class="mt-3 flex justify-end">
+                            <button class="rounded-lg bg-primary-container px-3 py-2 text-sm font-semibold text-white disabled:opacity-60" data-action="start-task" data-task-id="${task.id}" data-topic-id="${escapeHtml(topicId)}" type="button" ${locked || completed ? 'disabled' : ''}>${escapeHtml(getTaskButtonLabel(task))}</button>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+            contentEl.innerHTML = `
+                <div class="space-y-4">
+                    ${renderDashboardSummary(detail)}
+                    ${detail.progress_card ? renderProgressSummary(detail.progress_card) : ''}
+                    <div class="space-y-3">${tasksMarkup || '<div class="rounded-xl border border-dashed border-outline-variant bg-surface-container-low p-4 text-sm text-on-surface-variant">No tasks have been generated yet.</div>'}</div>
+                    ${progress ? renderProgressSummary(progress) : ''}
+                </div>
+            `;
+        }
+
+        async function handleSaveNotes() {
+            const subject = notesSubjectInput?.value?.trim() || '';
+            const file = notesFileInput?.files?.[0];
+
+            if (!subject) {
+                if (notesFormMessage) notesFormMessage.textContent = 'Please enter a subject name.';
+                return;
+            }
+
+            if (!file) {
+                if (notesFormMessage) notesFormMessage.textContent = 'Please choose a PDF file.';
+                return;
+            }
+
+            if (file.type !== 'application/pdf' && !file.name.toLowerCase().endsWith('.pdf')) {
+                if (notesFormMessage) notesFormMessage.textContent = 'Only PDF files are allowed.';
+                return;
+            }
+
+            const stopLoading = setButtonLoading(saveNotesBtn, 'Uploading');
+            try {
+                if (notesFormMessage) notesFormMessage.textContent = 'Uploading';
+                const formData = new FormData();
+                formData.append('title', subject);
+                formData.append('file', file);
+                const result = await requestJson(`${AI_API_BASE}/notes/upload/`, {
+                    method: 'POST',
+                    body: formData
+                });
+                if (notesFormMessage) notesFormMessage.textContent = 'Processing';
+                AI_LEARNING_STATE.currentNoteId = result.note_id || null;
+                notesState = [{
+                    id: `${Date.now()}-${Math.random().toString(36).slice(2, 8)}`,
+                    backendNoteId: result.note_id ? String(result.note_id) : '',
+                    subject,
+                    fileName: file.name,
+                    fileSize: file.size,
+                    mimeType: file.type || 'application/pdf',
+                    dataUrl: '#',
+                    uploadedAt: new Date().toISOString(),
+                    aiStatus: result.status || 'processing',
+                    aiSummary: 'AI analysis is being generated.',
+                    aiDifficulty: '',
+                    aiStudyTime: ''
+                }, ...notesState];
+                saveNotes();
+                resetNotesForm();
+                if (notesFormMessage) notesFormMessage.textContent = result.success ? 'Completed' : 'Unable to upload notes.';
+                await new Promise((resolve) => setTimeout(resolve, 500));
+                closeModals();
+                await loadBackendNotes();
+                await showDashboardSection('tasks');
+            } catch (error) {
+                if (notesFormMessage) notesFormMessage.textContent = error.message || 'Unable to upload notes.';
+            } finally {
+                stopLoading();
+            }
+        }
+
+        notesState = loadNotes();
+        renderNotes();
+        loadBackendNotes();
+
+        if (saveNotesBtn) {
+            saveNotesBtn.addEventListener('click', handleSaveNotes);
+        }
+
+        document.addEventListener('click', async (event) => {
+            const deleteButton = event.target.closest('[data-delete-id]');
+            if (deleteButton?.dataset?.deleteId) {
+                deleteNote(deleteButton.dataset.deleteId);
+                return;
+            }
+
+            const actionButton = event.target.closest('[data-action]');
+            const action = actionButton?.dataset?.action;
+            if (!action) return;
+            event.preventDefault();
+            if (actionButton.disabled) return;
+
+            if (action === 'start-task') {
+                const taskId = actionButton.dataset.taskId;
+                const topicId = Number(actionButton.dataset.topicId || 0);
+                const stopLoading = setButtonLoading(actionButton, getActionLoadingLabel(action));
+                try {
+                    const result = await startTaskOnBackend(taskId);
+                    const resultTask = result.task || {};
+                    AI_LEARNING_STATE.currentTopicId = Number(result.topic_id || resultTask.topic_id || topicId || 0) || null;
+                    AI_LEARNING_STATE.currentLectureId = Number(result.lecture_id || result.lecture?.id || 0) || null;
+                    AI_LEARNING_STATE.currentTestId = null;
+                    AI_LEARNING_STATE.latestTestResult = null;
+                    AI_LEARNING_STATE.activeStudyStep = 'lecture';
+                    if (AI_LEARNING_STATE.currentTopicId) {
+                        await showDashboardSection('tests');
+                    } else {
+                        await renderLearningModal('tasks');
+                    }
+                } catch (error) {
+                    console.warn('Unable to start task:', error);
+                    stopLoading();
+                }
+                return;
+            }
+
+            if (action === 'open-note-analysis') {
+                setButtonLoading(actionButton, getActionLoadingLabel(action));
+                AI_LEARNING_STATE.currentNoteId = Number(actionButton.dataset.noteId);
+                AI_LEARNING_STATE.currentTopicId = null;
+                AI_LEARNING_STATE.currentLectureId = null;
+                AI_LEARNING_STATE.currentTestId = null;
+                AI_LEARNING_STATE.latestTestResult = null;
+                AI_LEARNING_STATE.activeStudyStep = 'lecture';
+                await showDashboardSection('tasks');
+                return;
+            }
+
+            if (action === 'open-topic') {
+                setButtonLoading(actionButton, getActionLoadingLabel(action));
+                AI_LEARNING_STATE.currentTopicId = Number(actionButton.dataset.topicId);
+                AI_LEARNING_STATE.currentLectureId = Number(actionButton.dataset.lectureId || 0) || null;
+                AI_LEARNING_STATE.currentTestId = null;
+                AI_LEARNING_STATE.latestTestResult = null;
+                AI_LEARNING_STATE.activeStudyStep = 'lecture';
+                await renderLearningModal('tests');
+                return;
+            }
+
+            if (action === 'back-to-lectures') {
+                setButtonLoading(actionButton, getActionLoadingLabel(action));
+                AI_LEARNING_STATE.currentTopicId = null;
+                AI_LEARNING_STATE.currentLectureId = null;
+                AI_LEARNING_STATE.currentTestId = null;
+                AI_LEARNING_STATE.latestTestResult = null;
+                AI_LEARNING_STATE.activeStudyStep = 'lecture';
+                await renderLearningModal('tests');
+                return;
+            }
+
+            if (action === 'finish-lecture') {
+                const lectureId = actionButton.dataset.lectureId || AI_LEARNING_STATE.currentLectureId;
+                if (!lectureId) return;
+                const stopLoading = setButtonLoading(actionButton, getActionLoadingLabel(action));
+                try {
+                    const result = await finishLectureOnBackend(lectureId);
+                    AI_LEARNING_STATE.currentTestId = Number(result.test?.id || result.test_id || 0) || AI_LEARNING_STATE.currentTestId;
+                    AI_LEARNING_STATE.latestTestResult = null;
+                    AI_LEARNING_STATE.activeStudyStep = 'test';
+                    await renderLearningModal('tests');
+                } catch (error) {
+                    console.warn('Unable to finish lecture:', error);
+                    stopLoading();
+                }
+                return;
+            }
+
+            if (action === 'submit-topic-test') {
+                const topicId = actionButton.dataset.topicId;
+                const stopLoading = setButtonLoading(actionButton, getActionLoadingLabel(action));
+                const answers = {};
+                document.querySelectorAll('[data-answer-index]:checked').forEach((input) => {
+                    answers[input.dataset.answerIndex] = input.value;
+                });
+                document.querySelectorAll(`[data-short-answer]`).forEach((input) => {
+                    answers[input.dataset.shortAnswer] = input.value.trim();
+                });
+                try {
+                    const result = await submitTestOnBackend(topicId, answers);
+                    AI_LEARNING_STATE.latestTestResult = result;
+                    let progressCard = result.progress_card || null;
+                    await loadBackendNotes();
+                    if (!progressCard) {
+                        try {
+                            const progress = await loadProgressSummary();
+                            progressCard = progress.progress_cards || progress.progress_card || progress;
+                        } catch (progressError) {
+                            console.warn('Unable to refresh progress:', progressError);
+                        }
+                    }
+                    const resultPanel = document.getElementById('test-result-panel');
+                    if (resultPanel) {
+                        resultPanel.innerHTML = result.course_completed
+                            ? renderTestResult(result)
+                            : `${renderTestResult(result)}${progressCard ? renderProgressSummary(progressCard) : ''}`;
+                    }
+                } catch (error) {
+                    console.warn('Unable to submit test:', error);
+                    stopLoading();
+                }
+                return;
+            }
+
+            if (action === 'continue-next-task') {
+                setButtonLoading(actionButton, getActionLoadingLabel(action));
+                AI_LEARNING_STATE.currentTopicId = null;
+                AI_LEARNING_STATE.currentLectureId = null;
+                AI_LEARNING_STATE.currentTestId = null;
+                AI_LEARNING_STATE.latestTestResult = null;
+                AI_LEARNING_STATE.activeStudyStep = 'lecture';
+                await showDashboardSection('tasks');
+                return;
+            }
+
+            if (action === 'send-insight') {
+                const questionInput = document.getElementById('insight-question');
+                const question = questionInput?.value?.trim();
+                if (!question) return;
+                const stopLoading = setButtonLoading(actionButton, getActionLoadingLabel(action));
+                // Append user message to local conversation
+                AI_LEARNING_STATE.chatMessages.push({ role: 'user', message: question });
+                const pendingInsight = { role: 'assistant', message: 'Thinking...', pending: true };
+                AI_LEARNING_STATE.chatMessages.push(pendingInsight);
+                questionInput.value = '';
+                await renderLearningModal('insights');
+                try {
+                    const result = await requestJson(`${AI_API_BASE}/chat`, {
+                        method: 'POST',
+                        body: JSON.stringify({
+                            note_id: AI_LEARNING_STATE.currentNoteId,
+                            message: question,
+                            messages: AI_LEARNING_STATE.chatMessages.filter((entry) => !entry.pending)
+                        })
+                    });
+                    const answer = result.answer || result.response || result.message || 'I could not generate a response right now.';
+                    pendingInsight.message = answer;
+                    pendingInsight.pending = false;
+                    await renderLearningModal('insights');
+                } catch (error) {
+                    pendingInsight.message = error.message || 'Unable to reach the AI mentor.';
+                    pendingInsight.pending = false;
+                    await renderLearningModal('insights');
+                } finally {
+                    stopLoading();
+                }
+            }
+        });
+
+        const themeToggleButton = document.getElementById('theme-toggle');
+        const themeIcon = document.getElementById('theme-icon');
+        function updateThemeIcon() {
+            if (htmlElement.classList.contains('dark')) {
+                if (themeIcon) themeIcon.textContent = 'light_mode';
+            } else {
+                if (themeIcon) themeIcon.textContent = 'dark_mode';
+            }
+        }
+
+        if (themeToggleButton) {
+            themeToggleButton.addEventListener('click', () => {
+                toggleTheme();
+                updateThemeIcon();
+            });
+        }
+
+        updateThemeIcon();
+
+        // Dropdown Logic
+        function toggleDropdown(id) {
+            const dropdown = document.getElementById(id);
+            dropdown.classList.toggle('hidden');
+
+            // Close when clicking outside
+            if (!dropdown.classList.contains('hidden')) {
+                const closeListener = function (e) {
+                    if (!e.target.closest('.relative')) {
+                        dropdown.classList.add('hidden');
+                        document.removeEventListener('click', closeListener);
+                    }
+                };
+                setTimeout(() => document.addEventListener('click', closeListener), 0);
+            }
+        }
+
+        // Modal Logic
+        const backdrop = document.getElementById('modal-backdrop');
+        let activeModalId = null;
+
+        function openModal(id) {
+            backdrop.classList.add('active');
+            const modal = document.getElementById(id);
+            if (!modal) return;
+            modal.classList.remove('hidden');
+
+            // Small delay to allow display:block to apply before animating opacity/transform
+            setTimeout(() => {
+                modal.classList.remove('scale-95', 'opacity-0');
+                modal.classList.add('scale-100', 'opacity-100');
+            }, 10);
+
+            activeModalId = id;
+        }
+
+        window.openLearningModal = openLearningModal;
+        window.openModal = openModal;
+        window.showDashboardSection = showDashboardSection;
+
+        function closeModals() {
+            if (activeModalId) {
+                const modal = document.getElementById(activeModalId);
+                if (modal) {
+                    modal.classList.add('hidden');
+                    backdrop.classList.remove('active');
+                    activeModalId = null;
+                    resetNotesForm();
+                }
+            }
+        }
+
+        window.closeModals = closeModals;
+
+        // Close modal on backdrop click
+        backdrop.addEventListener('click', (e) => {
+            if (e.target === backdrop) closeModals();
+        });
+
+        // Generate Plan Button Logic
+        const genBtn = document.getElementById('btn-generate-plan');
+        if (genBtn) {
+            genBtn.addEventListener('click', function () {
+                showDashboardSection('tasks');
+            });
+        }
+    </script>
+
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.13.1/firebase-app.js";
+        import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.13.1/firebase-auth.js";
+        import { getFirestore, doc, getDoc, setDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.13.1/firebase-firestore.js";
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyDparLYEjKeU6e_2AsIvhwudzy9NGDLYx8",
+            authDomain: "zentra-8a600.firebaseapp.com",
+            projectId: "zentra-8a600",
+            storageBucket: "zentra-8a600.firebasestorage.app",
+            messagingSenderId: "716087370710",
+            appId: "1:716087370710:web"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+        const db = getFirestore(app);
+        window.ZentraFirebaseAuth = auth;
+
+        const profileTrigger = document.getElementById('profile-trigger');
+        const profileInitials = document.getElementById('profile-initials');
+        const welcomeHeading = document.getElementById('welcome-heading');
+        const profileView = document.getElementById('profile-view');
+        const profileForm = document.getElementById('profile-form');
+        const editProfileBtn = document.getElementById('edit-profile-btn');
+        const cancelEditBtn = document.getElementById('cancel-edit-btn');
+        const profileFormElement = document.getElementById('profile-form');
+        const profileStatus = document.getElementById('profile-status');
+        const profileAvatar = document.getElementById('profile-avatar');
+        const profileDisplayName = document.getElementById('profile-display-name');
+        const profileDisplayEmail = document.getElementById('profile-display-email');
+        const profileFullName = document.getElementById('profile-full-name');
+        const profileEmail = document.getElementById('profile-email');
+        const profileGender = document.getElementById('profile-gender');
+        const profilePhone = document.getElementById('profile-phone');
+        const profileAge = document.getElementById('profile-age');
+        const profileSubjects = document.getElementById('profile-subjects');
+        const genderInput = document.getElementById('profile-gender-input');
+        const phoneInput = document.getElementById('profile-phone-input');
+        const ageInput = document.getElementById('profile-age-input');
+        const subjectsInput = document.getElementById('profile-subjects-input');
+        const profileModalSubtitle = document.getElementById('profile-modal-subtitle');
+        const PROFILE_CACHE_KEY = 'zentra-profile-cache';
+
+        let currentProfile = {
+            fullName: 'Student',
+            email: '',
+            gender: '',
+            phoneNumber: '',
+            age: '',
+            interestedSubjects: ''
+        };
+
+        function getInitials(name = 'Student') {
+            const trimmed = String(name || '').trim();
+            if (!trimmed) return 'S';
+            return trimmed.split(/\s+/).map(part => part[0]).join('').slice(0, 2).toUpperCase();
+        }
+
+        function renderProfileData() {
+            const initials = getInitials(currentProfile.fullName);
+            if (profileInitials) profileInitials.textContent = initials;
+            if (profileAvatar) profileAvatar.textContent = initials;
+            if (profileDisplayName) profileDisplayName.textContent = currentProfile.fullName || 'Student';
+            if (profileDisplayEmail) profileDisplayEmail.textContent = currentProfile.email || 'No email available';
+            if (profileFullName) profileFullName.textContent = currentProfile.fullName || 'Student';
+            if (profileEmail) profileEmail.textContent = currentProfile.email || 'No email available';
+            if (profileGender) profileGender.textContent = currentProfile.gender || 'Not set';
+            if (profilePhone) profilePhone.textContent = currentProfile.phoneNumber || 'Not set';
+            if (profileAge) profileAge.textContent = currentProfile.age ? `${currentProfile.age}` : 'Not set';
+            if (profileSubjects) profileSubjects.textContent = currentProfile.interestedSubjects || 'Not set';
+            if (welcomeHeading) {
+                const stableName = currentProfile.fullName && currentProfile.fullName !== 'Student' ? currentProfile.fullName : 'Scholar';
+                welcomeHeading.textContent = `Welcome back, ${stableName}.`;
+            }
+            if (profileModalSubtitle) {
+                profileModalSubtitle.textContent = currentProfile.fullName && currentProfile.fullName !== 'Student'
+                    ? 'Personal details and preferences'
+                    : 'Manage your account details';
+            }
+        }
+
+        function resetProfileForm() {
+            if (genderInput) genderInput.value = currentProfile.gender || '';
+            if (phoneInput) phoneInput.value = currentProfile.phoneNumber || '';
+            if (ageInput) ageInput.value = currentProfile.age || '';
+            if (subjectsInput) subjectsInput.value = currentProfile.interestedSubjects || '';
+            if (profileStatus) profileStatus.textContent = '';
+        }
+
+        function showProfileView() {
+            if (profileView) profileView.classList.remove('hidden');
+            if (profileForm) profileForm.classList.add('hidden');
+        }
+
+        function showProfileForm() {
+            resetProfileForm();
+            if (profileView) profileView.classList.add('hidden');
+            if (profileForm) profileForm.classList.remove('hidden');
+        }
+
+        function persistProfileCache() {
+            localStorage.setItem(PROFILE_CACHE_KEY, JSON.stringify(currentProfile));
+        }
+
+        async function loadProfile(user) {
+            const cached = localStorage.getItem(PROFILE_CACHE_KEY);
+            if (cached) {
+                try {
+                    const parsed = JSON.parse(cached);
+                    currentProfile = { ...currentProfile, ...parsed };
+                } catch (error) {
+                    console.warn('Unable to read cached profile.', error);
+                }
+            }
+
+            if (!user) {
+                renderProfileData();
+                return;
+            }
+
+            const resolvedName = user.displayName || currentProfile.fullName || 'Student';
+            const resolvedEmail = user.email || currentProfile.email || '';
+            currentProfile = {
+                ...currentProfile,
+                fullName: resolvedName,
+                email: resolvedEmail
+            };
+
+            try {
+                const userDocRef = doc(db, 'users', user.uid);
+                const snapshot = await getDoc(userDocRef);
+                if (snapshot.exists()) {
+                    const profileData = snapshot.data() || {};
+                    currentProfile = {
+                        ...currentProfile,
+                        fullName: profileData.fullName || currentProfile.fullName || resolvedName,
+                        email: profileData.email || currentProfile.email || resolvedEmail,
+                        gender: profileData.gender || '',
+                        phoneNumber: profileData.phoneNumber || '',
+                        age: profileData.age || '',
+                        interestedSubjects: profileData.interestedSubjects || ''
+                    };
+                }
+            } catch (error) {
+                console.warn('Unable to load Firestore profile.', error);
+            }
+
+            persistProfileCache();
+            renderProfileData();
+        }
+
+        async function saveProfile(event) {
+            event.preventDefault();
+            if (!auth.currentUser) {
+                if (profileStatus) profileStatus.textContent = 'Please sign in to save your profile.';
+                return;
+            }
+
+            const nextProfile = {
+                fullName: currentProfile.fullName || auth.currentUser.displayName || 'Student',
+                email: currentProfile.email || auth.currentUser.email || '',
+                gender: genderInput?.value?.trim() || '',
+                phoneNumber: phoneInput?.value?.trim() || '',
+                age: ageInput?.value?.trim() || '',
+                interestedSubjects: subjectsInput?.value?.trim() || ''
+            };
+
+            try {
+                if (profileStatus) profileStatus.textContent = 'Saving your profile...';
+                await setDoc(doc(db, 'users', auth.currentUser.uid), {
+                    uid: auth.currentUser.uid,
+                    ...nextProfile,
+                    updatedAt: serverTimestamp()
+                }, { merge: true });
+
+                currentProfile = nextProfile;
+                persistProfileCache();
+                renderProfileData();
+                showProfileView();
+                if (profileStatus) profileStatus.textContent = 'Profile updated successfully.';
+            } catch (error) {
+                if (profileStatus) profileStatus.textContent = error.message || 'Unable to save your profile.';
+            }
+        }
+
+        profileTrigger?.addEventListener('click', () => {
+            showProfileView();
+            if (profileStatus) profileStatus.textContent = '';
+            if (typeof window.closeModals === 'function') {
+                window.closeModals();
+            }
+            if (typeof window.openModal === 'function') {
+                window.openModal('profile-modal');
+            }
+        });
+
+        editProfileBtn?.addEventListener('click', showProfileForm);
+        cancelEditBtn?.addEventListener('click', () => {
+            resetProfileForm();
+            showProfileView();
+        });
+        profileFormElement?.addEventListener('submit', saveProfile);
+
+        onAuthStateChanged(auth, async (user) => {
+            window.ZentraCurrentUser = user ? {
+                uid: user.uid,
+                email: user.email || '',
+                displayName: user.displayName || '',
+                idToken: await user.getIdToken().catch(() => '')
+            } : null;
+            loadProfile(user);
+        });
+    </script>
+
+</body>
+
+</html>

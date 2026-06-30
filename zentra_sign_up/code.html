@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+  <title>Zentra - Sign Up</title>
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+    rel="stylesheet" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&amp;family=Plus+Jakarta+Sans:wght@400;600;700&amp;display=swap"
+    rel="stylesheet" />
+  <script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "on-surface": "#e4e1ee",
+            "secondary-fixed": "#e2dfff",
+            "error-container": "#93000a",
+            "on-tertiary-container": "#ffd2be",
+            "tertiary-fixed-dim": "#ffb695",
+            "on-tertiary-fixed-variant": "#7b2f00",
+            "on-primary-fixed": "#0f0069",
+            "secondary": "#c3c0ff",
+            "surface-bright": "#393842",
+            "surface-container-lowest": "#0e0d16",
+            "on-secondary-fixed": "#140f54",
+            "primary-fixed-dim": "#c3c0ff",
+            "on-primary": "#1d00a5",
+            "secondary-container": "#413f82",
+            "tertiary-fixed": "#ffdbcc",
+            "on-tertiary-fixed": "#351000",
+            "primary-fixed": "#e2dfff",
+            "error": "#ffb4ab",
+            "primary": "#c3c0ff",
+            "primary-container": "#4f46e5",
+            "secondary-fixed-dim": "#c3c0ff",
+            "on-primary-fixed-variant": "#3323cc",
+            "surface-variant": "#35343e",
+            "on-background": "#e4e1ee",
+            "on-surface-variant": "#c7c4d8",
+            "outline-variant": "#464555",
+            "background": "#13121b",
+            "tertiary-container": "#a44100",
+            "on-primary-container": "#dad7ff",
+            "surface-container": "#1f1f28",
+            "surface-tint": "#c3c0ff",
+            "outline": "#918fa1",
+            "surface-container-low": "#1b1b24",
+            "on-error-container": "#ffdad6",
+            "on-secondary-container": "#b0aef9",
+            "on-error": "#690005",
+            "tertiary": "#ffb695",
+            "on-tertiary": "#571f00",
+            "surface": "#13121b",
+            "inverse-primary": "#4d44e3",
+            "on-secondary-fixed-variant": "#413f82",
+            "inverse-on-surface": "#302f39",
+            "surface-dim": "#13121b",
+            "inverse-surface": "#e4e1ee",
+            "on-secondary": "#2a276a",
+            "surface-container-high": "#2a2933",
+            "surface-container-highest": "#35343e"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "card-gap": "24px",
+            "unit": "8px",
+            "container-padding": "24px",
+            "gutter": "20px"
+          },
+          "fontFamily": {
+            "label-caps": [
+              "plusJakartaSans"
+            ],
+            "display-lg-mobile": [
+              "DM Serif Display"
+            ],
+            "title-lg": [
+              "plusJakartaSans"
+            ],
+            "body-main": [
+              "plusJakartaSans"
+            ],
+            "display-lg": [
+              "DM Serif Display"
+            ],
+            "headline-md": [
+              "DM Serif Display"
+            ]
+          },
+          "fontSize": {
+            "label-caps": [
+              "12px",
+              {
+                "lineHeight": "16px",
+                "letterSpacing": "0.08em",
+                "fontWeight": "700"
+              }
+            ],
+            "display-lg-mobile": [
+              "36px",
+              {
+                "lineHeight": "1.1",
+                "fontWeight": "400"
+              }
+            ],
+            "title-lg": [
+              "20px",
+              {
+                "lineHeight": "28px",
+                "letterSpacing": "-0.01em",
+                "fontWeight": "600"
+              }
+            ],
+            "body-main": [
+              "16px",
+              {
+                "lineHeight": "24px",
+                "fontWeight": "400"
+              }
+            ],
+            "display-lg": [
+              "48px",
+              {
+                "lineHeight": "1.1",
+                "fontWeight": "400"
+              }
+            ],
+            "headline-md": [
+              "32px",
+              {
+                "lineHeight": "1.2",
+                "fontWeight": "400"
+              }
+            ]
+          }
+        },
+      },
+    }
+  </script>
+  <style type="text/tailwindcss">
+    @layer utilities {
+            .glass-panel {
+                @apply bg-[#0f0c23]/55 backdrop-blur-[20px] border border-white/10;
+            }
+            .glass-panel-floating {
+                @apply bg-[#0f0c23]/55 backdrop-blur-[40px] border border-white/10 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.1)];
+            }
+            .input-well {
+                @apply bg-surface-container-highest/50 border-b border-outline-variant text-on-surface placeholder:text-on-surface-variant focus:border-primary focus:bg-primary/5 focus:ring-0 transition-all;
+            }
+        }
+    </style>
+</head>
+
+<body
+  class="bg-background text-on-surface font-body-main antialiased min-h-screen flex flex-col relative overflow-x-hidden">
+  <!-- Atmospheric Background Image -->
+  <div class="fixed inset-0 z-0">
+    <img alt="Background image of a moody, atmospheric study space with books and soft lighting."
+      class="w-full h-full object-cover"
+      src="https://lh3.googleusercontent.com/aida-public/AB6AXuBeAQtgQ2XpWU91nkPNQENfGgp6hftXgdUGJbYGV4YWqvgiYaXX1MOuu5RyIvNuzTKDEPhk_Uu5bq1EOUZrNWdhbiMB6pUZbBAAqZiSw8_kcS_Oxk769jBkre8_eHk-3QQ0sdmu20kCv0zmnvuXL41qME-b51uf3EkO-lchGqBX40NwV-4vB-l0jtim91gJm6epG1j_CtspobbQAgyD0710ZaEV18C2dps0ICUzg06U7sv8YUwK8zLbo_4fcz1MnGXztVHuG2rK-yUA" />
+    <div class="absolute inset-0 bg-[#0f0c23]/80 backdrop-blur-sm"></div>
+  </div>
+  <!-- TopNavBar -->
+  <header
+    class="relative z-20 flex justify-between items-center w-full px-container-padding py-4 max-w-7xl mx-auto no-border bg-transparent">
+    <a class="flex items-center gap-2 text-title-lg font-title-lg text-on-surface" href="#">
+      <span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">menu_book</span>
+      Zentra
+    </a>
+    <a class="font-body-main text-body-main text-on-surface-variant hover:text-primary transition-colors"
+      href="../zentra_login/code.html">
+      Already have an account? Sign in
+    </a>
+  </header>
+  <!-- Main Content -->
+  <main
+    class="relative z-10 flex-grow flex items-center justify-center p-container-padding w-full max-w-7xl mx-auto gap-12">
+    <!-- Left Panel (Hidden on Mobile) -->
+    <div class="hidden md:flex flex-col justify-center w-1/2 h-full text-left">
+      <h1 class="font-display-lg text-display-lg text-on-surface mb-6">Study Smarter. Score Higher.</h1>
+      <p class="font-body-main text-body-main text-on-surface-variant max-w-md leading-relaxed mb-8">
+        The ultimate sanctuary for deep work and scholarly pursuit. Join a community dedicated to academic excellence.
+      </p>
+    </div>
+    <!-- Right Panel (Sign Up Form) -->
+    <div class="w-full md:w-1/2 max-w-md relative">
+      <div class="glass-panel-floating rounded-xl p-8 lg:p-10 relative overflow-hidden">
+        <!-- Top Edge Inner Glow (Catch-light) -->
+        <div class="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent">
+        </div>
+        <div class="mb-8 text-center">
+          <h2 class="font-headline-md text-headline-md text-on-surface mb-2">Create Your Account</h2>
+          <p class="font-body-main text-body-main text-on-surface-variant">Join Zentra and start studying smarter — it's
+            free.</p>
+        </div>
+        <form id="signupForm" class="space-y-6">
+          <!-- Role Selector -->
+          <div class="flex flex-col gap-2">
+            <label class="font-label-caps text-label-caps text-on-surface-variant uppercase">I am a...</label>
+            <div class="flex bg-surface-container-highest/30 p-1 rounded-full border border-white/5">
+              <button id="studentRole"
+                class="role-toggle flex-1 py-2 text-center rounded-full bg-primary/20 text-primary font-title-lg text-title-lg transition-all shadow-[0_0_15px_rgba(79,70,229,0.3)] border border-primary/30"
+                type="button" aria-pressed="true">
+                Student
+              </button>
+              <button id="educatorRole"
+                class="role-toggle flex-1 py-2 text-center rounded-full text-on-surface-variant font-title-lg text-title-lg hover:text-on-surface transition-colors"
+                type="button" aria-pressed="false">
+                Educator
+              </button>
+            </div>
+            <input id="accountType" name="accountType" type="hidden" value="student" />
+          </div>
+          <!-- Name Fields -->
+          <div class="flex flex-col md:flex-row gap-4">
+            <div class="relative flex-1">
+              <span
+                class="material-symbols-outlined absolute left-0 top-1/2 -translate-y-1/2 text-on-surface-variant font-light pointer-events-none pb-2">person</span>
+              <input id="firstName" name="firstName"
+                class="w-full bg-transparent border-0 border-b border-outline-variant text-on-surface placeholder:text-on-surface-variant focus:border-primary focus:ring-0 pl-8 pb-2 text-body-main font-body-main transition-colors"
+                placeholder="First Name" type="text" />
+            </div>
+            <div class="relative flex-1">
+              <input id="lastName" name="lastName"
+                class="w-full bg-transparent border-0 border-b border-outline-variant text-on-surface placeholder:text-on-surface-variant focus:border-primary focus:ring-0 pb-2 text-body-main font-body-main transition-colors"
+                placeholder="Last Name" type="text" />
+            </div>
+          </div>
+          <!-- Email Field -->
+          <div class="relative">
+            <span
+              class="material-symbols-outlined absolute left-0 top-1/2 -translate-y-1/2 text-on-surface-variant font-light pointer-events-none pb-2">mail</span>
+            <input id="signupEmail" name="email"
+              class="w-full bg-transparent border-0 border-b border-outline-variant text-on-surface placeholder:text-on-surface-variant focus:border-primary focus:ring-0 pl-8 pb-2 text-body-main font-body-main transition-colors"
+              placeholder="Email Address" type="email" />
+          </div>
+          <!-- Password Field -->
+          <div class="relative">
+            <span
+              class="material-symbols-outlined absolute left-0 top-1/2 -translate-y-1/2 text-on-surface-variant font-light pointer-events-none pb-2">lock</span>
+            <input id="signupPassword" name="password"
+              class="w-full bg-transparent border-0 border-b border-outline-variant text-on-surface placeholder:text-on-surface-variant focus:border-primary focus:ring-0 pl-8 pr-8 pb-2 text-body-main font-body-main transition-colors"
+              placeholder="Password" type="password" />
+            <button id="signupPasswordToggle"
+              class="absolute right-0 top-1/2 -translate-y-1/2 text-on-surface-variant hover:text-on-surface pb-2"
+              type="button" aria-label="Show password">
+              <span id="signupPasswordToggleIcon" class="material-symbols-outlined font-light">visibility</span>
+            </button>
+          </div>
+          <!-- Terms Checkbox -->
+          <div class="flex items-start gap-3 mt-4">
+            <input
+              class="mt-1 bg-surface-container-highest border-outline-variant text-primary rounded focus:ring-primary focus:ring-offset-0 focus:ring-offset-transparent"
+              id="terms" type="checkbox" />
+            <label class="font-body-main text-[14px] text-on-surface-variant leading-tight" for="terms">
+              I agree to the <a class="text-primary hover:underline" href="#">Terms of Service</a> and <a
+                class="text-primary hover:underline" href="#">Privacy Policy</a>.
+            </label>
+          </div>
+          <!-- Submit Button -->
+          <button id="signupSubmit"
+            class="w-full flex items-center justify-center gap-2 bg-primary-container text-on-primary-container font-title-lg text-title-lg py-3 rounded-lg hover:bg-primary-container/90 hover:shadow-[0_0_20px_rgba(79,70,229,0.5)] transition-all transform active:scale-[0.98] disabled:opacity-70 disabled:cursor-wait"
+            type="submit">
+            Create My Free Account
+          </button>
+          <!-- Divider -->
+          <div class="relative flex py-2 items-center">
+            <div class="flex-grow border-t border-outline-variant"></div>
+            <span class="flex-shrink-0 mx-4 text-on-surface-variant font-label-caps text-label-caps uppercase">or</span>
+            <div class="flex-grow border-t border-outline-variant"></div>
+          </div>
+          <!-- Google Button -->
+          <button id="googleSignUp"
+            class="w-full flex items-center justify-center gap-3 bg-white/5 border border-white/10 text-on-surface font-title-lg text-title-lg py-3 rounded-lg hover:bg-white/10 transition-all transform active:scale-[0.98] disabled:opacity-70 disabled:cursor-wait"
+            type="button">
+            <img alt="Google" class="w-5 h-5"
+              src="https://lh3.googleusercontent.com/aida-public/AB6AXuB8kDkKuAnOB1_OwTyRiQn1giPO3W0uJh0XmrtKNM9XdNILdXmJJ6W8qGHGKQD2j4RJHo4yHnQMGqvt-Hje5QTWVyksuWIVlaKMNdvVnWQ2umi5riWgE76Rw-ogw3Oa9zT9blfBSBGvjz_8C3F_m-QD7bdplbOC783NbW25W8YlzX1gViG_RNHcc8iUVZTPfZ7fyHF_M0ju9kWc4A1AGrHlx3MT-5aTAXAzMwiygZsnLEmve0gCTCloWZEOFSLKhEtDDWQU1Pfw21bf" />
+            Sign up with Google
+          </button>
+          <p id="googleAuthMessage" class="mt-3 text-center text-sm text-on-surface-variant"></p>
+        </form>
+        <div class="mt-8 text-center md:hidden">
+          <a class="font-body-main text-body-main text-on-surface-variant hover:text-primary transition-colors"
+            href="../zentra_login/code.html">
+            Already have an account? Sign in →
+          </a>
+        </div>
+      </div>
+    </div>
+  </main>
+  <script src="../auth-router.js"></script>
+  <script>
+    const roleButtons = document.querySelectorAll('.role-toggle');
+    const accountTypeInput = document.getElementById('accountType');
+
+    const setActiveRole = (role) => {
+      roleButtons.forEach((button) => {
+        const isActive = button.id === `${role}Role`;
+        button.classList.toggle('bg-primary/20', isActive);
+        button.classList.toggle('text-primary', isActive);
+        button.classList.toggle('shadow-[0_0_15px_rgba(79,70,229,0.3)]', isActive);
+        button.classList.toggle('border', isActive);
+        button.classList.toggle('border-primary/30', isActive);
+        button.classList.toggle('text-on-surface-variant', !isActive);
+        button.classList.toggle('hover:text-on-surface', !isActive);
+        button.classList.toggle('transition-colors', !isActive);
+        button.setAttribute('aria-pressed', isActive ? 'true' : 'false');
+      });
+
+      if (accountTypeInput) {
+        accountTypeInput.value = role;
+      }
+    };
+
+    roleButtons.forEach((button) => {
+      button.addEventListener('click', () => {
+        const role = button.id === 'educatorRole' ? 'educator' : 'student';
+        setActiveRole(role);
+      });
+    });
+
+    setActiveRole('student');
+  </script>
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.13.1/firebase-app.js";
+    import { getAuth, GoogleAuthProvider, signInWithPopup, createUserWithEmailAndPassword, updateProfile } from "https://www.gstatic.com/firebasejs/10.13.1/firebase-auth.js";
+    import { getFirestore, doc, getDoc, setDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.13.1/firebase-firestore.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyDparLYEjKeU6e_2AsIvhwudzy9NGDLYx8",
+      authDomain: "zentra-8a600.firebaseapp.com",
+      projectId: "zentra-8a600",
+      storageBucket: "zentra-8a600.firebasestorage.app",
+      messagingSenderId: "716087370710",
+      appId: "1:716087370710:web"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+    const db = getFirestore(app);
+    const provider = new GoogleAuthProvider();
+
+    provider.setCustomParameters({ prompt: "select_account" });
+
+    const signupForm = document.getElementById("signupForm");
+    const firstNameInput = document.getElementById("firstName");
+    const lastNameInput = document.getElementById("lastName");
+    const signupEmailInput = document.getElementById("signupEmail");
+    const signupPasswordInput = document.getElementById("signupPassword");
+    const signupPasswordToggleButton = document.getElementById("signupPasswordToggle");
+    const signupPasswordToggleIcon = document.getElementById("signupPasswordToggleIcon");
+    const signupSubmitButton = document.getElementById("signupSubmit");
+    const googleSignUpButton = document.getElementById("googleSignUp");
+    const googleAuthMessage = document.getElementById("googleAuthMessage");
+    const backendUrl = window.__BACKEND_URL__ || "http://127.0.0.1:5000/api/verify-user/";
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    const persistAuthSession = (user, role, idToken, providerName) => window.ZentraAuth.saveAuthSession(user, role, idToken, providerName);
+    const redirectBasedOnRole = (role) => window.ZentraAuth.redirectForRole(role);
+    const normalizeRole = (role) => window.ZentraAuth.normalizeRole(role);
+
+    const setAuthMessage = (message, isError = false) => {
+      if (googleAuthMessage) {
+        googleAuthMessage.textContent = message;
+        googleAuthMessage.style.color = isError ? "#ffb4ab" : "#c3c0ff";
+      }
+    };
+
+    const isValidEmail = (value) => emailPattern.test(value.trim());
+
+    const setButtonLoading = (button, label) => {
+      if (!button) return () => { };
+      const originalHtml = button.innerHTML;
+      const originalDisabled = button.disabled;
+      button.disabled = true;
+      button.setAttribute("aria-busy", "true");
+      button.innerHTML = `<span class="material-symbols-outlined animate-spin text-[20px]">progress_activity</span><span>${label}</span>`;
+      return () => {
+        button.innerHTML = originalHtml;
+        button.disabled = originalDisabled;
+        button.removeAttribute("aria-busy");
+      };
+    };
+
+    if (signupPasswordToggleButton && signupPasswordInput && signupPasswordToggleIcon) {
+      signupPasswordToggleButton.addEventListener("click", () => {
+        const isVisible = signupPasswordInput.type === "text";
+        signupPasswordInput.type = isVisible ? "password" : "text";
+        signupPasswordToggleIcon.textContent = isVisible ? "visibility" : "visibility_off";
+        signupPasswordToggleButton.setAttribute("aria-label", isVisible ? "Show password" : "Hide password");
+      });
+    }
+
+    const getUserRole = async (user, fallbackRole) => {
+      try {
+        const profileSnap = await getDoc(doc(db, "users", user.uid));
+        if (profileSnap.exists()) {
+          return normalizeRole(profileSnap.data().role || fallbackRole);
+        }
+      } catch (error) {
+        console.warn("Unable to read Firestore role profile:", error);
+      }
+      return normalizeRole(fallbackRole);
+    };
+
+    const syncUserProfile = async (user, role, providerName) => {
+      try {
+        await setDoc(doc(db, "users", user.uid), {
+          uid: user.uid,
+          name: user.displayName || user.email || "",
+          email: user.email || "",
+          role: normalizeRole(role),
+          provider: providerName,
+          updatedAt: serverTimestamp()
+        }, { merge: true });
+      } catch (error) {
+        console.warn("Could not sync profile to Firestore:", error);
+      }
+    };
+
+    const verifyBackend = async (user, role, idToken, providerName) => {
+      const controller = new AbortController();
+      const timeoutId = setTimeout(() => controller.abort(), 2500);
+      try {
+        const response = await fetch(backendUrl, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            "Accept": "application/json",
+            Authorization: `Bearer ${idToken}`
+          },
+          mode: "cors",
+          signal: controller.signal,
+          body: JSON.stringify({
+            token: idToken,
+            idToken,
+            email: user.email,
+            name: user.displayName,
+            role,
+            provider: providerName,
+            user: {
+              uid: user.uid,
+              email: user.email,
+              displayName: user.displayName,
+              photoURL: user.photoURL
+            }
+          })
+        });
+        if (!response.ok) {
+          const text = await response.text();
+          console.warn("Backend verification returned an error:", response.status, text);
+        }
+      } catch (error) {
+        console.warn("Backend verification was skipped:", error);
+      } finally {
+        clearTimeout(timeoutId);
+      }
+    };
+
+    const finishAuth = async (user, role, idToken, providerName, successMessage) => {
+      const resolvedRole = await getUserRole(user, role);
+      await syncUserProfile(user, resolvedRole, providerName);
+      await verifyBackend(user, resolvedRole, idToken, providerName);
+      persistAuthSession(user, resolvedRole, idToken, providerName);
+      setAuthMessage(successMessage);
+      redirectBasedOnRole(resolvedRole);
+    };
+
+    signupForm?.addEventListener("submit", async (event) => {
+      event.preventDefault();
+
+      const firstName = firstNameInput?.value?.trim() || "";
+      const lastName = lastNameInput?.value?.trim() || "";
+      const email = signupEmailInput?.value?.trim() || "";
+      const password = signupPasswordInput?.value || "";
+      const selectedRole = document.getElementById("accountType")?.value || "student";
+
+      if (!firstName || !lastName || !email || !password) {
+        setAuthMessage("Please fill in your name, email, and password.", true);
+        return;
+      }
+
+      if (!isValidEmail(email)) {
+        setAuthMessage("Please enter a valid email address.", true);
+        return;
+      }
+
+      const stopLoading = setButtonLoading(signupSubmitButton, "Creating...");
+      try {
+        setAuthMessage("Creating your account...");
+        const result = await createUserWithEmailAndPassword(auth, email, password);
+        const fullName = `${firstName} ${lastName}`.trim();
+        await updateProfile(result.user, { displayName: fullName });
+        const idToken = await result.user.getIdToken(true);
+        await finishAuth(result.user, selectedRole, idToken, "email", "Account created successfully.");
+      } catch (error) {
+        let message = "Sign-up failed. Please try again.";
+        if (error?.code === "auth/email-already-in-use") {
+          message = "This email is already registered.";
+        } else if (error?.code === "auth/weak-password") {
+          message = "Password should be at least 6 characters.";
+        } else if (error?.code === "auth/invalid-email") {
+          message = "Please enter a valid email address.";
+        }
+        setAuthMessage(message, true);
+        stopLoading();
+      }
+    });
+
+    if (googleSignUpButton) {
+      googleSignUpButton.addEventListener("click", async () => {
+        if (googleSignUpButton.disabled) return;
+        const stopLoading = setButtonLoading(googleSignUpButton, "Signing up...");
+        setAuthMessage("Signing up with Google...");
+
+        try {
+          const result = await signInWithPopup(auth, provider);
+          const user = result.user;
+          const idToken = await user.getIdToken(true);
+          const selectedRole = document.getElementById("accountType")?.value || "student";
+          await finishAuth(user, selectedRole, idToken, "google", "Google sign-up completed successfully.");
+        } catch (error) {
+          setAuthMessage(error.message || "Google sign-up failed.", true);
+          stopLoading();
+        } finally {
+          if (!googleAuthMessage?.textContent?.includes("completed successfully")) {
+            stopLoading();
+          }
+        }
+      });
+    }
+  </script>
+</body>
+
+</html>

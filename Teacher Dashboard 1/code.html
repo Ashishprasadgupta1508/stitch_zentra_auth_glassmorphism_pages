@@ -1,0 +1,659 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Zentra - Teacher Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+  tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        "colors": {
+                "tertiary-fixed-dim": "#ffb68f",
+                "surface-dim": "#d8dae2",
+                "primary": "#4228c8",
+                "on-tertiary": "#ffffff",
+                "error-container": "#ffdad6",
+                "outline": "#787586",
+                "on-surface": "#191c22",
+                "inverse-surface": "#2d3037",
+                "surface-container-high": "#e6e8f0",
+                "on-tertiary-container": "#ffd6c2",
+                "on-secondary-fixed": "#002117",
+                "on-secondary-container": "#167159",
+                "on-primary": "#ffffff",
+                "background": "#f9f9ff",
+                "on-tertiary-fixed-variant": "#773200",
+                "tertiary-container": "#a24700",
+                "secondary-container": "#a0f3d4",
+                "on-surface-variant": "#474555",
+                "on-secondary-fixed-variant": "#00513e",
+                "on-tertiary-fixed": "#331200",
+                "inverse-primary": "#c6bfff",
+                "primary-fixed-dim": "#c6bfff",
+                "outline-variant": "#c8c4d7",
+                "inverse-on-surface": "#eff0f9",
+                "tertiary-fixed": "#ffdbca",
+                "on-primary-container": "#dfdaff",
+                "tertiary": "#7d3500",
+                "surface-container": "#ecedf6",
+                "secondary-fixed": "#a0f3d4",
+                "primary-container": "#5b47e0",
+                "on-error-container": "#93000a",
+                "secondary-fixed-dim": "#84d6b9",
+                "secondary": "#086b53",
+                "surface-variant": "#e1e2ea",
+                "error": "#ba1a1a",
+                "surface-container-low": "#f2f3fc",
+                "surface-container-lowest": "#ffffff",
+                "primary-fixed": "#e4dfff",
+                "on-error": "#ffffff",
+                "on-primary-fixed-variant": "#3f23c5",
+                "surface-tint": "#5843dc",
+                "on-secondary": "#ffffff",
+                "surface-container-highest": "#e1e2ea",
+                "surface-bright": "#f9f9ff",
+                "surface": "#f9f9ff",
+                "on-primary-fixed": "#160066",
+                "on-background": "#191c22"
+        },
+        "borderRadius": {
+                "DEFAULT": "0.125rem",
+                "lg": "0.25rem",
+                "xl": "0.5rem",
+                "full": "0.75rem"
+        },
+        "spacing": {
+                "stack_sm": "8px",
+                "margin_container": "32px",
+                "gutter": "24px",
+                "stack_lg": "24px",
+                "stack_md": "16px",
+                "sidebar_width": "240px"
+        },
+        "fontFamily": {
+                "headline-lg-mobile": [
+                        "Inter"
+                ],
+                "label-md": [
+                        "Inter"
+                ],
+                "body-lg": [
+                        "Inter"
+                ],
+                "headline-lg": [
+                        "Inter"
+                ],
+                "label-sm": [
+                        "Inter"
+                ],
+                "headline-xl": [
+                        "Inter"
+                ],
+                "body-md": [
+                        "Inter"
+                ],
+                "headline-md": [
+                        "Inter"
+                ]
+        },
+        "fontSize": {
+                "headline-lg-mobile": [
+                        "20px",
+                        {
+                                "lineHeight": "28px",
+                                "fontWeight": "600"
+                        }
+                ],
+                "label-md": [
+                        "12px",
+                        {
+                                "lineHeight": "16px",
+                                "letterSpacing": "0.05em",
+                                "fontWeight": "600"
+                        }
+                ],
+                "body-lg": [
+                        "16px",
+                        {
+                                "lineHeight": "24px",
+                                "fontWeight": "400"
+                        }
+                ],
+                "headline-lg": [
+                        "24px",
+                        {
+                                "lineHeight": "32px",
+                                "letterSpacing": "-0.01em",
+                                "fontWeight": "600"
+                        }
+                ],
+                "label-sm": [
+                        "11px",
+                        {
+                                "lineHeight": "14px",
+                                "fontWeight": "500"
+                        }
+                ],
+                "headline-xl": [
+                        "32px",
+                        {
+                                "lineHeight": "40px",
+                                "letterSpacing": "-0.02em",
+                                "fontWeight": "700"
+                        }
+                ],
+                "body-md": [
+                        "14px",
+                        {
+                                "lineHeight": "20px",
+                                "fontWeight": "400"
+                        }
+                ],
+                "headline-md": [
+                        "20px",
+                        {
+                                "lineHeight": "28px",
+                                "fontWeight": "600"
+                        }
+                ]
+        }
+},
+    },
+  }
+</script>
+<style>
+  body {
+    font-family: 'Inter', sans-serif;
+  }
+  .card-lift {
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  .card-lift:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  }
+  .glass-panel {
+    background: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+</style>
+</head>
+<body class="text-white flex h-screen overflow-hidden bg-black" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAThSOw_sGFVWAb43ZzbhXwf4vuOTgw6j1dMKgPPzNbJ6XvhNnDQYmZgsD7krHeyTEoSr4YldkNT_JskbIAIexreu0_DwaWwx0FHdHLZKj-K5vWt_Lno8ZXp5m9SbmpJ_BovC3nboY7z1PTY7n1vZ3Boc0_5qgxbCEIvxNFIbXuIXTDhxEZ3P0A_QrJ81Oj2unCC4XuRiIj65d7_FofwA6UwzAZZYugKk9DXsd-U1XAChEvF2_xIe7b3hrkJVmVGVElAhxrLrnpQ1Qn'); background-size: cover; background-position: center; background-attachment: fixed;">
+<!-- Sidebar -->
+<aside class="fixed left-0 top-0 h-full w-[240px] bg-black/60 backdrop-blur-xl flex flex-col py-stack_lg px-stack_md z-20 hidden md:flex border-r border-white/10 text-body-md font-body-md shadow-2xl">
+<div class="mb-8 px-2">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded bg-secondary flex items-center justify-center shadow-lg shadow-secondary/20">
+<span class="material-symbols-outlined text-white text-xl">school</span>
+</div>
+<div>
+<h1 class="font-headline-md text-headline-md font-bold text-white tracking-wide">Zentra</h1>
+<p class="text-xs text-white/50">Teacher Console</p>
+</div>
+</div>
+<button class="w-full mt-6 bg-secondary text-white py-2 rounded-lg font-label-md flex items-center justify-center gap-2 hover:bg-secondary/90 shadow-lg shadow-secondary/20 transition-all" onclick="toggleModal('createClassroomModal')">
+        + Create Classroom
+      </button>
+</div>
+<nav class="flex-1 overflow-y-auto space-y-1 pr-2 custom-scrollbar">
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-white border-l-4 border-secondary bg-secondary/20 transition-colors" href="#">
+<span class="material-symbols-outlined text-[20px]">home</span>
+<span>Home</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-white/70 hover:text-white hover:bg-white/10 transition-colors" href="#">
+<span class="material-symbols-outlined text-[20px]">person</span>
+<span>My Profile</span>
+</a>
+<a class="flex items-center justify-between px-3 py-2 rounded-lg text-white/70 hover:text-white hover:bg-white/10 transition-colors" href="#">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-[20px]">group</span>
+<span>My Classrooms</span>
+</div>
+<span class="bg-white/10 text-white/90 text-[10px] px-1.5 py-0.5 rounded-full font-bold" id="sidebar-class-count">0</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-white/70 hover:text-white hover:bg-white/10 transition-colors" href="#" onclick="toggleModal('createClassroomModal')">
+<span class="material-symbols-outlined text-[20px]">add_circle</span>
+<span>Create Classroom</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-white/70 hover:text-white hover:bg-white/10 transition-colors" href="#">
+<span class="material-symbols-outlined text-[20px]">settings_applications</span>
+<span>Classroom Management</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-white/70 hover:text-white hover:bg-white/10 transition-colors" href="#">
+<span class="material-symbols-outlined text-[20px]">upload_file</span>
+<span>Upload Material</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-white/70 hover:text-white hover:bg-white/10 transition-colors" href="#">
+<span class="material-symbols-outlined text-[20px]">quiz</span>
+<span>Test Generator</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-white/70 hover:text-white hover:bg-white/10 transition-colors" href="#">
+<span class="material-symbols-outlined text-[20px]">analytics</span>
+<span>Student Analytics</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-white/70 hover:text-white hover:bg-white/10 transition-colors" href="#">
+<span class="material-symbols-outlined text-[20px]">trending_up</span>
+<span>Student Progress</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-white/70 hover:text-white hover:bg-white/10 transition-colors" href="#">
+<span class="material-symbols-outlined text-[20px]">auto_awesome</span>
+<span>AI Insights</span>
+</a>
+</nav>
+<div class="mt-auto pt-4 border-t border-white/10 space-y-1">
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-white/70 hover:text-white hover:bg-white/10 transition-colors" href="#">
+<span class="material-symbols-outlined text-[20px]">settings</span>
+<span>Settings</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-white/70 hover:text-white hover:bg-white/10 transition-colors" href="#">
+<span class="material-symbols-outlined text-[20px]">help</span>
+<span>Help</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-white/70 hover:text-white hover:bg-white/10 transition-colors" href="javascript:void(0)" data-action="logout">
+<span class="material-symbols-outlined text-[20px]">logout</span>
+<span>Logout</span>
+</a>
+</div>
+</aside>
+<!-- Main Content -->
+<main class="flex-1 md:ml-[240px] flex flex-col h-screen overflow-y-auto bg-black/20 backdrop-blur-sm">
+<!-- Top Nav Bar -->
+<header class="bg-black/40 backdrop-blur-xl border-b border-white/10 docked full-width top-0 z-10 sticky flex justify-between items-center h-16 px-gutter">
+<div class="flex items-center gap-4">
+<span class="font-label-md text-label-md text-white/60 uppercase tracking-wider">TEACHER DASHBOARD</span>
+</div>
+<div class="flex items-center gap-6">
+<button class="text-white/70 hover:text-white transition-colors relative">
+<span class="material-symbols-outlined">notifications</span>
+<span class="absolute top-0 right-0 w-2 h-2 bg-error rounded-full shadow-sm"></span>
+</button>
+<div class="flex items-center gap-3 cursor-pointer">
+<div class="w-8 h-8 rounded-full bg-secondary text-white flex items-center justify-center font-bold text-sm shadow-md">
+            E
+          </div>
+</div>
+</div>
+</header>
+<!-- Content Canvas -->
+<div class="p-gutter max-w-7xl mx-auto w-full space-y-8 pb-20">
+<!-- Welcome & Stats -->
+<section class="flex flex-col md:flex-row md:items-end justify-between gap-6 drop-shadow-md">
+<div>
+<h2 class="font-headline-xl text-headline-xl text-white mb-2">Welcome, Educator</h2>
+<p class="font-body-lg text-body-lg text-white/80">Manage your classrooms and track student progress.</p>
+</div>
+<div class="flex gap-3 overflow-x-auto pb-2 md:pb-0">
+<div class="glass-panel px-4 py-2 rounded-full flex items-center gap-2 whitespace-nowrap">
+<span class="material-symbols-outlined text-secondary text-sm">group</span>
+<span class="font-label-md text-label-md text-white/70">Classrooms:</span>
+<span class="font-label-md text-label-md font-bold text-white" id="stat-classrooms">—</span>
+</div>
+<div class="glass-panel px-4 py-2 rounded-full flex items-center gap-2 whitespace-nowrap">
+<span class="material-symbols-outlined text-secondary text-sm">person</span>
+<span class="font-label-md text-label-md text-white/70">Students:</span>
+<span class="font-label-md text-label-md font-bold text-white">—</span>
+</div>
+<div class="glass-panel px-4 py-2 rounded-full flex items-center gap-2 whitespace-nowrap">
+<span class="material-symbols-outlined text-secondary text-sm">quiz</span>
+<span class="font-label-md text-label-md text-white/70">Tests:</span>
+<span class="font-label-md text-label-md font-bold text-white">—</span>
+</div>
+</div>
+</section>
+<!-- Classrooms Header -->
+<section>
+<div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-6">
+<h3 class="font-headline-lg text-headline-lg text-white flex items-center gap-2 drop-shadow-md">
+            My Classrooms 
+            <span class="glass-panel text-white/90 text-sm px-2 py-0.5 rounded-full" id="grid-class-count">0</span>
+</h3>
+<div class="flex gap-3 w-full sm:w-auto">
+<div class="relative flex-1 sm:w-64">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-white/50 text-[20px]">search</span>
+<input class="w-full pl-10 pr-4 py-2 rounded-lg border border-white/20 bg-black/40 backdrop-blur-md text-white focus:border-secondary focus:ring-1 focus:ring-secondary placeholder-white/50 shadow-sm" placeholder="Search classrooms..." type="text"/>
+</div>
+<button class="bg-secondary text-white px-4 py-2 rounded-lg font-label-md flex items-center gap-2 hover:bg-secondary/90 transition-all shadow-lg shadow-secondary/20 whitespace-nowrap" onclick="toggleModal('createClassroomModal')">
+<span class="material-symbols-outlined text-[18px]">add</span>
+<span class="hidden sm:inline">Create</span>
+</button>
+</div>
+</div>
+<!-- Classrooms Grid / Empty State -->
+<div class="relative min-h-[300px]" id="classrooms-container">
+<!-- Empty State -->
+<div class="absolute inset-0 flex flex-col items-center justify-center glass-panel rounded-xl border border-white/20 border-dashed" id="empty-state">
+<div class="w-16 h-16 bg-white/10 rounded-full flex items-center justify-center mb-4">
+<span class="material-symbols-outlined text-white/70 text-3xl">grid_view</span>
+</div>
+<h4 class="font-headline-md text-headline-md text-white mb-2">No classrooms yet</h4>
+<p class="font-body-md text-body-md text-white/70 mb-6 text-center max-w-md">Create your first classroom to start adding students, managing materials, and tracking progress.</p>
+<button class="bg-white/10 border border-white/30 text-white px-6 py-2 rounded-lg font-label-md hover:bg-white/20 transition-colors backdrop-blur-sm" onclick="toggleModal('createClassroomModal')">
+              Create Your First Classroom
+            </button>
+<button class="mt-4 text-xs text-white/50 hover:text-white underline transition-colors" onclick="toggleExampleData()">Toggle Example State (Demo)</button>
+</div>
+<!-- Grid State (Hidden by default) -->
+<div class="hidden grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6" id="grid-state">
+<!-- Example Card -->
+<div class="glass-panel rounded-xl border border-white/10 overflow-hidden card-lift aspect-square flex flex-col relative group">
+<div class="h-2 bg-secondary w-full"></div>
+<div class="absolute top-4 right-4">
+<button class="text-white/70 hover:text-white p-1 rounded-full hover:bg-white/10 transition-colors" onclick="toggleDropdown(event, 'menu-1')">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+<div class="hidden absolute right-0 mt-1 w-48 bg-[#1A1D23] border border-white/10 rounded-lg shadow-xl z-10 overflow-hidden" id="menu-1">
+<button class="w-full text-left px-4 py-2 text-sm text-white/90 hover:bg-white/10 flex items-center gap-2" onclick="openShareCode('MATH-101')">
+<span class="material-symbols-outlined text-[16px]">share</span> Share Code
+                  </button>
+<button class="w-full text-left px-4 py-2 text-sm text-white/90 hover:bg-white/10 flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px]">edit</span> Edit Details
+                  </button>
+<button class="w-full text-left px-4 py-2 text-sm hover:bg-error/20 text-error flex items-center gap-2 border-t border-white/10">
+<span class="material-symbols-outlined text-[16px]">delete</span> Delete
+                  </button>
+</div>
+</div>
+<div class="p-6 flex-1 flex flex-col items-center justify-center text-center">
+<div class="w-16 h-16 rounded-full bg-secondary/20 text-secondary flex items-center justify-center font-headline-xl mb-4 shadow-inner">
+                  A
+                </div>
+<h4 class="font-headline-md text-headline-md text-white line-clamp-1 w-full px-2" title="Advanced Mathematics">Advanced Mathematics</h4>
+<p class="font-body-md text-body-md text-white/60 mt-1">Created by You</p>
+</div>
+<div class="border-t border-white/10 bg-black/20 p-4 flex justify-between items-center text-xs text-white/50">
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">group</span> —
+                </div>
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">description</span> —
+                </div>
+</div>
+</div>
+<div class="glass-panel border border-white/20 border-dashed rounded-xl aspect-square flex flex-col items-center justify-center cursor-pointer hover:bg-white/10 transition-colors" onclick="toggleModal('createClassroomModal')">
+<span class="material-symbols-outlined text-white/50 text-3xl mb-2">add_circle</span>
+<span class="font-label-md text-white/70">Create New</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Bottom Row -->
+<section class="grid grid-cols-1 lg:grid-cols-2 gap-6 pt-4">
+<!-- Recent Activity Skeleton -->
+<div class="glass-panel rounded-xl p-6">
+<h3 class="font-headline-md text-headline-md text-white mb-6 flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary">history</span> Recent Activity
+          </h3>
+<div class="space-y-4">
+<div class="flex items-start gap-4 animate-pulse">
+<div class="w-8 h-8 rounded-full bg-white/10 shrink-0"></div>
+<div class="flex-1 space-y-2">
+<div class="h-4 bg-white/10 rounded w-3/4"></div>
+<div class="h-3 bg-white/10 rounded w-1/2"></div>
+</div>
+</div>
+<div class="flex items-start gap-4 animate-pulse">
+<div class="w-8 h-8 rounded-full bg-white/10 shrink-0"></div>
+<div class="flex-1 space-y-2">
+<div class="h-4 bg-white/10 rounded w-5/6"></div>
+<div class="h-3 bg-white/10 rounded w-1/3"></div>
+</div>
+</div>
+<div class="flex items-start gap-4 animate-pulse">
+<div class="w-8 h-8 rounded-full bg-white/10 shrink-0"></div>
+<div class="flex-1 space-y-2">
+<div class="h-4 bg-white/10 rounded w-2/3"></div>
+<div class="h-3 bg-white/10 rounded w-1/4"></div>
+</div>
+</div>
+</div>
+</div>
+<!-- AI Insights Panel -->
+<div class="glass-panel rounded-xl p-6 relative overflow-hidden flex flex-col border border-secondary/30">
+<div class="absolute top-0 right-0 w-48 h-48 bg-secondary/20 rounded-full blur-3xl -mr-16 -mt-16 pointer-events-none"></div>
+<div class="flex justify-between items-start mb-6 relative z-10">
+<h3 class="font-headline-md text-headline-md text-white flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary">auto_awesome</span> 
+              AI Insights
+            </h3>
+<span class="text-[10px] uppercase font-bold bg-secondary/20 text-secondary px-2 py-1 rounded-full border border-secondary/30 shadow-sm backdrop-blur-md">AI Powered</span>
+</div>
+<div class="flex-1 flex items-center justify-center text-center py-8 relative z-10">
+<div>
+<p class="font-body-md text-body-md text-white/80 mb-4 drop-shadow-sm">Your AI assistant is ready to analyze student performance or suggest lesson plans.</p>
+</div>
+</div>
+<div class="relative z-10 mt-auto">
+<div class="relative">
+<input class="w-full pl-4 pr-12 py-3 rounded-xl border border-white/20 bg-black/40 backdrop-blur-md text-white placeholder-white/50 focus:border-secondary focus:ring-1 focus:ring-secondary shadow-inner" placeholder="Ask your AI assistant..." type="text"/>
+<button class="absolute right-2 top-1/2 -translate-y-1/2 w-8 h-8 rounded-lg bg-secondary text-white flex items-center justify-center hover:bg-secondary/90 transition-all shadow-md">
+<span class="material-symbols-outlined text-[18px]">send</span>
+</button>
+</div>
+</div>
+</div>
+</section>
+</div>
+</main>
+<!-- Modals Overlay -->
+<div class="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4 transition-opacity" id="modalOverlay" onclick="closeModalsOnBackdrop(event)">
+<!-- Create Classroom Modal -->
+<div class="bg-[#1A1D23] rounded-xl shadow-2xl border border-white/10 w-full max-w-md hidden transform scale-95 opacity-0 transition-all duration-200" id="createClassroomModal" onclick="event.stopPropagation()">
+<div class="p-6 border-b border-white/10 flex justify-between items-center">
+<h2 class="font-headline-md text-headline-md text-white">Create Classroom</h2>
+<button class="text-white/50 hover:text-white transition-colors" onclick="closeAllModals()">
+<span class="material-symbols-outlined">close</span>
+</button>
+</div>
+<div class="p-6 space-y-4">
+<div>
+<label class="block font-label-md text-white/70 mb-1">Classroom Name *</label>
+<input class="w-full px-3 py-2 border border-white/20 bg-black/40 text-white rounded-lg focus:border-secondary focus:ring-1 focus:ring-secondary placeholder-white/30" placeholder="e.g. Algebra 101" type="text"/>
+</div>
+<div>
+<label class="block font-label-md text-white/70 mb-1">Subject</label>
+<input class="w-full px-3 py-2 border border-white/20 bg-black/40 text-white rounded-lg focus:border-secondary focus:ring-1 focus:ring-secondary placeholder-white/30" placeholder="e.g. Mathematics" type="text"/>
+</div>
+<div>
+<label class="block font-label-md text-white/70 mb-1">Description</label>
+<textarea class="w-full px-3 py-2 border border-white/20 bg-black/40 text-white rounded-lg focus:border-secondary focus:ring-1 focus:ring-secondary resize-none placeholder-white/30" placeholder="Optional brief description..." rows="3"></textarea>
+</div>
+<div>
+<label class="block font-label-md text-white/70 mb-2">Theme Color</label>
+<div class="flex gap-3">
+<button class="w-8 h-8 rounded-full bg-[#5B47E0] ring-2 ring-offset-2 ring-offset-[#1A1D23] ring-secondary transition-all color-swatch" onclick="selectColor(this)"></button>
+<button class="w-8 h-8 rounded-full bg-[#086B53] hover:scale-110 transition-transform color-swatch" onclick="selectColor(this)"></button>
+<button class="w-8 h-8 rounded-full bg-[#C45B2A] hover:scale-110 transition-transform color-swatch" onclick="selectColor(this)"></button>
+<button class="w-8 h-8 rounded-full bg-[#2A6CC4] hover:scale-110 transition-transform color-swatch" onclick="selectColor(this)"></button>
+<button class="w-8 h-8 rounded-full bg-[#8B4C9E] hover:scale-110 transition-transform color-swatch" onclick="selectColor(this)"></button>
+</div>
+</div>
+</div>
+<div class="p-6 border-t border-white/10 flex justify-end gap-3 bg-black/20 rounded-b-xl">
+<button class="px-4 py-2 font-label-md text-white/70 hover:bg-white/10 rounded-lg transition-colors" onclick="closeAllModals()">Cancel</button>
+<button class="px-4 py-2 font-label-md bg-secondary text-white rounded-lg hover:bg-secondary/90 transition-colors shadow-md min-w-[100px]" id="create-btn" onclick="simulateCreation()">
+          Create
+        </button>
+</div>
+</div>
+<!-- Share Code Modal -->
+<div class="bg-[#1A1D23] rounded-xl shadow-2xl border border-white/10 w-full max-w-sm hidden transform scale-95 opacity-0 transition-all duration-200 text-center" id="shareCodeModal" onclick="event.stopPropagation()">
+<div class="p-6 relative">
+<button class="absolute top-4 right-4 text-white/50 hover:text-white transition-colors" onclick="closeAllModals()">
+<span class="material-symbols-outlined">close</span>
+</button>
+<div class="w-12 h-12 bg-white/10 rounded-full flex items-center justify-center mx-auto mb-4 mt-2">
+<span class="material-symbols-outlined text-white/80">share</span>
+</div>
+<h2 class="font-headline-md text-headline-md text-white mb-2">Share Classroom Code</h2>
+<p class="font-body-md text-body-md text-white/70 mb-6">Students can use this code to join your classroom directly.</p>
+<div class="bg-black/40 p-4 rounded-lg border border-white/20 border-dashed mb-6">
+<span class="font-mono text-2xl font-bold tracking-widest text-secondary" id="display-code">MATH-101</span>
+</div>
+<button class="w-full px-4 py-2 font-label-md bg-secondary text-white rounded-lg hover:bg-secondary/90 transition-all flex items-center justify-center gap-2 shadow-md" id="copy-btn" onclick="copyCode()">
+<span class="material-symbols-outlined text-[18px]">content_copy</span>
+<span>Copy Code</span>
+</button>
+</div>
+</div>
+</div>
+<script>
+    // Simple state management for vanilla HTML/JS mimicking React behavior
+    let hasData = false;
+
+    function toggleExampleData() {
+      hasData = !hasData;
+      const emptyState = document.getElementById('empty-state');
+      const gridState = document.getElementById('grid-state');
+      const countDisplays = [document.getElementById('grid-class-count'), document.getElementById('sidebar-class-count'), document.getElementById('stat-classrooms')];
+      
+      if (hasData) {
+        emptyState.classList.add('hidden');
+        gridState.classList.remove('hidden');
+        countDisplays.forEach(el => el.textContent = '1');
+      } else {
+        emptyState.classList.remove('hidden');
+        gridState.classList.add('hidden');
+        countDisplays.forEach(el => el.textContent = '0');
+        document.getElementById('stat-classrooms').textContent = '—';
+      }
+    }
+
+    // Modal Logic
+    function toggleModal(modalId) {
+      const overlay = document.getElementById('modalOverlay');
+      const modal = document.getElementById(modalId);
+      
+      if (overlay.classList.contains('hidden')) {
+        // Open
+        overlay.classList.remove('hidden');
+        modal.classList.remove('hidden');
+        // Slight delay for animation
+        setTimeout(() => {
+          modal.classList.remove('scale-95', 'opacity-0');
+          modal.classList.add('scale-100', 'opacity-100');
+        }, 10);
+      } else {
+        closeAllModals();
+      }
+    }
+
+    function closeAllModals() {
+      const overlay = document.getElementById('modalOverlay');
+      const modals = [document.getElementById('createClassroomModal'), document.getElementById('shareCodeModal')];
+      
+      modals.forEach(modal => {
+        if (!modal.classList.contains('hidden')) {
+          modal.classList.remove('scale-100', 'opacity-100');
+          modal.classList.add('scale-95', 'opacity-0');
+          setTimeout(() => {
+            modal.classList.add('hidden');
+            overlay.classList.add('hidden');
+          }, 200); // match duration
+        }
+      });
+    }
+
+    function closeModalsOnBackdrop(e) {
+      if (e.target.id === 'modalOverlay') {
+        closeAllModals();
+      }
+    }
+
+    // Dropdown Logic
+    function toggleDropdown(e, menuId) {
+      e.stopPropagation();
+      const menu = document.getElementById(menuId);
+      const isHidden = menu.classList.contains('hidden');
+      
+      // Close all other dropdowns first (simplified)
+      document.querySelectorAll('[id^="menu-"]').forEach(m => m.classList.add('hidden'));
+      
+      if (isHidden) {
+        menu.classList.remove('hidden');
+      }
+    }
+
+    // Close dropdowns on outside click
+    document.addEventListener('click', () => {
+      document.querySelectorAll('[id^="menu-"]').forEach(m => m.classList.add('hidden'));
+    });
+
+    // Form interactions
+    function selectColor(btn) {
+      document.querySelectorAll('.color-swatch').forEach(b => {
+        b.classList.remove('ring-2', 'ring-offset-2', 'ring-offset-[#1A1D23]', 'ring-secondary');
+        b.classList.add('hover:scale-110');
+      });
+      btn.classList.add('ring-2', 'ring-offset-2', 'ring-offset-[#1A1D23]', 'ring-secondary');
+      btn.classList.remove('hover:scale-110');
+    }
+
+    function simulateCreation() {
+      const btn = document.getElementById('create-btn');
+      const originalText = btn.innerHTML;
+      btn.innerHTML = '<span class="material-symbols-outlined animate-spin text-[18px]">progress_activity</span> Creating...';
+      btn.disabled = true;
+      btn.classList.add('opacity-70');
+      
+      setTimeout(() => {
+        btn.innerHTML = originalText;
+        btn.disabled = false;
+        btn.classList.remove('opacity-70');
+        closeAllModals();
+        if(!hasData) toggleExampleData();
+      }, 1500);
+    }
+
+    function openShareCode(code) {
+      document.getElementById('display-code').textContent = code;
+      toggleModal('shareCodeModal');
+    }
+
+    function copyCode() {
+      const btn = document.getElementById('copy-btn');
+      const originalHtml = btn.innerHTML;
+      
+      btn.innerHTML = '<span class="material-symbols-outlined text-[18px]">check</span> Copied!';
+      btn.classList.remove('bg-secondary');
+      btn.classList.add('bg-primary', 'text-white');
+      
+      setTimeout(() => {
+        btn.innerHTML = originalHtml;
+        btn.classList.add('bg-secondary');
+        btn.classList.remove('bg-primary', 'text-white');
+      }, 1500);
+    }
+  </script>
+<script src="../auth-router.js"></script>
+<script>
+  (function protectTeacherDashboard() {
+    const authState = window.ZentraAuth.protectDashboard("educator");
+    if (!authState) {
+      return;
+    }
+
+    const displayName = authState?.displayName || authState?.email || "Educator";
+    const heading = document.querySelector("[data-dashboard-name]");
+    if (heading) {
+      heading.textContent = `Welcome back, ${displayName}`;
+    }
+  })();
+</script>
+<script>
+  document.querySelectorAll('[data-action="logout"]').forEach((link) => {
+    link.addEventListener("click", (event) => {
+      event.preventDefault();
+      window.ZentraAuth.clearAuthSession();
+      window.ZentraAuth.resetUserState();
+      window.location.href = "../zentra_login/code.html";
+    });
+  });
+</script>
+</body></html>

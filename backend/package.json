@@ -1,0 +1,14 @@
+{
+  "name": "zentra-google-backend",
+  "version": "1.0.0",
+  "description": "Simple JSON backend for Firebase Google auth verification",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "cors": "^2.8.0",
+    "express": "^4.19.2",
+    "firebase-admin": "^12.1.0"
+  }
+}

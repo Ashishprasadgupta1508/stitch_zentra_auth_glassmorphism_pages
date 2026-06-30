@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Sign In - Zentra</title>
+<!-- Google Fonts & Material Symbols -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&amp;family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Design System Configuration -->
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-surface": "#e4e1ee",
+                    "secondary-fixed": "#e2dfff",
+                    "error-container": "#93000a",
+                    "on-tertiary-container": "#ffd2be",
+                    "tertiary-fixed-dim": "#ffb695",
+                    "on-tertiary-fixed-variant": "#7b2f00",
+                    "on-primary-fixed": "#0f0069",
+                    "secondary": "#c3c0ff",
+                    "surface-bright": "#393842",
+                    "surface-container-lowest": "#0e0d16",
+                    "on-secondary-fixed": "#140f54",
+                    "primary-fixed-dim": "#c3c0ff",
+                    "on-primary": "#1d00a5",
+                    "secondary-container": "#413f82",
+                    "tertiary-fixed": "#ffdbcc",
+                    "on-tertiary-fixed": "#351000",
+                    "primary-fixed": "#e2dfff",
+                    "error": "#ffb4ab",
+                    "primary": "#c3c0ff",
+                    "primary-container": "#4f46e5",
+                    "secondary-fixed-dim": "#c3c0ff",
+                    "on-primary-fixed-variant": "#3323cc",
+                    "surface-variant": "#35343e",
+                    "on-background": "#e4e1ee",
+                    "on-surface-variant": "#c7c4d8",
+                    "outline-variant": "#464555",
+                    "background": "#13121b",
+                    "tertiary-container": "#a44100",
+                    "on-primary-container": "#dad7ff",
+                    "surface-container": "#1f1f28",
+                    "surface-tint": "#c3c0ff",
+                    "outline": "#918fa1",
+                    "surface-container-low": "#1b1b24",
+                    "on-error-container": "#ffdad6",
+                    "on-secondary-container": "#b0aef9",
+                    "on-error": "#690005",
+                    "tertiary": "#ffb695",
+                    "on-tertiary": "#571f00",
+                    "surface": "#13121b",
+                    "inverse-primary": "#4d44e3",
+                    "on-secondary-fixed-variant": "#413f82",
+                    "inverse-on-surface": "#302f39",
+                    "surface-dim": "#13121b",
+                    "inverse-surface": "#e4e1ee",
+                    "on-secondary": "#2a276a",
+                    "surface-container-high": "#2a2933",
+                    "surface-container-highest": "#35343e"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "card-gap": "24px",
+                    "unit": "8px",
+                    "container-padding": "24px",
+                    "gutter": "20px"
+            },
+            "fontFamily": {
+                    "label-caps": ["Plus Jakarta Sans", "sans-serif"],
+                    "display-lg-mobile": ["DM Serif Display", "serif"],
+                    "title-lg": ["Plus Jakarta Sans", "sans-serif"],
+                    "body-main": ["Plus Jakarta Sans", "sans-serif"],
+                    "display-lg": ["DM Serif Display", "serif"],
+                    "headline-md": ["DM Serif Display", "serif"]
+            },
+            "fontSize": {
+                    "label-caps": ["12px", { "lineHeight": "16px", "letterSpacing": "0.08em", "fontWeight": "700" }],
+                    "display-lg-mobile": ["36px", { "lineHeight": "1.1", "fontWeight": "400" }],
+                    "title-lg": ["20px", { "lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                    "body-main": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                    "display-lg": ["48px", { "lineHeight": "1.1", "fontWeight": "400" }],
+                    "headline-md": ["32px", { "lineHeight": "1.2", "fontWeight": "400" }]
+            }
+          }
+        }
+      }
+    </script>
+<style>
+        /* Custom Input Styles based on Design Guidance */
+        .glass-input-well {
+            background-color: rgba(255, 255, 255, 0.03);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+        .glass-input-well:focus-within {
+            border-bottom-color: #4F46E5;
+            background-color: rgba(79, 70, 229, 0.05);
+            box-shadow: inset 0 -2px 15px -5px rgba(79, 70, 229, 0.3);
+        }
+        
+        /* Optical Refraction for Floating Cards */
+        .glass-card-floating {
+            background-color: rgba(15, 12, 35, 0.55);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: inset 0 1px 0 rgba(255,255,255,0.1), 0 25px 50px -12px rgba(0,0,0,0.5);
+        }
+        
+        /* Primary Button Glow */
+        .btn-primary-glow {
+            transition: all 0.3s ease;
+        }
+        .btn-primary-glow:hover {
+            box-shadow: 0 0 20px rgba(79, 70, 229, 0.6);
+            transform: translateY(-1px);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body-main min-h-screen relative overflow-x-hidden antialiased selection:bg-primary-container selection:text-white">
+<!-- Atmospheric Background with Overlays -->
+<div class="fixed inset-0 -z-10 w-full h-full">
+<div class="absolute inset-0 bg-cover bg-center w-full h-full" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBeAQtgQ2XpWU91nkPNQENfGgp6hftXgdUGJbYGV4YWqvgiYaXX1MOuu5RyIvNuzTKDEPhk_Uu5bq1EOUZrNWdhbiMB6pUZbBAAqZiSw8_kcS_Oxk769jBkre8_eHk-3QQ0sdmu20kCv0zmnvuXL41qME-b51uf3EkO-lchGqBX40NwV-4vB-l0jtim91gJm6epG1j_CtspobbQAgyD0710ZaEV18C2dps0ICUzg06U7sv8YUwK8zLbo_4fcz1MnGXztVHuG2rK-yUA');"></div>
+<div class="absolute inset-0 bg-[#0a0814] opacity-55 mix-blend-multiply"></div>
+<!-- Subtle Vignette to focus center -->
+<div class="absolute inset-0 bg-radial-gradient from-transparent via-[#0a0814]/40 to-[#0a0814]/90"></div>
+</div>
+<!-- Minimal Top Bar (Transactional Context) -->
+<header class="absolute top-0 left-0 w-full px-container-padding py-6 z-20 flex justify-between items-center max-w-7xl mx-auto right-0">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary-container" style="font-variation-settings: 'FILL' 1;">menu_book</span>
+<span class="font-headline-md text-title-lg font-bold tracking-tight text-white">Zentra</span>
+</div>
+<div>
+<a class="text-body-main text-on-surface-variant hover:text-primary transition-colors duration-300" href="../zentra_sign_up/code.html">New to Zentra? Sign up free</a>
+</div>
+</header>
+<!-- Main Content Container -->
+<main class="min-h-screen flex items-center justify-center px-container-padding py-24 relative z-10 w-full">
+<div class="max-w-7xl w-full mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24 items-center">
+<!-- Left Side: Value Proposition (Hidden on Mobile) -->
+<div class="hidden lg:flex flex-col justify-center max-w-lg">
+<h1 class="font-display-lg text-display-lg text-white mb-6 leading-tight">Study Smarter.<br/><span class="text-primary-container text-opacity-90">Score Higher.</span></h1>
+<p class="font-body-main text-body-main text-on-surface-variant mb-10 text-lg leading-relaxed">
+                    Your AI learning companion that turns scattered notes into a clear, focused path to academic success.
+                </p>
+<ul class="space-y-6">
+<li class="flex items-start gap-4 group">
+<div class="mt-1 flex-shrink-0 w-6 h-6 rounded-full bg-primary-container/20 flex items-center justify-center border border-primary-container/30 group-hover:bg-primary-container/40 transition-colors">
+<span class="material-symbols-outlined text-[16px] text-primary" style="font-variation-settings: 'FILL' 1;">check</span>
+</div>
+<span class="font-body-main text-body-main text-on-surface text-opacity-90">Organize complex topics with dynamic mind maps.</span>
+</li>
+<li class="flex items-start gap-4 group">
+<div class="mt-1 flex-shrink-0 w-6 h-6 rounded-full bg-primary-container/20 flex items-center justify-center border border-primary-container/30 group-hover:bg-primary-container/40 transition-colors">
+<span class="material-symbols-outlined text-[16px] text-primary" style="font-variation-settings: 'FILL' 1;">check</span>
+</div>
+<span class="font-body-main text-body-main text-on-surface text-opacity-90">Generate practice quizzes tailored to your syllabus.</span>
+</li>
+<li class="flex items-start gap-4 group">
+<div class="mt-1 flex-shrink-0 w-6 h-6 rounded-full bg-primary-container/20 flex items-center justify-center border border-primary-container/30 group-hover:bg-primary-container/40 transition-colors">
+<span class="material-symbols-outlined text-[16px] text-primary" style="font-variation-settings: 'FILL' 1;">check</span>
+</div>
+<span class="font-body-main text-body-main text-on-surface text-opacity-90">Track progress through deep, focused study sessions.</span>
+</li>
+</ul>
+</div>
+<!-- Right Side: Login Card -->
+<div class="w-full max-w-[460px] mx-auto lg:mx-0 lg:ml-auto">
+<div class="glass-card-floating rounded-[24px] p-8 md:p-10 relative overflow-hidden">
+<!-- Subtle top inner glow for catch-light effect -->
+<div class="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-white/20 to-transparent"></div>
+<div class="mb-10 text-center lg:text-left">
+<h2 class="font-headline-md text-headline-md text-white mb-2">Welcome Back</h2>
+<p class="font-body-main text-body-main text-on-surface-variant">Sign in to continue your learning journey.</p>
+</div>
+<div class="mb-6">
+  <div class="flex bg-white/5 p-1 rounded-full border border-white/10">
+    <button id="studentLoginRole" class="role-toggle flex-1 py-2 text-center rounded-full bg-primary-container/20 text-primary-container font-title-lg text-title-lg transition-all shadow-[0_0_15px_rgba(79,70,229,0.3)] border border-primary-container/30" type="button" aria-pressed="true">
+      Student
+    </button>
+    <button id="educatorLoginRole" class="role-toggle flex-1 py-2 text-center rounded-full text-on-surface-variant font-title-lg text-title-lg hover:text-on-surface transition-colors" type="button" aria-pressed="false">
+      Educator
+    </button>
+  </div>
+  <input id="loginAccountType" name="accountType" type="hidden" value="student"/>
+</div>
+<form id="loginForm" class="space-y-6">
+<!-- Email Input -->
+<div class="space-y-2">
+<label class="font-label-caps text-label-caps text-on-surface-variant block ml-1" for="loginEmail">Email Address</label>
+<div class="relative glass-input-well rounded-xl overflow-hidden group">
+<div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none text-on-surface-variant group-focus-within:text-primary transition-colors">
+<span class="material-symbols-outlined text-[20px] font-light">mail</span>
+</div>
+<input class="w-full bg-transparent border-none text-on-surface font-body-main text-body-main pl-12 pr-4 py-4 focus:ring-0 placeholder:text-on-surface-variant/50" id="loginEmail" name="email" placeholder="student@university.edu" required="" type="email"/>
+</div>
+</div>
+<!-- Password Input -->
+<div class="space-y-2">
+<label class="font-label-caps text-label-caps text-on-surface-variant block ml-1" for="loginPassword">Password</label>
+<div class="relative glass-input-well rounded-xl overflow-hidden group">
+<div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none text-on-surface-variant group-focus-within:text-primary transition-colors">
+<span class="material-symbols-outlined text-[20px] font-light">lock</span>
+</div>
+<input class="w-full bg-transparent border-none text-on-surface font-body-main text-body-main pl-12 pr-12 py-4 focus:ring-0 placeholder:text-on-surface-variant/50" id="loginPassword" name="password" placeholder="••••••••" required="" type="password"/>
+<button id="loginPasswordToggle" class="absolute inset-y-0 right-0 pr-4 flex items-center text-on-surface-variant hover:text-white transition-colors focus:outline-none" type="button" aria-label="Show password">
+<span id="loginPasswordToggleIcon" class="material-symbols-outlined text-[20px]">visibility_off</span>
+</button>
+</div>
+</div>
+<!-- Remember & Forgot -->
+<div class="flex items-center justify-between pt-2">
+<div class="flex items-center">
+<input class="h-4 w-4 rounded border-white/20 bg-white/5 text-primary-container focus:ring-primary-container/50 focus:ring-offset-background cursor-pointer" id="remember-me" name="remember-me" type="checkbox"/>
+<label class="ml-2 block font-body-main text-sm text-on-surface-variant cursor-pointer" for="remember-me">Remember me</label>
+</div>
+<div class="text-sm">
+<a class="font-body-main text-primary hover:text-primary-container transition-colors" href="#">Forgot password?</a>
+</div>
+</div>
+<!-- Submit Button -->
+<div class="pt-4">
+<button class="w-full flex justify-center py-4 px-4 border border-transparent rounded-xl shadow-sm font-title-lg text-title-lg text-white bg-primary-container btn-primary-glow focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-background focus:ring-primary-container" type="submit">
+                                Sign In to Zentra
+                            </button>
+</div>
+</form>
+<!-- Divider -->
+<div class="mt-8 relative">
+<div aria-hidden="true" class="absolute inset-0 flex items-center">
+<div class="w-full border-t border-white/10"></div>
+</div>
+<div class="relative flex justify-center">
+<span class="px-4 font-label-caps text-label-caps text-on-surface-variant bg-[#0f0c23]">OR</span>
+</div>
+</div>
+<!-- Google Auth -->
+<div class="mt-8">
+<button id="googleLogin" class="w-full inline-flex justify-center items-center py-3.5 px-4 border border-white/10 rounded-xl bg-white/5 font-body-main text-body-main text-on-surface hover:bg-white/10 hover:border-white/20 transition-all duration-200 active:scale-[0.98]" type="button">
+<svg class="h-5 w-5 mr-3" fill="none" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<path d="M22.56 12.25C22.56 11.47 22.49 10.72 22.36 10H12V14.26H17.92C17.66 15.63 16.88 16.8 15.71 17.58V20.34H19.28C21.36 18.42 22.56 15.6 22.56 12.25Z" fill="#4285F4"></path>
+<path d="M12 23C14.97 23 17.46 22.02 19.28 20.34L15.71 17.58C14.73 18.24 13.48 18.64 12 18.64C9.13 18.64 6.7 16.7 5.84 14.09H2.17V16.94C4.01 20.61 7.82 23 12 23Z" fill="#34A853"></path>
+<path d="M5.84 14.09C5.62 13.43 5.5 12.73 5.5 12C5.5 11.27 5.62 10.57 5.84 9.91V7.06H2.17C1.41 8.57 1 10.24 1 12C1 13.76 1.41 15.43 2.17 16.94L5.84 14.09Z" fill="#FBBC05"></path>
+<path d="M12 5.38C13.62 5.38 15.06 5.94 16.21 7.03L19.37 3.87C17.46 2.09 14.97 1 12 1C7.82 1 4.01 3.39 2.17 7.06L5.84 9.91C6.7 7.3 9.13 5.38 12 5.38Z" fill="#EA4335"></path>
+</svg>
+                            Continue with Google
+                        </button>
+<p id="googleAuthMessage" class="mt-3 text-center text-sm text-on-surface-variant"></p>
+</div>
+<!-- Footer Link Mobile (Optional duplicate for emphasis if needed, but keeping as requested) -->
+<div class="mt-8 text-center md:hidden">
+<p class="font-body-main text-sm text-on-surface-variant">
+                            Don't have an account? <a class="text-primary hover:text-white transition-colors" href="#">Create one free →</a>
+</p>
+</div>
+</div>
+</div>
+</div>
+</main>
+<script src="../auth-router.js"></script>
+<script>
+  const loginRoleButtons = document.querySelectorAll('.role-toggle');
+  const loginAccountTypeInput = document.getElementById('loginAccountType');
+
+  const setActiveLoginRole = (role) => {
+    loginRoleButtons.forEach((button) => {
+      const isActive = button.id === `${role}LoginRole`;
+      button.classList.toggle('bg-primary-container/20', isActive);
+      button.classList.toggle('text-primary-container', isActive);
+      button.classList.toggle('shadow-[0_0_15px_rgba(79,70,229,0.3)]', isActive);
+      button.classList.toggle('border', isActive);
+      button.classList.toggle('border-primary-container/30', isActive);
+      button.classList.toggle('text-on-surface-variant', !isActive);
+      button.classList.toggle('hover:text-on-surface', !isActive);
+      button.setAttribute('aria-pressed', isActive ? 'true' : 'false');
+    });
+
+    if (loginAccountTypeInput) {
+      loginAccountTypeInput.value = role;
+    }
+  };
+
+  loginRoleButtons.forEach((button) => {
+    button.addEventListener('click', () => {
+      const role = button.id === 'educatorLoginRole' ? 'educator' : 'student';
+      setActiveLoginRole(role);
+    });
+  });
+
+  setActiveLoginRole('student');
+</script>
+<script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.13.1/firebase-app.js";
+  import { getAuth, GoogleAuthProvider, signInWithPopup, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.13.1/firebase-auth.js";
+  import { getFirestore, doc, getDoc, setDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.13.1/firebase-firestore.js";
+
+  const firebaseConfig = {
+    apiKey: "AIzaSyDparLYEjKeU6e_2AsIvhwudzy9NGDLYx8",
+    authDomain: "zentra-8a600.firebaseapp.com",
+    projectId: "zentra-8a600",
+    storageBucket: "zentra-8a600.firebasestorage.app",
+    messagingSenderId: "716087370710",
+    appId: "1:716087370710:web"
+  };
+
+  const app = initializeApp(firebaseConfig);
+  const auth = getAuth(app);
+  const db = getFirestore(app);
+  const provider = new GoogleAuthProvider();
+
+  provider.setCustomParameters({ prompt: "select_account" });
+
+  const loginForm = document.getElementById("loginForm");
+  const loginEmailInput = document.getElementById("loginEmail");
+  const loginPasswordInput = document.getElementById("loginPassword");
+  const loginPasswordToggleButton = document.getElementById("loginPasswordToggle");
+  const loginPasswordToggleIcon = document.getElementById("loginPasswordToggleIcon");
+  const googleLoginButton = document.getElementById("googleLogin");
+  const googleAuthMessage = document.getElementById("googleAuthMessage");
+  const backendUrl = window.__BACKEND_URL__ || "http://127.0.0.1:5000/api/verify-user/";
+  const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+  const persistAuthSession = (user, role, idToken, providerName) => window.ZentraAuth.saveAuthSession(user, role, idToken, providerName);
+  const redirectBasedOnRole = (role) => window.ZentraAuth.redirectForRole(role);
+  const normalizeRole = (role) => window.ZentraAuth.normalizeRole(role);
+
+  const setAuthMessage = (message, isError = false) => {
+    if (googleAuthMessage) {
+      googleAuthMessage.textContent = message;
+      googleAuthMessage.style.color = isError ? "#ffb4ab" : "#c3c0ff";
+    }
+  };
+
+  const isValidEmail = (value) => emailPattern.test(value.trim());
+
+  if (loginPasswordToggleButton && loginPasswordInput && loginPasswordToggleIcon) {
+    loginPasswordToggleButton.addEventListener("click", () => {
+      const isVisible = loginPasswordInput.type === "text";
+      loginPasswordInput.type = isVisible ? "password" : "text";
+      loginPasswordToggleIcon.textContent = isVisible ? "visibility_off" : "visibility";
+      loginPasswordToggleButton.setAttribute("aria-label", isVisible ? "Show password" : "Hide password");
+    });
+  }
+
+  const getUserRole = async (user, fallbackRole) => {
+    try {
+      const profileSnap = await getDoc(doc(db, "users", user.uid));
+      if (profileSnap.exists()) {
+        return normalizeRole(profileSnap.data().role || fallbackRole);
+      }
+    } catch (error) {
+      console.warn("Unable to read Firestore role profile:", error);
+    }
+    return normalizeRole(fallbackRole);
+  };
+
+  const syncUserProfile = async (user, role, providerName) => {
+    try {
+      await setDoc(doc(db, "users", user.uid), {
+        uid: user.uid,
+        name: user.displayName || user.email || "",
+        email: user.email || "",
+        role: normalizeRole(role),
+        provider: providerName,
+        updatedAt: serverTimestamp()
+      }, { merge: true });
+    } catch (error) {
+      console.warn("Could not sync profile to Firestore:", error);
+    }
+  };
+
+  const verifyBackend = async (user, role, idToken, providerName) => {
+    const controller = new AbortController();
+    const timeoutId = setTimeout(() => controller.abort(), 2500);
+    try {
+      const response = await fetch(backendUrl, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "Accept": "application/json",
+          Authorization: `Bearer ${idToken}`
+        },
+        mode: "cors",
+        signal: controller.signal,
+        body: JSON.stringify({
+          token: idToken,
+          idToken,
+          email: user.email,
+          name: user.displayName,
+          role,
+          provider: providerName,
+          user: {
+            uid: user.uid,
+            email: user.email,
+            displayName: user.displayName,
+            photoURL: user.photoURL
+          }
+        })
+      });
+      if (!response.ok) {
+        const text = await response.text();
+        console.warn("Backend verification returned an error:", response.status, text);
+      }
+    } catch (error) {
+      console.warn("Backend verification was skipped:", error);
+    } finally {
+      clearTimeout(timeoutId);
+    }
+  };
+
+  const finishAuth = async (user, role, idToken, providerName, successMessage) => {
+    const resolvedRole = await getUserRole(user, role);
+    await syncUserProfile(user, resolvedRole, providerName);
+    await verifyBackend(user, resolvedRole, idToken, providerName);
+    persistAuthSession(user, resolvedRole, idToken, providerName);
+    setAuthMessage(successMessage);
+    redirectBasedOnRole(resolvedRole);
+  };
+
+  loginForm?.addEventListener("submit", async (event) => {
+    event.preventDefault();
+
+    const email = loginEmailInput?.value?.trim() || "";
+    const password = loginPasswordInput?.value || "";
+    const selectedRole = document.getElementById("loginAccountType")?.value || "student";
+
+    if (!email || !password) {
+      setAuthMessage("Please enter both your email and password.", true);
+      return;
+    }
+
+    if (!isValidEmail(email)) {
+      setAuthMessage("Please enter a valid email address.", true);
+      return;
+    }
+
+    try {
+      setAuthMessage("Signing you in...");
+      const result = await signInWithEmailAndPassword(auth, email, password);
+      const idToken = await result.user.getIdToken(true);
+      await finishAuth(result.user, selectedRole, idToken, "email", "Signed in successfully.");
+    } catch (error) {
+      let message = "Sign-in failed. Please try again.";
+      if (error?.code === "auth/user-not-found") {
+        message = "User not available";
+      } else if (error?.code === "auth/wrong-password" || error?.code === "auth/invalid-credential" || error?.code === "auth/invalid-login-credentials") {
+        message = "Wrong email or password";
+      } else if (error?.code === "auth/invalid-email") {
+        message = "Please enter a valid email address.";
+      }
+      setAuthMessage(message, true);
+    }
+  });
+
+  if (googleLoginButton) {
+    googleLoginButton.addEventListener("click", async () => {
+      googleLoginButton.disabled = true;
+      googleLoginButton.style.opacity = "0.7";
+      setAuthMessage("Signing in with Google...");
+
+      try {
+        const result = await signInWithPopup(auth, provider);
+        const user = result.user;
+        const idToken = await user.getIdToken(true);
+        const selectedRole = document.getElementById("loginAccountType")?.value || "student";
+        await finishAuth(user, selectedRole, idToken, "google", "Google sign-in completed successfully.");
+      } catch (error) {
+        setAuthMessage(error.message || "Google sign-in failed.", true);
+      } finally {
+        googleLoginButton.disabled = false;
+        googleLoginButton.style.opacity = "1";
+      }
+    });
+  }
+</script>
+</body></html>

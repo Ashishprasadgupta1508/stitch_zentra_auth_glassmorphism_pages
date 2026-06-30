@@ -1,0 +1,33 @@
+.DS_Store
+
+# Local environments
+.venv/
+.venv-*/
+venv/
+env/
+
+# Node dependencies and build output
+node_modules/
+dist/
+build/
+.next/
+.vite/
+
+# Python runtime files
+__pycache__/
+*.py[cod]
+*.sqlite3
+db.sqlite3
+
+# Django uploads and local runtime output
+backend/django_backend/media/
+media/
+
+# Logs and local config
+*.log
+.env
+.env.*
+!.env.example
+
+# Nested placeholder repo created during setup
+stitch_zentra_auth_glassmorphism_pages/
