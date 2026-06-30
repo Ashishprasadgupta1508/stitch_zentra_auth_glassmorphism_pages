@@ -766,15 +766,69 @@
             return window.ZentraCurrentUser?.uid || getStoredAuthState().uid || '';
         }
 
-        async function getCurrentUserToken() {
-            if (window.ZentraFirebaseAuth?.currentUser) {
+        function isJwtExpired(token, graceSeconds = 60) {
+            try {
+                const encodedPayload = String(token).split('.')[1] || '';
+                const normalizedPayload = encodedPayload
+                    .replace(/-/g, '+')
+                    .replace(/_/g, '/')
+                    .padEnd(Math.ceil(encodedPayload.length / 4) * 4, '=');
+                const payload = JSON.parse(atob(normalizedPayload));
+                return !payload.exp || payload.exp <= Math.floor(Date.now() / 1000) + graceSeconds;
+            } catch (error) {
+                return true;
+            }
+        }
+
+        async function waitForFirebaseUser(timeoutMs = 2500) {
+            const auth = window.ZentraFirebaseAuth;
+            if (!auth) return null;
+            if (auth.currentUser) return auth.currentUser;
+
+            if (window.ZentraAuthReady && typeof window.ZentraAuthReady.then === 'function') {
                 try {
-                    return await window.ZentraFirebaseAuth.currentUser.getIdToken();
+                    await Promise.race([
+                        window.ZentraAuthReady,
+                        new Promise((resolve) => setTimeout(resolve, timeoutMs))
+                    ]);
+                } catch (error) {
+                    console.warn('Unable to wait for Firebase auth state:', error);
+                }
+            }
+
+            return auth.currentUser || null;
+        }
+
+        function persistFreshAuthToken(user, idToken) {
+            if (!user || !idToken || !window.ZentraAuth?.saveAuthSession) return;
+            const storedAuth = getStoredAuthState();
+            window.ZentraAuth.saveAuthSession(
+                user,
+                storedAuth.role || 'student',
+                idToken,
+                storedAuth.provider || 'firebase'
+            );
+        }
+
+        async function getCurrentUserToken() {
+            const user = await waitForFirebaseUser();
+            if (user) {
+                try {
+                    const idToken = await user.getIdToken(true);
+                    window.ZentraCurrentUser = {
+                        uid: user.uid,
+                        email: user.email || '',
+                        displayName: user.displayName || '',
+                        idToken
+                    };
+                    persistFreshAuthToken(user, idToken);
+                    return idToken;
                 } catch (error) {
                     console.warn('Unable to read Firebase ID token:', error);
                 }
             }
-            return window.ZentraCurrentUser?.idToken || getStoredAuthState().idToken || '';
+            const fallbackToken = window.ZentraCurrentUser?.idToken || getStoredAuthState().idToken || '';
+            return fallbackToken && !isJwtExpired(fallbackToken) ? fallbackToken : '';
         }
 
         function loadNotes() {
@@ -873,15 +927,16 @@
         async function requestJson(url, options = {}) {
             try {
                 const token = await getCurrentUserToken();
-                console.log('TOKEN:', token);
                 const headers = new Headers(options.headers || {});
                 if (token) {
                     headers.set('Authorization', `Bearer ${token}`);
                 }
+                if (!token && new URL(url, window.location.href).origin === new URL(AI_API_BASE, window.location.href).origin) {
+                    throw new Error('Please sign in again to continue.');
+                }
                 if (!(options.body instanceof FormData) && !headers.has('Content-Type')) {
                     headers.set('Content-Type', 'application/json');
                 }
-                console.log('AUTH HEADER:', headers.get('Authorization'));
                 // Determine cross-origin to avoid sending credentials to a different origin
                 let credentialsMode = 'include';
                 try {
@@ -1933,6 +1988,10 @@
         const auth = getAuth(app);
         const db = getFirestore(app);
         window.ZentraFirebaseAuth = auth;
+        let resolveAuthReady;
+        window.ZentraAuthReady = new Promise((resolve) => {
+            resolveAuthReady = resolve;
+        });
 
         const profileTrigger = document.getElementById('profile-trigger');
         const profileInitials = document.getElementById('profile-initials');
@@ -2120,12 +2179,29 @@
         profileFormElement?.addEventListener('submit', saveProfile);
 
         onAuthStateChanged(auth, async (user) => {
+            let idToken = '';
+            if (user) {
+                idToken = await user.getIdToken(true).catch(() => '');
+            }
             window.ZentraCurrentUser = user ? {
                 uid: user.uid,
                 email: user.email || '',
                 displayName: user.displayName || '',
-                idToken: await user.getIdToken().catch(() => '')
+                idToken
             } : null;
+            if (user && idToken && window.ZentraAuth?.saveAuthSession) {
+                const storedAuth = window.ZentraAuth.getStoredAuth?.() || {};
+                window.ZentraAuth.saveAuthSession(
+                    user,
+                    storedAuth.role || 'student',
+                    idToken,
+                    storedAuth.provider || 'firebase'
+                );
+            }
+            if (resolveAuthReady) {
+                resolveAuthReady(user);
+                resolveAuthReady = null;
+            }
             loadProfile(user);
         });
     </script>
