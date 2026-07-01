@@ -1,10 +1,11 @@
 from django.contrib.auth import get_user_model
 import json
+from unittest.mock import patch
 
-from django.test import Client, TestCase
+from django.test import Client, RequestFactory, TestCase
 
 from .services import create_learning_flow
-from .views import get_or_create_user_from_firebase
+from .views import get_active_user, get_or_create_user_from_firebase
 from .models import DailyTask, Lecture, Note, Test, Topic
 
 
@@ -209,6 +210,28 @@ class TestProgressionTests(TestCase):
         self.assertEqual(response.status_code, 403)
         self.lecture_two.refresh_from_db()
         self.assertEqual(self.lecture_two.status, 'locked')
+
+
+class AuthFallbackTests(TestCase):
+    def setUp(self):
+        self.factory = RequestFactory()
+
+    def test_get_active_user_accepts_uid_fallback_header_when_firebase_unavailable(self):
+        with patch('ai_learning.views.initialize_firebase_admin', return_value=False):
+            request = self.factory.post(
+                '/api/notes/upload/',
+                HTTP_X_FIREBASE_UID='firebase-uid',
+                HTTP_X_FIREBASE_EMAIL='student@example.com',
+                HTTP_X_FIREBASE_NAME='Student Example',
+            )
+            request.user = type('AnonymousUser', (), {'is_authenticated': False})()
+
+            user = get_active_user(request)
+
+        self.assertIsNotNone(user)
+        self.assertEqual(user.username, 'fb_firebase-uid')
+        self.assertEqual(user.email, 'student@example.com')
+        self.assertEqual(user.first_name, 'Student')
 
 
 class FirebaseUserTests(TestCase):

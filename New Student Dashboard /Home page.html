@@ -931,6 +931,21 @@
                 if (token) {
                     headers.set('Authorization', `Bearer ${token}`);
                 }
+
+                const userContext = window.ZentraCurrentUser || getStoredAuthState() || {};
+                const uid = userContext.uid || '';
+                const email = userContext.email || '';
+                const displayName = userContext.displayName || '';
+                if (uid) {
+                    headers.set('X-Firebase-Uid', uid);
+                }
+                if (email) {
+                    headers.set('X-Firebase-Email', email);
+                }
+                if (displayName) {
+                    headers.set('X-Firebase-Name', displayName);
+                }
+
                 if (!token && new URL(url, window.location.href).origin === new URL(AI_API_BASE, window.location.href).origin) {
                     throw new Error('Please sign in again to continue.');
                 }

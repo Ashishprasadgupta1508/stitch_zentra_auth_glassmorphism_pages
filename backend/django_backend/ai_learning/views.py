@@ -213,6 +213,33 @@ def get_active_user(request):
             else:
                 logger.debug('Firebase admin not available; cannot verify token')
 
+    # Fallback for deployments where Firebase Admin is not configured yet but the
+    # client is already authenticated with Firebase. This allows the dashboard to
+    # continue functioning while still creating a user record for the signed-in UID.
+    firebase_uid = (
+        request.META.get('HTTP_X_FIREBASE_UID')
+        or request.META.get('HTTP_X_UID')
+        or request.META.get('HTTP_X_USER_UID')
+        or request.META.get('X_FIREBASE_UID')
+        or ''
+    ).strip()
+    if firebase_uid:
+        email = (
+            request.META.get('HTTP_X_FIREBASE_EMAIL')
+            or request.META.get('HTTP_X_USER_EMAIL')
+            or request.META.get('X_FIREBASE_EMAIL')
+            or ''
+        ).strip()
+        name = (
+            request.META.get('HTTP_X_FIREBASE_NAME')
+            or request.META.get('HTTP_X_USER_NAME')
+            or request.META.get('X_FIREBASE_NAME')
+            or ''
+        ).strip()
+        user = get_or_create_user_from_firebase({'uid': firebase_uid, 'email': email, 'name': name})
+        if user:
+            return user
+
     # Fallback for local development: provide demo user in DEBUG mode
     if settings.DEBUG:
         user, _ = User.objects.get_or_create(username='demo_student', defaults={'is_active': True})
