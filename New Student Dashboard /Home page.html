@@ -1273,15 +1273,15 @@
                 return `
                     <div class="space-y-2">
                         ${options.map((option) => {
-                            const value = typeof option === 'string' ? option : option.value || option.label || option.text || '';
-                            const label = typeof option === 'string' ? option : option.label || option.text || option.value || '';
-                            return `
+                    const value = typeof option === 'string' ? option : option.value || option.label || option.text || '';
+                    const label = typeof option === 'string' ? option : option.label || option.text || option.value || '';
+                    return `
                                 <label class="flex items-center gap-2 text-sm text-on-surface-variant">
                                     <input type="radio" name="quiz-${AI_LEARNING_STATE.currentTopicId}-${qIndex}" value="${escapeHtml(value)}" data-answer-index="${qIndex}" />
                                     <span>${escapeHtml(label)}</span>
                                 </label>
                             `;
-                        }).join('')}
+                }).join('')}
                     </div>
                 `;
             }
@@ -1426,14 +1426,14 @@
                     <div class="mb-3 text-sm font-semibold text-on-surface">Progress</div>
                     <div class="grid gap-3 md:grid-cols-3">
                         ${[
-                            ['Overall Progress', overallProgress !== undefined ? `${overallProgress}%` : '—'],
-                            ['Completed Tasks', taskValue],
-                            ['Completed Lectures', lectureValue],
-                            ['Tests', testValue],
-                            ['Marks', card.marksLabel ?? '—'],
-                            ['Accuracy', accuracy !== undefined ? `${accuracy}%` : '—'],
-                            ['Level', card.level ?? '—']
-                        ].map(([label, value]) => `
+                    ['Overall Progress', overallProgress !== undefined ? `${overallProgress}%` : '—'],
+                    ['Completed Tasks', taskValue],
+                    ['Completed Lectures', lectureValue],
+                    ['Tests', testValue],
+                    ['Marks', card.marksLabel ?? '—'],
+                    ['Accuracy', accuracy !== undefined ? `${accuracy}%` : '—'],
+                    ['Level', card.level ?? '—']
+                ].map(([label, value]) => `
                             <div class="rounded-lg border border-outline-variant bg-white/70 p-3">
                                 <div class="text-xs uppercase tracking-wider text-on-surface-variant">${escapeHtml(label)}</div>
                                 <div class="mt-1 text-sm font-semibold text-on-surface">${escapeHtml(value ?? '—')}</div>
