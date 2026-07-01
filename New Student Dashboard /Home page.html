@@ -860,8 +860,9 @@
             ? LOCAL_AI_API_BASE
             : PRODUCTION_AI_API_BASE;
         const AI_API_BASE = (() => {
-            if (window.__AI_API_BASE__) {
-                return window.__AI_API_BASE__.replace(/\/$/, '');
+            const overrideValue = (window.__AI_API_BASE__ || window.__API_BASE__ || '').toString().trim();
+            if (overrideValue) {
+                return overrideValue.replace(/\/$/, '');
             }
             return DEFAULT_AI_API_BASE;
         })();

@@ -82,8 +82,16 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 GEMINI_API_KEY = env('GEMINI_API_KEY', default='')
 GEMINI_MODEL = env('GEMINI_MODEL', default='gemini-2.5-flash')
 CORS_ALLOW_ALL_ORIGINS = True
+CORS_ALLOW_CREDENTIALS = True
+CORS_ALLOWED_ORIGINS = [
+    'http://127.0.0.1:8000',
+    'http://localhost:8000',
+    'https://zentra-backend-production-c42c.up.railway.app',
+    'https://zentra-auth-glassmorphism-pages.pages.dev',
+]
 CSRF_TRUSTED_ORIGINS = [
     'http://127.0.0.1:8000',
     'http://localhost:8000',
     'https://zentra-backend-production-c42c.up.railway.app',
+    'https://zentra-auth-glassmorphism-pages.pages.dev',
 ]

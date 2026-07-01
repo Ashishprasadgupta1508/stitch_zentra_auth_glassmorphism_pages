@@ -390,7 +390,7 @@
     const loginPasswordToggleIcon = document.getElementById("loginPasswordToggleIcon");
     const googleLoginButton = document.getElementById("googleLogin");
     const googleAuthMessage = document.getElementById("googleAuthMessage");
-    const backendUrl = window.__BACKEND_URL__ || "http://127.0.0.1:5000/api/verify-user/";
+    const backendUrl = window.__BACKEND_URL__ || window.__API_BASE__ || "https://zentra-backend-production-c42c.up.railway.app/api/verify-user/";
     const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
     const persistAuthSession = (user, role, idToken, providerName) => window.ZentraAuth.saveAuthSession(user, role, idToken, providerName);
